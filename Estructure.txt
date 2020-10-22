@@ -1,0 +1,5 @@
+Estructure of the project
+
+- Code (Asp.Net y Html. Javascript, Boostrap)
+
+- Database  (SQL, Server)
