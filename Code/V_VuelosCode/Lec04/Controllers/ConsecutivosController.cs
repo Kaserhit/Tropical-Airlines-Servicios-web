@@ -9,19 +9,19 @@ using System.Web.Http;
 
 namespace Lec04.Controllers
 {
-    public class FacturasController : ApiController
+    public class ConsecutivosController : ApiController
     {
-        FacturasData FacturasData = new FacturasData();
+        ConsecutivosData FacturasData = new ConsecutivosData();
         // GET: api/Distritos
-        public IEnumerable<FacturasModel> Get()
+        public IEnumerable<ConsecutivosModel> Get()
         {
             return FacturasData.selectData();
         }
 
         // GET: api/Distritos/5
-        public FacturasModel Get(int id)
+        public ConsecutivosModel Get(int id)
         {
-            return FacturasData.selectData().Where(e => e.Num_Factura == id).First();
+            return FacturasData.selectData().Where(e => e.CSVID == id).First();
         }
 
         
