@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.ConsecutivosModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CSVID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consec_Pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consecutivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prefijo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RangoInicial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RangoFinal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CSVID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Consec_Pais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Consecutivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prefijo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RangoInicial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RangoFinal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

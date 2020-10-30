@@ -33,3 +33,12 @@ C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CoreCompil
 C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\obj\Debug\BLL.dll
 C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\obj\Debug\BLL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\BLL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\BLL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\DAL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.pdb
