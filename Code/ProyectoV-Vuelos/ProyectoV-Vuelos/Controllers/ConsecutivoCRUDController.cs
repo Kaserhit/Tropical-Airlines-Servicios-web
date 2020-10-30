@@ -6,7 +6,6 @@ using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
 using System.Web.Mvc;
 
 namespace ProyectoV_Vuelos.Controllers
@@ -27,12 +26,23 @@ namespace ProyectoV_Vuelos.Controllers
         }
 
 
-        [System.Web.Mvc.HttpPost]
+        [HttpPost]
         public ActionResult Generar(Consecutivos a)
         {
             if (!ModelState.IsValid) { return View(); }
 
-            return View();
+            try
+            {
+                return RedirectToAction ("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error al Generar Consecutivo ", ex);
+
+                return View();
+            }
+
+       
         }
 
 
@@ -63,19 +73,6 @@ namespace ProyectoV_Vuelos.Controllers
             }
         }
 
-        public void generateData()
-        {
-            try
-            {
-                Consecutivos Consecutivos = new Consecutivos();
-                
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Valor Null detectado");
-                throw;
-            }
-        }
 
     }
 
