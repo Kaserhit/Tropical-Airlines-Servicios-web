@@ -20,6 +20,22 @@ namespace ProyectoV_Vuelos.Controllers
             return View(selectData());
         }
 
+        public ActionResult Generar()
+        {
+
+            return View();
+        }
+
+
+        [System.Web.Mvc.HttpPost]
+        public ActionResult Generar(Consecutivos a)
+        {
+            if (!ModelState.IsValid) { return View(); }
+
+            return View();
+        }
+
+
         public List<ConsecutivosModel> selectData()
         {
             try

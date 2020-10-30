@@ -1,15 +1,13 @@
 ﻿@model IEnumerable<ProyectoV_Vuelos.Models.ConsecutivosModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tropical Airlines - Consecutivos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<center><h2>Consecutivos</h2></center>
+<br></br>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -40,67 +38,83 @@
     {
         foreach (var item in Model)
         {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.CSVID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Consec_Pais)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Descripcion)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Consecutivo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Prefijo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.RangoInicial)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.RangoFinal)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-    </td>
-</tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CSVID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Consec_Pais)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Consecutivo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prefijo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RangoInicial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RangoFinal)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Detalles", "Detalles", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Eliminar", "Eliminar", new { /* id=item.PrimaryKey */ })
+                </td>
+
+
+            </tr>
         }
     }
 
     @*@foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CSVID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Consec_Pais)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Consecutivo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prefijo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RangoInicial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RangoFinal)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-    }*@
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CSVID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Consec_Pais)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Consecutivo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prefijo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RangoInicial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RangoFinal)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }*@
 
 </table>
+
+<br></br>
+
+<center>
+   
+        <a class="btn btn-default" @Html.ActionLink("Generar ", "Generar")</a>
+   
+
+   
+        <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+  
+</center>

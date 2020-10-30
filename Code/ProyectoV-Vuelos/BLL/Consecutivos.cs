@@ -85,7 +85,32 @@ namespace BLL
                 }
             }                        
         }
+
+
+
+        public DataSet SP_Inserta_Consecutivo()
+        {
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                return null;
+            }
+            else
+            {
+                sql = "dbo.SP_Inserta_Consecutivo";
+                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return ds;
+                }
+            }
+        }
+
         #endregion
-        
+
     }
 }
