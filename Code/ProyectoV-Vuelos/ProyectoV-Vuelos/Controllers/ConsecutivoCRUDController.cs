@@ -63,6 +63,20 @@ namespace ProyectoV_Vuelos.Controllers
             }
         }
 
+        public void generateData()
+        {
+            try
+            {
+                Consecutivos Consecutivos = new Consecutivos();
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Valor Null detectado");
+                throw;
+            }
+        }
+
     }
 
 }
