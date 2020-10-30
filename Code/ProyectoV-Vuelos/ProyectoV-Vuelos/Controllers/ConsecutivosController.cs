@@ -1,5 +1,4 @@
 ﻿using System;
-using ProyectoV_Vuelos.Data;
 using ProyectoV_Vuelos.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +10,19 @@ namespace ProyectoV_Vuelos.Controllers
 {
     public class ConsecutivosController : ApiController
     {
-        ConsecutivosData FacturasData = new ConsecutivosData();
-        // GET: api/Consecutivos
+
+        ConsecutivoCRUDController CRUD = new ConsecutivoCRUDController();
+
+        //GET: api/Consecutivos
         public IEnumerable<ConsecutivosModel> Get()
         {
-            return FacturasData.selectData();
+            return CRUD.selectData();
         }
 
-        // GET: api/Consecutivos/5
+        //GET: api/Consecutivos/5
         public ConsecutivosModel Get(int id)
         {
-            return FacturasData.selectData().Where(e => e.CSVID == id).First();
+            return CRUD.selectData().Where(e => e.CSVID == id).First();
         }
 
         // POST: api/Consecutivos

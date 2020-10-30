@@ -36,35 +36,71 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CSVID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Consec_Pais)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Consecutivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prefijo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RangoInicial)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RangoFinal)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CSVID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Consec_Pais)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Descripcion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Consecutivo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Prefijo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RangoInicial)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RangoFinal)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
+        }
+    }
+
+    @*@foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CSVID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consec_Pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consecutivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prefijo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RangoInicial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RangoFinal)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }*@
 
 </table>

@@ -25,7 +25,6 @@ namespace BLL
             set { Consec_Pais = value; }
         }
 
-
         public string Descripcion
         {
             get { return Descripcion; }
@@ -49,7 +48,6 @@ namespace BLL
             get { return RangoInicial; }
             set { RangoInicial = value; }
         }
-
 
         public int RangoFinal
         {
@@ -88,10 +86,6 @@ namespace BLL
             }                        
         }
         #endregion
-
-
-
-
         
     }
 }

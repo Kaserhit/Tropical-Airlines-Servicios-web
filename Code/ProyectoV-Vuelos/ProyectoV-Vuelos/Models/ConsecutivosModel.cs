@@ -30,9 +30,7 @@ namespace ProyectoV_Vuelos.Models
         [DataMember]
         public int RangoFinal { get; set; }
 
-
         #endregion
-
 
         #region constructores
         public ConsecutivosModel(int CSVID, int Consec_Pais, string Descripcion, string Consecutivo, string Prefijo, int RangoInicial, int RangoFinal)
