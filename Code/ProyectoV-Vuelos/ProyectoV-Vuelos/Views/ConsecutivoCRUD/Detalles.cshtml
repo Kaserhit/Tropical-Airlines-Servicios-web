@@ -1,0 +1,68 @@
+﻿@model ProyectoV_Vuelos.Models.ConsecutivosModel
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>ConsecutivosModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consec_Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consec_Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consecutivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consecutivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prefijo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prefijo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RangoInicial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RangoInicial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RangoFinal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RangoFinal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Actualizar", new { id = Model.CSVID }, null) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

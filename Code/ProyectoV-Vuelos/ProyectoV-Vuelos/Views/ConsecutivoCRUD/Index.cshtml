@@ -64,8 +64,8 @@
 
                 <td>
                     @Html.ActionLink("Editar", "Actualizar", new { id = item.CSVID }, null) |
-                    @Html.ActionLink("Detalles", "Detalles", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Eliminar", "Eliminar", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Detalles", "Detalles", new { id = item.CSVID }, null) |
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.CSVID }, new { @Class = "MEliminar" })
                 </td>
 
 
@@ -110,11 +110,22 @@
 <br></br>
 
 <center>
-   
-        <a class="btn btn-default" @Html.ActionLink("Generar ", "Generar")</a>
-   
 
-   
-        <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
-  
+    <a class="btn btn-default" @Html.ActionLink("Generar ", "Generar")</a>
+
+
+
+    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+
 </center>
+
+@section scripts{
+
+<script>
+    $(".MEliminar").click(function (event) {
+        if (!confirm('¿Esta seguro de eliminar el Consecutivo?')) {
+            event.preventDefault();
+        }
+    });
+</script>
+                                }

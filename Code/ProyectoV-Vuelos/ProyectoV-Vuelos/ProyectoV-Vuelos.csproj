@@ -219,6 +219,7 @@
     <Content Include="Views\ConsecutivoCRUD\Index.cshtml" />
     <Content Include="Views\ConsecutivoCRUD\Generar.cshtml" />
     <Content Include="Views\ConsecutivoCRUD\Actualizar.cshtml" />
+    <Content Include="Views\ConsecutivoCRUD\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

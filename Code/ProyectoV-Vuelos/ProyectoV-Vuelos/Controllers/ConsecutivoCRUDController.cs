@@ -18,6 +18,11 @@ namespace ProyectoV_Vuelos.Controllers
             return View(BuscarConsecutivos());
         }
 
+        public ActionResult Detalles(int id)
+        {
+            return View(BuscarConsecutivos().Where(e => e.CSVID == id).First());
+        }
+
         public List<ConsecutivosModel> BuscarConsecutivos()
         {
             try
@@ -128,6 +133,16 @@ namespace ProyectoV_Vuelos.Controllers
                 return View();
             }
 
+        }
+
+        public ActionResult Eliminar(int id)
+        {
+
+            Consecutivos CSV = new Consecutivos();
+
+            CSV.EliminarConsecutivo(id);
+
+            return RedirectToAction("Index");
         }
 
     }
