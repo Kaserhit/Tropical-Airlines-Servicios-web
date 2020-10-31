@@ -7,9 +7,9 @@ SELECT * FROM dbo.Consecutivo
 
 CREATE PROCEDURE SP_Inserta_Consecutivo
 ( @Consec_Pais int,
-  @Descripcion nvarchar,  
-  @Consecutivo nvarchar,
-  @Prefijo nvarchar,
+  @Descripcion nvarchar(150),
+  @Consecutivo nvarchar(150),
+  @Prefijo nvarchar(150),
   @RangoInicial int,
   @RangoFinal int)
 

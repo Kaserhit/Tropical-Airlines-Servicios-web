@@ -13,47 +13,19 @@ namespace BLL
     {
         #region propiedades
 
-        public int CSVID
-        {
-            get { return CSVID; }
-            set { CSVID = value; }
-        }
+        public int CSVID { get; set; }
 
-        public int Consec_Pais
-        {
-            get { return Consec_Pais; }
-            set { Consec_Pais = value; }
-        }
+        public int Consec_Pais { get; set; }
 
-        public string Descripcion
-        {
-            get { return Descripcion; }
-            set { Descripcion = value; }
-        }
+        public string Descripcion { get; set; }
 
-        public string Consecutivo
-        {
-            get { return Consecutivo; }
-            set { Consecutivo = value; }
-        }
+        public string Consecutivo { get; set; }
 
-        public string Prefijo
-        {
-            get { return Prefijo; }
-            set { Prefijo = value; }
-        }
+        public string Prefijo { get; set; }
 
-        public int RangoInicial
-        {
-            get { return RangoInicial; }
-            set { RangoInicial = value; }
-        }
+        public int RangoInicial { get; set; }
 
-        public int RangoFinal
-        {
-            get { return RangoFinal; }
-            set { RangoFinal = value; }
-        }
+        public int RangoFinal { get; set; }
 
         #endregion
 
@@ -86,8 +58,6 @@ namespace BLL
             }                        
         }
 
-
-
         public DataSet SP_Inserta_Consecutivo()
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -109,7 +79,6 @@ namespace BLL
                 }
             }
         }
-
 
         public DataSet GenerarConsecutivo(int Consec_Pais, string Descripcion, string Consecutivo, string Prefijo, int RangoInicial, int RangoFinal)
         {
@@ -141,8 +110,6 @@ namespace BLL
 
     }
 }  
-
-
 
       #endregion
 

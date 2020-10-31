@@ -15,36 +15,8 @@ namespace ProyectoV_Vuelos.Controllers
 
         public ActionResult Index()
         {
-
             return View(selectData());
         }
-
-        public ActionResult Generar()
-        {
-
-            return View();
-        }
-
-
-        [HttpPost]
-        public ActionResult Generar(Consecutivos a)
-        {
-            if (!ModelState.IsValid) { return View(); }
-
-            try
-            {
-                return RedirectToAction ("Index");
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("Error al Generar Consecutivo ", ex);
-
-                return View();
-            }
-
-       
-        }
-
 
         public List<ConsecutivosModel> selectData()
         {
@@ -73,6 +45,34 @@ namespace ProyectoV_Vuelos.Controllers
             }
         }
 
+        public ActionResult Generar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Generar(ConsecutivosModel a)
+        {
+            Consecutivos CSV = new Consecutivos();
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            try
+            {
+                CSV.GenerarConsecutivo(a.Consec_Pais, a.Descripcion, a.Consecutivo, a.Prefijo, a.RangoInicial, a.RangoFinal);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error al Generar Consecutivo", ex);
+
+                return View();
+            }
+
+        }
 
     }
 

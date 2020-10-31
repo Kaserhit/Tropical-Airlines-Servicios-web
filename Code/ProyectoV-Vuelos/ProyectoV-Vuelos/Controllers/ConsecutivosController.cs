@@ -13,13 +13,13 @@ namespace ProyectoV_Vuelos.Controllers
 
         ConsecutivoCRUDController CRUD = new ConsecutivoCRUDController();
 
-        //GET: api/Consecutivos
+        // GET: api/Consecutivos
         public IEnumerable<ConsecutivosModel> Get()
         {
             return CRUD.selectData();
         }
 
-        //GET: api/Consecutivos/5
+        // GET: api/Consecutivos/5
         public ConsecutivosModel Get(int id)
         {
             return CRUD.selectData().Where(e => e.CSVID == id).First();
