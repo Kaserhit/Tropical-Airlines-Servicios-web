@@ -58,6 +58,28 @@ namespace BLL
             }                        
         }
 
+        public DataSet SP_Solicitar_Info_Consecutivo()
+        {
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                return null;
+            }
+            else
+            {
+                sql = "dbo.SP_Solicitar_Info_Consecutivo";
+                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return ds;
+                }
+            }
+        }
+
         public DataSet SP_Inserta_Consecutivo()
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -68,6 +90,28 @@ namespace BLL
             else
             {
                 sql = "dbo.SP_Inserta_Consecutivo";
+                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return ds;
+                }
+            }
+        }
+
+        public DataSet SP_Actualiza_Consecutivo()
+        {
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                return null;
+            }
+            else
+            {
+                sql = "dbo.SP_Actualiza_Consecutivo";
                 ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
                 if (numero_error != 0)
                 {
@@ -101,6 +145,34 @@ namespace BLL
             catch (Exception ex)
             {
                 return ds;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public DataSet ActualizarConsecutivo(int CSVID, int Consec_Pais, string Descripcion, string Consecutivo, string Prefijo, int RangoInicial, int RangoFinal)
+        {
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Actualiza_Consecutivo", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CSVID", CSVID);
+                cmd.Parameters.AddWithValue("@Consec_Pais", Consec_Pais);
+                cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
+                cmd.Parameters.AddWithValue("@Consecutivo", Consecutivo);
+                cmd.Parameters.AddWithValue("@Prefijo", Prefijo);
+                cmd.Parameters.AddWithValue("@RangoInicial", RangoInicial);
+                cmd.Parameters.AddWithValue("@RangoFinal", RangoFinal);
+                cmd.ExecuteNonQuery();
+                return null; // success   
+            }
+            catch (Exception ex)
+            {
+                return ds; 
             }
             finally
             {

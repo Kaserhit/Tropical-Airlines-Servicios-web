@@ -16,13 +16,13 @@ namespace ProyectoV_Vuelos.Controllers
         // GET: api/Consecutivos
         public IEnumerable<ConsecutivosModel> Get()
         {
-            return CRUD.selectData();
+            return CRUD.BuscarConsecutivos();
         }
 
         // GET: api/Consecutivos/5
         public ConsecutivosModel Get(int id)
         {
-            return CRUD.selectData().Where(e => e.CSVID == id).First();
+            return CRUD.BuscarConsecutivos().Where(e => e.CSVID == id).First();
         }
 
         // POST: api/Consecutivos
