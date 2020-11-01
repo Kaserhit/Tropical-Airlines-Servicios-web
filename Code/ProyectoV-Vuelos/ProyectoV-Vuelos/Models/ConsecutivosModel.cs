@@ -9,6 +9,7 @@ namespace ProyectoV_Vuelos.Models
     public class ConsecutivosModel
     {
         #region Propiedades
+
         [DataMember]
         public int CSVID { get; set; }
 
@@ -32,7 +33,8 @@ namespace ProyectoV_Vuelos.Models
 
         #endregion
 
-        #region constructores
+        #region Constructores
+
         public ConsecutivosModel(int CSVID, int Consec_Pais, string Descripcion, string Consecutivo, string Prefijo, int RangoInicial, int RangoFinal)
         {
             this.CSVID = CSVID;
@@ -42,7 +44,6 @@ namespace ProyectoV_Vuelos.Models
             this.Prefijo = Prefijo;
             this.RangoInicial = RangoInicial;
             this.RangoFinal = RangoFinal;
-
         }
 
         public ConsecutivosModel()

@@ -9,23 +9,19 @@ using DAL;
 
 namespace BLL
 {
-    public class Consecutivos
+    public class Aeropuertos
     {
         #region Propiedades
 
-        public int CSVID { get; set; }
+        public int APTID { get; set; }
 
-        public int Consec_Pais { get; set; }
+        public int Consec_Aerop { get; set; }
 
-        public string Descripcion { get; set; }
+        public string Cod_Puerta { get; set; }
 
-        public string Consecutivo { get; set; }
+        public int Num_Puerta { get; set; }
 
-        public string Prefijo { get; set; }
-
-        public int RangoInicial { get; set; }
-
-        public int RangoFinal { get; set; }
+        public string Detalle { get; set; }
 
         #endregion
 
@@ -38,27 +34,7 @@ namespace BLL
         #endregion
 
         #region Metodos
-        public DataSet SP_Solicitar_Info_Consecutivos()
-        {
-            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-            if (conexion == null)
-            {
-                return null;
-            }
-            else {
-                sql = "dbo.SP_Solicitar_Info_Consecutivos";
-                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
-                if (numero_error != 0)
-                {
-                    return null;
-                }
-                else {
-                    return ds;
-                }
-            }                        
-        }
-
-        public DataSet SP_Solicitar_Info_Consecutivo()
+        public DataSet SP_Solicitar_Info_Aeropuertos()
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
             if (conexion == null)
@@ -67,7 +43,7 @@ namespace BLL
             }
             else
             {
-                sql = "dbo.SP_Solicitar_Info_Consecutivo";
+                sql = "dbo.SP_Solicitar_Info_Aeropuertos";
                 ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
                 if (numero_error != 0)
                 {
@@ -80,21 +56,41 @@ namespace BLL
             }
         }
 
-        public DataSet GenerarConsecutivo(int Consec_Pais, string Descripcion, string Consecutivo, string Prefijo, int RangoInicial, int RangoFinal)
+        public DataSet SP_Solicitar_Info_Aeropuerto()
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-     
+            if (conexion == null)
+            {
+                return null;
+            }
+            else
+            {
+                sql = "dbo.SP_Solicitar_Info_Aeropuerto";
+                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return ds;
+                }
+            }
+        }
+
+        public DataSet GenerarAeropuerto(int Consec_Aerop, string Cod_Puerta, int Num_Puerta, string Detalle)
+        {
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
             try
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("SP_Inserta_Consecutivo", conexion);
+                SqlCommand cmd = new SqlCommand("SP_Inserta_Aeropuerto", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Consec_Pais", Consec_Pais);
-                cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
-                cmd.Parameters.AddWithValue("@Consecutivo", Consecutivo);
-                cmd.Parameters.AddWithValue("@Prefijo", Prefijo);
-                cmd.Parameters.AddWithValue("@RangoInicial", RangoInicial);
-                cmd.Parameters.AddWithValue("@RangoFinal", RangoFinal);
+                cmd.Parameters.AddWithValue("@Consec_Aerop", Consec_Aerop);
+                cmd.Parameters.AddWithValue("@Cod_Puerta", Cod_Puerta);
+                cmd.Parameters.AddWithValue("@Num_Puerta", Num_Puerta);
+                cmd.Parameters.AddWithValue("@Detalle", Detalle);
                 cmd.ExecuteNonQuery();
                 return null; // success   
             }
@@ -108,27 +104,25 @@ namespace BLL
             }
         }
 
-        public DataSet ActualizarConsecutivo(int CSVID, int Consec_Pais, string Descripcion, string Consecutivo, string Prefijo, int RangoInicial, int RangoFinal)
+        public DataSet ActualizarAeropuerto(int APTID, int Consec_Aerop, string Cod_Puerta, int Num_Puerta, string Detalle)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
             try
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("SP_Actualiza_Consecutivo", conexion);
+                SqlCommand cmd = new SqlCommand("SP_Actualiza_Aeropuerto", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CSVID", CSVID);
-                cmd.Parameters.AddWithValue("@Consec_Pais", Consec_Pais);
-                cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
-                cmd.Parameters.AddWithValue("@Consecutivo", Consecutivo);
-                cmd.Parameters.AddWithValue("@Prefijo", Prefijo);
-                cmd.Parameters.AddWithValue("@RangoInicial", RangoInicial);
-                cmd.Parameters.AddWithValue("@RangoFinal", RangoFinal);
+                cmd.Parameters.AddWithValue("@APTID", APTID);
+                cmd.Parameters.AddWithValue("@Consec_Aerop", Consec_Aerop);
+                cmd.Parameters.AddWithValue("@Cod_Puerta", Cod_Puerta);
+                cmd.Parameters.AddWithValue("@Num_Puerta", Num_Puerta);
+                cmd.Parameters.AddWithValue("@Detalle", Detalle);
                 cmd.ExecuteNonQuery();
                 return null; // success   
             }
             catch (Exception ex)
             {
-                return ds; 
+                return ds;
             }
             finally
             {
@@ -136,16 +130,16 @@ namespace BLL
             }
         }
 
-        public DataSet EliminarConsecutivo(int CSVID)
+        public DataSet EliminarAeropuerto(int APTID)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
 
             try
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("SP_Eliminar_Consecutivo", conexion);
+                SqlCommand cmd = new SqlCommand("SP_Eliminar_Aeropuerto", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CSVID", CSVID);
+                cmd.Parameters.AddWithValue("@APTID", APTID);
                 cmd.ExecuteNonQuery();
                 return null; // success
             }
@@ -160,11 +154,5 @@ namespace BLL
         }
 
         #endregion
-
     }
-}  
-
-      
-
-    
-
+}

@@ -128,7 +128,7 @@ namespace ProyectoV_Vuelos.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Error al Generar Consecutivo", ex);
+                ModelState.AddModelError("Error al Actualizar Consecutivo", ex);
 
                 return View();
             }

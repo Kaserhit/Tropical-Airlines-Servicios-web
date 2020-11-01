@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.AeropuertosModel>
+
+@{
+    ViewBag.Title = "Tropical Airlines - Aeropuertos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>Aeropuertos</h2></center>
+<br></br>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.APTID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consec_Aerop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cod_Puerta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Num_Puerta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Detalle)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.APTID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Consec_Aerop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cod_Puerta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Num_Puerta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Detalle)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Actualizar", new { id = item.APTID }, null) |
+                    @Html.ActionLink("Detalles", "Detalles", new { id = item.APTID }, null) |
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.APTID }, new { @Class = "MEliminar" })
+                </td>
+            </tr>
+        }
+     } 
+
+</table>
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-default" @Html.ActionLink("Generar ", "Generar")</a>
+
+    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+
+</center>
+
+@section scripts{
+
+    <script>
+        $(".MEliminar").click(function (event) {
+            if (!confirm('¿Esta seguro de eliminar el Aeropuerto?')) {
+                event.preventDefault();
+            }
+        });
+    </script>
+}
