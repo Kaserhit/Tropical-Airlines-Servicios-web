@@ -159,7 +159,9 @@
     <Compile Include="Controllers\AerolineasController.cs" />
     <Compile Include="Controllers\AeropuertoCRUDController.cs" />
     <Compile Include="Controllers\AeropuertosController.cs" />
+    <Compile Include="Controllers\PaisCRUDController.cs" />
     <Compile Include="Controllers\ConsecutivoCRUDController.cs" />
+    <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Controllers\ConsecutivosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -168,6 +170,7 @@
     </Compile>
     <Compile Include="Models\AerolineasModel.cs" />
     <Compile Include="Models\AeropuertosModel.cs" />
+    <Compile Include="Models\PaisModel.cs" />
     <Compile Include="Models\ConsecutivosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -234,6 +237,10 @@
     <Content Include="Views\AerolineaCRUD\Detalles.cshtml" />
     <Content Include="Views\AerolineaCRUD\Actualizar.cshtml" />
     <Content Include="Views\AerolineaCRUD\Generar.cshtml" />
+    <Content Include="Views\PaisCRUD\Index.cshtml" />
+    <Content Include="Views\PaisCRUD\Detalles.cshtml" />
+    <Content Include="Views\PaisCRUD\Generar.cshtml" />
+    <Content Include="Views\PaisCRUD\Actualizar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
