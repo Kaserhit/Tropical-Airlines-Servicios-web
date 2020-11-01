@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.AerolineasModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>Aerolineas</h2></center>
+<br></br>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ALNID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aerol_Pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consec_Aerol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ALNID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aerol_Pais)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Consec_Aerol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imagen)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Actualizar", new { id = item.ALNID }, null) |
+                    @Html.ActionLink("Detalles", "Detalles", new { id = item.ALNID }, null) |
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ALNID }, new { @Class = "MEliminar" })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-default" @Html.ActionLink("Generar ", "Generar")</a>
+
+    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+
+</center>
+
+@section scripts{
+
+    <script>
+    $(".MEliminar").click(function (event) {
+        if (!confirm('¿Esta seguro de eliminar la Aerolinea?')) {
+            event.preventDefault();
+        }
+    });
+    </script>
+}

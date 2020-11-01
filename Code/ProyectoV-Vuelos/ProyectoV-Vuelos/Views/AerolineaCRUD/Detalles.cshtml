@@ -1,0 +1,60 @@
+﻿@model ProyectoV_Vuelos.Models.AerolineasModel
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>AerolineasModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aerol_Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aerol_Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consec_Aerol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consec_Aerol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imagen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Actualizar", new { id = Model.ALNID }, null) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
