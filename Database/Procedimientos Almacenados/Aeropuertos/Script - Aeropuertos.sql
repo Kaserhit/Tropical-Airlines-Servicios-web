@@ -6,7 +6,7 @@ AS
 
 SELECT * FROM dbo.Aeropuerto
 
-EXEC SP_Solicitar_Info_Aeropuertos
+Go
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ CREATE PROCEDURE SP_Inserta_Aeropuerto
  AS
 
 INSERT INTO dbo.Aeropuerto(Consec_Aerop, Cod_Puerta, Num_Puerta, Detalle) VALUES (@Consec_Aerop, @Cod_Puerta, @Num_Puerta, @Detalle)
-
+Go
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE WebDB
@@ -34,7 +34,7 @@ UPDATE dbo.Aeropuerto SET Consec_Aerop= @Consec_Aerop, Cod_Puerta = @Cod_Puerta,
 WHERE APTID = @APTID;  
 IF @@rowcount <> 1   
 RAISERROR('ID Aeropuerto Invalido',16,1) 
-
+Go
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE WebDB
@@ -44,7 +44,7 @@ CREATE PROCEDURE SP_Solicitar_Info_Aeropuerto(@APTID int)
 AS 
 
 SELECT * FROM dbo.Aeropuerto WHERE APTID = @APTID
-
+Go
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE WebDB

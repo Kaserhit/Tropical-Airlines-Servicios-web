@@ -6,7 +6,7 @@ AS
 
 SELECT * FROM dbo.Aerolinea
 
-EXEC SP_Solicitar_Info_Aerolineas
+Go
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -22,7 +22,7 @@ CREATE PROCEDURE SP_Inserta_Aerolinea
  AS
 
 INSERT INTO dbo.Aerolinea(Aerol_Pais, Consec_Aerol, Codigo, Nombre, Imagen) VALUES (@Aerol_Pais, @Consec_Aerol, @Codigo, @Nombre, @Imagen)
-
+Go
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE WebDB
@@ -35,7 +35,7 @@ UPDATE dbo.Aerolinea SET Aerol_Pais = @Aerol_Pais, Consec_Aerol = @Consec_Aerol,
 WHERE ALNID = @ALNID;  
 IF @@rowcount <> 1   
 RAISERROR('ID Aerolinea Invalido',16,1) 
-
+Go
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE WebDB
@@ -45,7 +45,7 @@ CREATE PROCEDURE SP_Solicitar_Info_Aerolinea(@ALNID int)
 AS 
 
 SELECT * FROM dbo.Aerolinea WHERE ALNID = @ALNID
-
+Go
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE WebDB

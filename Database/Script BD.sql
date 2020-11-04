@@ -43,7 +43,19 @@ CREATE TABLE [dbo].[Rol](
 )
 GO
 
-INSERT INTO [dbo].[Rol] values ('Administrador', 'El que posee todas las funciones')
+INSERT INTO [dbo].[Rol] values ('Administrador', 'Acceso a todas las funciones.')
+
+INSERT INTO [dbo].[Rol] values ('Seguridad', 'Acceso exclusivo a la creación de nuevos usuarios y ver los usuarios.')
+
+INSERT INTO [dbo].[Rol] values ('Consecutivo', 'Acceso exclusivo a los  consecutivos.')
+
+INSERT INTO [dbo].[Rol] values ('Mantenimiento', 'Acceso a crear, modificar y eliminar registros del menú administración.')
+
+INSERT INTO [dbo].[Rol] values ('Consultas', ' Acceso exclusivo a las consultas que posea el sistema.')
+
+INSERT INTO [dbo].[Rol] values ('Cliente', 'Acceso a los vuelos del sistema.')
+
+
 GO
 
 CREATE TABLE [dbo].[Usuario](
@@ -55,6 +67,8 @@ CREATE TABLE [dbo].[Usuario](
 	[Nombre] [NVARCHAR] (150),
 	[Primer_Apellido] [NVARCHAR] (150) NOT NULL,
 	[Segundo_Apellido] [NVARCHAR] (150),
+	[Pregunta] [NVARCHAR] (150) NOT NULL,
+    [Respuesta] [NVARCHAR] (150) NOT NULL,
 	[Correo] [NVARCHAR] (150) NOT NULL
 
 	CONSTRAINT [PK_USER_USRID] PRIMARY KEY([USRID]),
@@ -62,7 +76,7 @@ CREATE TABLE [dbo].[Usuario](
 )
 GO
 
-INSERT INTO [dbo].[Usuario] values (1, 'user', 'pass', 'Mauricio', 'P', 'M', 'mpm@gmail.com')
+INSERT INTO [dbo].[Usuario] values (1, 'user', 'pass', 'Mauricio', 'P', 'M', '¿Cual es su videojuego favorito?', 'War Rock', 'mpm@gmail.com')
 GO
 
 CREATE TABLE [dbo].[Pais](

@@ -7,22 +7,30 @@
     <div class="col-md-4">
         <h2>Consecutivos</h2>
         <br></br>
-        <p> Tabla de Consecutivos</p>
+        <p>Consecutivos</p>
         <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "ConsecutivoCRUD", new { area = "" }, null)</a></p>
         <br></br>
-        <p> Tabla de Aerolinea</p>
+        <p>Aerolinea</p>
         <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "AerolineaCRUD", new { area = "" }, null)</a></p>
         <br></br>
-        <p> Tabla de Aeropuerto</p>
+        <p>Aeropuerto</p>
         <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "AeropuertoCRUD", new { area = "" }, null)</a></p>
         <br></br>
-        <p> Tabla de Paises</p>
+        <p>Paises</p>
         <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "PaisCRUD", new { area = "" }, null)</a></p>
     </div>
     <div class="col-md-4">
         <h2>Seguridad</h2>
-        <p>Tabla de Usuarios</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Ir &raquo;</a></p>
+        <br></br>
+        <p>Crear Usuarios</p>
+        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "SeguridadCRUD/Generar", new { area = "" }, null)</a></p>
+        <br></br>
+        <p>Asignar Roles</p>
+        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "SeguridadCRUD", new { area = "" }, null)</a></p>
+        <br></br>
+        <p>Cambiar Contraseña</p>
+        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "SeguridadCRUD/Actualizarcontrasena", new { area = "" }, null)</a></p>
+        <br></br>
     </div>
     <div class="col-md-4">
         <h2>Consultas</h2>

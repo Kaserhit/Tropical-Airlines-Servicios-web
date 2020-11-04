@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Aerolineas.cs" />
     <Compile Include="Aeropuertos.cs" />
+    <Compile Include="Seguridad.cs" />
     <Compile Include="Pais.cs" />
     <Compile Include="Consecutivos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

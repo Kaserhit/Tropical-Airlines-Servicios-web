@@ -1,0 +1,54 @@
+﻿@model ProyectoV_Vuelos.Models.SeguridadModel
+
+@{
+    ViewBag.Title = "Actualizar contrasena";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cambiar Contraseña</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+
+    <div class="form-group">
+        <h5 class="control-label col-md-2">Contraseña</h5>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h5 class="control-label col-md-2">Nueva Contraseña</h5>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.newcontrasena, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.newcontrasena, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <h5 class="control-label col-md-2">Confirmar Contraseña</h5>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.newcontrasena2, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.newcontrasena2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Cambiar Contraseña" class="btn btn-default" />
+            <a class="btn btn-default" @Html.ActionLink("Cancelar", "Index", "Home", new { area = "" }, null)
+        </div>
+    </div>
+</div>
+}
+
+

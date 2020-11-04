@@ -1,0 +1,46 @@
+﻿@model ProyectoV_Vuelos.Models.SeguridadModel
+
+@{
+    ViewBag.Title = "Actualizar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Actualizar</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>SeguridadModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.USRID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ID_Rol, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select class="form-control" id="ID_Rol" name="ID_Rol">
+                <option value="1">Administrador</option>
+                <option value="2">Seguridad</option>
+                <option value="3">Consecutivo</option>
+                <option value="4">Mantenimiento</option>
+                <option value="5">Consulta</option>
+                <option value="6">Cliente</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ID_Rol, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

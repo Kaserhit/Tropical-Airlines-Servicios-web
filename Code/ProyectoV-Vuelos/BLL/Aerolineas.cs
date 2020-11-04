@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using DAL;
+using System.Runtime.CompilerServices;
 
 namespace BLL
 {
     public class Aerolineas
     {
         #region Propiedades
-
+     
         public int ALNID { get; set; }
-
+  
         public int Aerol_Pais { get; set; }
 
         public int Consec_Aerol { get; set; }

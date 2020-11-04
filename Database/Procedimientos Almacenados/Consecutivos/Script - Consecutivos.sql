@@ -6,7 +6,7 @@ AS
 
 SELECT * FROM dbo.Consecutivo
 
-EXEC SP_Solicitar_Info_Consecutivos
+Go
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -25,6 +25,7 @@ CREATE PROCEDURE SP_Inserta_Consecutivo
 INSERT INTO dbo.Consecutivo(Consec_Pais, Descripcion,Consecutivo,Prefijo, RangoInicial, RangoFinal) VALUES (@Consec_Pais, @Descripcion,@Consecutivo, @Prefijo,@RangoInicial,@RangoFinal)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Go
 
 USE WebDB
 Go
@@ -38,6 +39,7 @@ IF @@rowcount <> 1
 RAISERROR('ID Consecutivo Invalido',16,1) 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Go
 
 USE WebDB
 Go
@@ -48,6 +50,7 @@ AS
 SELECT * FROM dbo.Consecutivo WHERE CSVID = @CSVID
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Go
 
 USE WebDB
 Go
