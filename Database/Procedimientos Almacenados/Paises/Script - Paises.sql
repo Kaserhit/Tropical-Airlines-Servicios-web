@@ -54,3 +54,13 @@ CREATE PROCEDURE SP_Eliminar_Pais
  AS
 
 Delete from dbo.Pais where PAISID = @PAISID
+Go
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Use WebDB
+Go
+CREATE PROCEDURE SP_Solicitar_Filtro_Pais(@Nombre nvarchar(150))
+
+AS
+
+SELECT PAISID FROM dbo.Pais WHERE Nombre = @Nombre

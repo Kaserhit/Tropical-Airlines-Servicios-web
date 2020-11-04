@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.AerolineasModel>
+
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Consultas de Aerolineas</h2>
+
+@using (Html.BeginForm("Busqueda", "AerolineaCRUD", FormMethod.Post))
+{
+
+    <div class="row">
+        <div class="col-sm-13">
+            <div class="col-md-2">
+                <h4 class="control-label">Buscar por país:</h4>
+            </div>
+            <div class="col-sm-3">
+                @Html.TextBox("id", "", new { @class = "form-control" })
+            </div>
+            <div>
+                <input type="submit" value="Buscar" class="btn btn-default">
+            </div>
+        </div>
+    </div>
+
+    @*<left>
+            <table class="col-sm-12">
+                <th class="col-sm-2">
+                    <h4 class="control-label">Buscar por país:</h4>
+                </th>
+                <th class="col-sm-3 my-1">
+                    @Html.TextBox("id", "", new { @class = "form-control" })
+                </th>
+                <th>
+                    <input type="submit" value="Buscar" class="btn btn-default" />
+                </th>
+            </table>
+        </left>*@
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imagen)
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-default" @Html.ActionLink("Mostrar Todos", "Consulta", "AerolineaCRUD", new { area = "" }, null)</a>
+
+</center>

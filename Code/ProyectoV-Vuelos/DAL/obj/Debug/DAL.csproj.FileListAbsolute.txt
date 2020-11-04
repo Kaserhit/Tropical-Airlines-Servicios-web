@@ -28,3 +28,9 @@ C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DA
 C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.dll
 C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.pdb
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\bin\Debug\DAL.dll
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\bin\Debug\DAL.pdb
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.dll
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.pdb

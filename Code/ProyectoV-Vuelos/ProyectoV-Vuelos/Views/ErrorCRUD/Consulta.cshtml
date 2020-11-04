@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.ErrorModel>
+
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Consulta de Errores</h2>
+
+@using (Html.BeginForm("Busqueda", "ErrorCRUD", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-sm-13">
+            <div class="col-md-2">
+                <h4 class="control-label">Buscar por fecha:</h4>
+            </div>
+            <div class="col-sm-3">
+                @Html.TextBox("id", "", new { @class = "form-control" })
+            </div>
+            <div>
+                <input type="submit" value="Buscar" class="btn btn-default">
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Num_Error)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mensaje_Error)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Num_Error)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mensaje_Error)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-default" @Html.ActionLink("Mostrar Todos", "Consulta", "ErrorCRUD", new { area = "" }, null)</a>
+
+</center>

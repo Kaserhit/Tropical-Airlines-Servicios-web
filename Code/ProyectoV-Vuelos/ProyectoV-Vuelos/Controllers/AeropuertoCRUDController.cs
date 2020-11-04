@@ -16,6 +16,11 @@ namespace ProyectoV_Vuelos.Controllers
             return View(BuscarAeropuertos());
         }
 
+        public ActionResult Consulta()
+        {
+            return View(BuscarAeropuertos());
+        }
+
         public ActionResult Detalles(int id)
         {
             return View(BuscarAeropuertos().Where(e => e.APTID == id).First());

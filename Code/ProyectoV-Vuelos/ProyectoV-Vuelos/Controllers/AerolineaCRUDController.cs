@@ -17,9 +17,25 @@ namespace ProyectoV_Vuelos.Controllers
             return View(BuscarAerolineas());
         }
 
+        public ActionResult Consulta()
+        {
+            return View(BuscarAerolineas());
+        }
+
         public ActionResult Detalles(int id)
         {
             return View(BuscarAerolineas().Where(e => e.ALNID == id).First());
+        }
+
+        public ActionResult Busqueda(FormCollection item)
+        {
+            Pais pais = new Pais();
+            Aerolineas Aerolinea = new Aerolineas();
+            string Nombre = item["id"];
+            var PAISID = pais.SP_Solicitar_Filtro_Pais(Nombre).PAISID;
+            var datos = BuscarAerolineas().Where(x => x.Aerol_Pais == PAISID).Select(x => x).ToList();
+
+            return View("~/Views/AerolineaCRUD/Consulta.cshtml", datos);
         }
 
         public List<AerolineasModel> BuscarAerolineas()
