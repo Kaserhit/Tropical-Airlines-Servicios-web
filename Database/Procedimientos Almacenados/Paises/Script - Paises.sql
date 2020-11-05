@@ -14,7 +14,7 @@ Go
 Use WebDB
 Go
 CREATE PROCEDURE SP_Inserta_Pais
-( @Consec_Pais nvarchar(150),
+( @Consec_Pais int,
   @CodPais nvarchar(150),
   @Nombre nvarchar(150),
   @Imagen nvarchar(max))

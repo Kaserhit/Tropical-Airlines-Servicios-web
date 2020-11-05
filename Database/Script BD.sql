@@ -79,36 +79,38 @@ GO
 INSERT INTO [dbo].[Usuario] values (1, 'user', 'pass', 'Mauricio', 'P', 'M', '¿Cual es su videojuego favorito?', 'War Rock', 'mpm@gmail.com')
 GO
 
-CREATE TABLE [dbo].[Pais](
-
-	[PAISID] [INT] NOT NULL IDENTITY,
-	[CodPais] [NVARCHAR] (150) NOT NULL,
-	[Nombre] [NVARCHAR] (150) NOT NULL,
-	[Imagen] [NVARCHAR] (max) NOT NULL
-
-	CONSTRAINT [PK_PAIS_PAISID] PRIMARY KEY([PAISID])
-)
-GO
-
-INSERT INTO [dbo].[Pais] values ('CR','Costa Rica', 'CR.JPG')
-GO
-
 CREATE TABLE [dbo].[Consecutivo](
 
 	[CSVID] [INT] NOT NULL IDENTITY,
-	[Consec_Pais] [INT] NOT NULL,
 	[Descripcion] [NVARCHAR] (150) NOT NULL,
 	[Consecutivo] [NVARCHAR] (150) NOT NULL,
+	[Posee_Prefijo][bit] NOT NULL,
 	[Prefijo] [NVARCHAR] (5),
 	[RangoInicial] [INT],
 	[RangoFinal] [INT]
 
-	CONSTRAINT [PK_CONSEC_CSVID] PRIMARY KEY([CSVID]),
-	CONSTRAINT [FK_CONSEC_PAIS] FOREIGN KEY ([Consec_Pais]) REFERENCES Pais([PAISID])
+	CONSTRAINT [PK_CONSEC_CSVID] PRIMARY KEY([CSVID])
 )
 GO
 
-INSERT INTO [dbo].[Consecutivo] values (1, 'Aerolínea', '150', 'AE-', 100, 200)
+INSERT INTO [dbo].[Consecutivo] values ('Aerolínea', '150', 1, 'AE-', 100, 200)
+GO
+
+
+CREATE TABLE [dbo].[Pais](
+
+	[PAISID] [INT] NOT NULL IDENTITY,
+	[Consec_Pais] [INT] NOT NULL,
+	[CodPais] [NVARCHAR] (150) NOT NULL,
+	[Nombre] [NVARCHAR] (150) NOT NULL,
+	[Imagen] [NVARCHAR] (max) NOT NULL
+
+	CONSTRAINT [PK_PAIS_PAISID] PRIMARY KEY([PAISID]),
+	CONSTRAINT [FK_PAIS_CONSEC] FOREIGN KEY ([Consec_Pais]) REFERENCES Consecutivo([CSVID])
+)
+GO
+
+INSERT INTO [dbo].[Pais] values (1, 'CR', 'Costa Rica', 'CR.JPG')
 GO
 
 CREATE TABLE [dbo].[Bitacora](
@@ -259,7 +261,7 @@ GO
 
 OPEN MASTER KEY DECRYPTION BY PASSWORD = 'Vvuelos$Key';
 GO
-BACKUP MASTER KEY TO FILE = 'D:\Informatica\Bases_de_Datos\DBS\masterkey.mk' 
+BACKUP MASTER KEY TO FILE = 'D:\Servicios Web\masterkey.mk' 
     ENCRYPTION BY PASSWORD = 'Vvuelos$Key';
 GO
 
@@ -274,9 +276,9 @@ SELECT * FROM sys.certificates where [name] = 'Vue_certificate'
 GO
 
 
-BACKUP CERTIFICATE Vue_certificate TO FILE = 'D:\Informatica\Bases_de_Datos\DBS\Vue_certificate.cer'
+BACKUP CERTIFICATE Vue_certificate TO FILE = 'D:\Servicios Web\Vue_certificate.cer'
    WITH PRIVATE KEY (
-         FILE = 'D:\Informatica\Bases_de_Datos\DBS\Vue_certificate.pvk',
+         FILE = 'D:\Servicios Web\Vue_certificate.pvk',
          ENCRYPTION BY PASSWORD = 'Vue_certificate');
 GO
 
