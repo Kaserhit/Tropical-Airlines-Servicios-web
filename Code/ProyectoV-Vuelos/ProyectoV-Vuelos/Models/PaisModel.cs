@@ -29,7 +29,7 @@ namespace ProyectoV_Vuelos.Models
         #endregion
 
         #region constructores
-        public PaisModel(int PAISID, byte Consec_Pais, string Nombre, string Imagen, string CodPais)
+        public PaisModel(int PAISID, int Consec_Pais, string Nombre, string Imagen, string CodPais)
         {
             this.PAISID = PAISID;
             this.Consec_Pais = Consec_Pais;

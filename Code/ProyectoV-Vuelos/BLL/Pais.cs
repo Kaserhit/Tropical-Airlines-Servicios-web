@@ -106,7 +106,7 @@ namespace BLL
             }
         }
 
-        public DataSet Generar(byte Consec_Pais, string CodPais, string Nombre, string Imagen)
+        public DataSet Generar(int Consec_Pais, string CodPais, string Nombre, string Imagen)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
      
@@ -132,7 +132,7 @@ namespace BLL
             }
         }
 
-        public DataSet Actualizar(int PAISID, byte Consec_Pais, string CodPais, string Nombre, string Imagen)
+        public DataSet Actualizar(int PAISID, int Consec_Pais, string CodPais, string Nombre, string Imagen)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
             try

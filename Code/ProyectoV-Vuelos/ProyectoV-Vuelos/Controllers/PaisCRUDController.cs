@@ -32,6 +32,7 @@ namespace ProyectoV_Vuelos.Controllers
                 Paises.SP_Solicitar_Info_Paises().Tables[0].AsEnumerable().Select(e => new PaisModel
                 {
                     PAISID = e.Field<int>("PAISID"),
+                    Consec_Pais = e.Field<int>("Consec_Pais"),
                     CodPais = e.Field<string>("CodPais"),
                     Nombre = e.Field<string>("Nombre"),
                     Imagen = e.Field<string>("Imagen"),
@@ -67,7 +68,7 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                CSV.Generar(a.CodPais, a.Nombre, a.Imagen);
+                CSV.Generar(a.Consec_Pais, a.CodPais, a.Nombre, a.Imagen);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -96,7 +97,7 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                CSV.Actualizar(a.PAISID, a.CodPais, a.Nombre, a.Imagen);
+                CSV.Actualizar(a.PAISID, a.Consec_Pais, a.CodPais, a.Nombre, a.Imagen);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
