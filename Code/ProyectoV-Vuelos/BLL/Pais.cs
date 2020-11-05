@@ -106,6 +106,35 @@ namespace BLL
             }
         }
 
+        public Pais SP_Solicitar_Consec_Pais(int PAISID)
+        {
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Solicitar_Consec_Pais", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@PAISID", PAISID);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    Pais pais = new Pais();
+                    pais.Consec_Pais = Convert.ToInt32(dr["consec_pais"]);
+                    return pais;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
         public DataSet Generar(int Consec_Pais, string CodPais, string Nombre, string Imagen)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);

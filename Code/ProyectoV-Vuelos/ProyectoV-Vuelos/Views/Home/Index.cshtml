@@ -36,7 +36,7 @@
         <h2>Consultas</h2>
         <br></br>
         <p>Bitacora</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Ir &raquo;</a></p>
+        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "BitacoraCRUD/Consulta", new { area = "" }, null)</a></p>
         <br></br>
         <p>Errores</p>
         <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "ErrorCRUD/Consulta", new { area = "" }, null)</a></p>

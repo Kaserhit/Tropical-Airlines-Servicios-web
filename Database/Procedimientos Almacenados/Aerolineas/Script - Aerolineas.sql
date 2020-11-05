@@ -56,3 +56,13 @@ CREATE PROCEDURE SP_Eliminar_Aerolinea
 AS
 
 DELETE FROM dbo.Aerolinea WHERE ALNID = @ALNID
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use WebDB
+Go
+CREATE PROCEDURE SP_Solicitar_Consec_Aerolinea(@ALNID int)
+
+AS
+
+Select Consec_Aerol from dbo.Aerolinea where ALNID = @ALNID

@@ -159,6 +159,7 @@
     <Compile Include="Controllers\AerolineasController.cs" />
     <Compile Include="Controllers\AeropuertoCRUDController.cs" />
     <Compile Include="Controllers\AeropuertosController.cs" />
+    <Compile Include="Controllers\BitacoraCRUDController.cs" />
     <Compile Include="Controllers\ErrorCRUDController.cs" />
     <Compile Include="Controllers\SeguridadCRUDController.cs" />
     <Compile Include="Controllers\PaisCRUDController.cs" />
@@ -172,6 +173,7 @@
     </Compile>
     <Compile Include="Models\AerolineasModel.cs" />
     <Compile Include="Models\AeropuertosModel.cs" />
+    <Compile Include="Models\BitacorasModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\SeguridadModel.cs" />
     <Compile Include="Models\PaisModel.cs" />
@@ -255,6 +257,8 @@
     <Content Include="Views\AerolineaCRUD\Consulta.cshtml" />
     <Content Include="Views\AeropuertoCRUD\Consulta.cshtml" />
     <Content Include="Views\ErrorCRUD\Consulta.cshtml" />
+    <Content Include="Views\BitacoraCRUD\Consulta.cshtml" />
+    <Content Include="Views\PaisCRUD\DetalleRegistro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

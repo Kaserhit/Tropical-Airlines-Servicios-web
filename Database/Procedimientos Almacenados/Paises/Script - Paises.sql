@@ -58,6 +58,7 @@ Delete from dbo.Pais where PAISID = @PAISID
 Go
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Use WebDB
 Go
 CREATE PROCEDURE SP_Solicitar_Filtro_Pais(@Nombre nvarchar(150))
@@ -65,3 +66,13 @@ CREATE PROCEDURE SP_Solicitar_Filtro_Pais(@Nombre nvarchar(150))
 AS
 
 SELECT PAISID FROM dbo.Pais WHERE Nombre = @Nombre
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use WebDB
+Go
+CREATE PROCEDURE SP_Solicitar_Consec_Pais(@PAISID int)
+
+AS
+
+Select Consec_Pais from dbo.Pais where PAISID = @PAISID   

@@ -24,8 +24,6 @@ namespace ProyectoV_Vuelos.Models
         [DataMember]
         public string Imagen { get; set; }
 
-
-
         #endregion
 
         #region constructores

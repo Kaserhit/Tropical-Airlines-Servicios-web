@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.BitacorasModel>
+
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Consulta</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Consec_Bitacora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cod_Registro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consec_Bitacora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cod_Registro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Registro en Detalle", "DetalleRegistro", new { id = item.BTCID }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-default" @Html.ActionLink("Mostrar Todos", "Consulta", "BitacoraCRUD", new { area = "" }, null)</a>
+
+</center>

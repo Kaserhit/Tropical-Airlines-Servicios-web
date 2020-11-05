@@ -12,71 +12,83 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>ConsecutivosModel</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4>ConsecutivosModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Descripción</h5>
-        <div class="col-md-10">
-            <select class="form-control" id="Descripcion" name="Descripcion">
-                <option value="Aerolineas">Aerolineas</option>
-                <option value="Paises">Paises</option>
-                <option value="Aeropuertos">Aereopuertos</option>
+        <div class="form-group">
+            <h5 class=" col-md-2">Descripción</h5>
+            <div class="col-md-10">
+                <select class="form-control" id="Descripcion" name="Descripcion">
+                    <option value="Aerolineas">Aerolineas</option>
+                    <option value="Paises">Paises</option>
+                    <option value="Aeropuertos">Aereopuertos</option>
 
-            </select>
-            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                </select>
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <h5 class=" col-md-2">Consecutivo</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Consecutivo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Consecutivo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <h5 class=" col-md-2">Posee Prefijo:</h5>
+            <div class="col-md-10">
+                <input type="checkbox" id="myCheck" onclick="myFunction()"> Si
+                <input type="checkbox" id="myCheck2" onclick="myFunction2()"> No
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <h5 class=" col-md-2">Prefijo</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Prefijo, new { htmlAttributes = new { @id = "Prefijo", @class = "form-control", @disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <h5 class="col-md-2">Posee Rango:</h5>
+            <div class="col-md-10">
+                <input type="checkbox" id="myCheck" onclick="myFunction3()"> Si
+                <input type="checkbox" id="myCheck2" onclick="myFunction4()"> No
+                @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h5 class="col-md-2">Rango Inicial</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RangoInicial, new { htmlAttributes = new { @id = "rangoI", @class = "form-control", @disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.RangoInicial, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h5 class="col-md-2">Rango Final</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RangoFinal, new { htmlAttributes = new { @id = "rangoF", @class = "form-control", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.RangoFinal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
         </div>
     </div>
-
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Consecutivo</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Consecutivo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Consecutivo, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Consecutivo</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Posee_Prefijo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Posee_Prefijo, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Prefijo</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Prefijo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Rango Inicial</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.RangoInicial, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.RangoInicial, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Rango Final</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.RangoFinal, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.RangoFinal, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>
@@ -85,7 +97,43 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script>
+        function myFunction() {
+
+            document.getElementById("Prefijo").disabled = false;
+
+        }
+    </script>
+
+
+    <script>
+        function myFunction2() {
+
+            document.getElementById("Prefijo").disabled = true;
+
+        }
+    </script>
+
+
+    <script>
+        function myFunction3() {
+
+            document.getElementById("rangoI").disabled = false;
+            document.getElementById("rangoF").disabled = false;
+
+        }
+    </script>
+
+
+    <script>
+        function myFunction4() {
+
+
+            document.getElementById("rangoI").disabled = true;
+            document.getElementById("rangoF").disabled = true;
+
+        }
+    </script>
 }
-
-
-

@@ -32,13 +32,10 @@ namespace ProyectoV_Vuelos.Models
         [DataMember]
         public string Correo { get; set; }
 
-
-
-
+        //Variables Internas
 
         [DataMember]
         public string newcontrasena { get; set; }
-
 
         [DataMember]
         public string newcontrasena2 { get; set; }

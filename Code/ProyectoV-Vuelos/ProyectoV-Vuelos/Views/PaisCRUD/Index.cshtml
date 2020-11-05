@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<ProyectoV_Vuelos.Models.PaisModel>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <h2>Index</h2>
 
@@ -46,26 +44,23 @@
         @Html.DisplayFor(modelItem => item.Nombre)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Imagen)
+        <img src="@Html.DisplayFor(modelItem => item.Imagen)" width="70px" height="50px" alt="Bandera">
+
     </td>
     <td>
         @Html.ActionLink("Editar", "Actualizar", new { id = item.PAISID }, null) |
         @Html.ActionLink("Detalles", "Detalles", new { id = item.PAISID }, null) |
         @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PAISID }, new { @Class = "MEliminar" })
     </td>
-</tr>
-    }
+</tr>}
 
 </table>
-
 
 <br></br>
 
 <center>
 
     <a class="btn btn-default" @Html.ActionLink("Generar ", "Generar")</a>
-
-
 
     <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
 
@@ -80,4 +75,4 @@
             }
         });
     </script>
-    }
+}

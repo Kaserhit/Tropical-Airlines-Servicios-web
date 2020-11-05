@@ -99,6 +99,7 @@ namespace ProyectoV_Vuelos.Controllers
         public ActionResult Generar(AerolineasModel a)
         {
             Aerolineas ALN = new Aerolineas();
+            Bitacoras BTC = new Bitacoras();
 
             if (!ModelState.IsValid)
             {
@@ -108,6 +109,7 @@ namespace ProyectoV_Vuelos.Controllers
             try
             {
                 ALN.GenerarAerolinea(a.Aerol_Pais, a.Consec_Aerol, a.Codigo, a.Nombre, a.Imagen);
+                BTC.GenerarBitacora(a.Consec_Aerol, 1, 1, DateTime.Now, "Agregar", "Inserción de una nueva Aerolínea");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -128,6 +130,7 @@ namespace ProyectoV_Vuelos.Controllers
         public ActionResult Actualizar(AerolineasModel a)
         {
             Aerolineas ALN = new Aerolineas();
+            Bitacoras BTC = new Bitacoras();
 
             if (!ModelState.IsValid)
             {
@@ -137,6 +140,7 @@ namespace ProyectoV_Vuelos.Controllers
             try
             {
                 ALN.ActualizarAerolinea(a.ALNID, a.Aerol_Pais, a.Consec_Aerol, a.Codigo, a.Nombre, a.Imagen);
+                BTC.GenerarBitacora(a.Consec_Aerol, 1, 2, DateTime.Now, "Modificar", "Modificación de una Aerolínea");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -152,7 +156,9 @@ namespace ProyectoV_Vuelos.Controllers
         {
 
             Aerolineas ALN = new Aerolineas();
+            Bitacoras BTC = new Bitacoras();
 
+            //BTC.GenerarBitacora(ALN.SP_Solicitar_Consec_Aerolinea(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de una Aerolínea");
             ALN.EliminarAerolinea(id);
 
             return RedirectToAction("Index");

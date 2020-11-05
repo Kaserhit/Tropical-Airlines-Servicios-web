@@ -55,3 +55,13 @@ CREATE PROCEDURE SP_Eliminar_Aeropuerto
 AS
 
 DELETE FROM dbo.Aeropuerto WHERE APTID = @APTID
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use WebDB
+Go
+CREATE PROCEDURE SP_Solicitar_Consec_Aeropuerto(@APTID int)
+
+AS
+
+Select Consec_Aerop from dbo.Aeropuerto where APTID = @APTID

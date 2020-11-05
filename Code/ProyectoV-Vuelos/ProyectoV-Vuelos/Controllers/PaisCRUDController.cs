@@ -23,6 +23,11 @@ namespace ProyectoV_Vuelos.Controllers
             return View(BuscarPaises().Where(e => e.PAISID == id).First());
         }
 
+        public ActionResult DetalleRegistro(int id)
+        {
+            return View(BuscarPaises().Where(e => e.PAISID == id).First());
+        }
+
         public List<PaisModel> BuscarPaises()
         {
             try
@@ -49,8 +54,6 @@ namespace ProyectoV_Vuelos.Controllers
             }
         }
 
-
-
         public ActionResult Generar()
         {
             return View();
@@ -59,7 +62,8 @@ namespace ProyectoV_Vuelos.Controllers
         [HttpPost]
         public ActionResult Generar(PaisModel a)
         {
-            Pais CSV = new Pais();
+            Pais PAIS = new Pais();
+            Bitacoras BTC = new Bitacoras();
 
             if (!ModelState.IsValid)
             {
@@ -68,7 +72,8 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                CSV.Generar(a.Consec_Pais, a.CodPais, a.Nombre, a.Imagen);
+                PAIS.Generar(a.Consec_Pais, a.CodPais, a.Nombre, a.Imagen);
+                BTC.GenerarBitacora(a.Consec_Pais, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo País");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -88,7 +93,8 @@ namespace ProyectoV_Vuelos.Controllers
         [HttpPost]
         public ActionResult Actualizar(PaisModel a)
         {
-            Pais CSV = new Pais();
+            Pais PAIS = new Pais();
+            Bitacoras BTC = new Bitacoras();
 
             if (!ModelState.IsValid)
             {
@@ -97,12 +103,13 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                CSV.Actualizar(a.PAISID, a.Consec_Pais, a.CodPais, a.Nombre, a.Imagen);
+                PAIS.Actualizar(a.PAISID, a.Consec_Pais, a.CodPais, a.Nombre, a.Imagen);
+                BTC.GenerarBitacora(a.Consec_Pais, 1, 2, DateTime.Now, "Modificar", "Modificación de un País");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Error al actualizar el pais", ex);
+                ModelState.AddModelError("Error al actualizar el Pais", ex);
 
                 return View();
             }
@@ -112,9 +119,11 @@ namespace ProyectoV_Vuelos.Controllers
         public ActionResult Eliminar(int id)
         {
 
-            Pais CSV = new Pais();
+            Pais PAIS = new Pais();
+            Bitacoras BTC = new Bitacoras();
 
-            CSV.Eliminar(id);
+            BTC.GenerarBitacora(PAIS.SP_Solicitar_Consec_Pais(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un País");
+            PAIS.Eliminar(id);
 
             return RedirectToAction("Index");
         }

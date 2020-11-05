@@ -86,6 +86,7 @@ namespace ProyectoV_Vuelos.Controllers
         public ActionResult Generar(ConsecutivosModel a)
         {
             Consecutivos CSV = new Consecutivos();
+            Bitacoras BTC = new Bitacoras();
 
             if (!ModelState.IsValid)
             {
@@ -95,6 +96,7 @@ namespace ProyectoV_Vuelos.Controllers
             try
             {
                 CSV.GenerarConsecutivo(a.Descripcion, a.Consecutivo, a.Posee_Prefijo, a.Prefijo, a.RangoInicial, a.RangoFinal);
+                BTC.GenerarBitacora(a.CSVID, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Consecutivo");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -115,6 +117,7 @@ namespace ProyectoV_Vuelos.Controllers
         public ActionResult Actualizar(ConsecutivosModel a)
         {
             Consecutivos CSV = new Consecutivos();
+            Bitacoras BTC = new Bitacoras();
 
             if (!ModelState.IsValid)
             {
@@ -124,6 +127,7 @@ namespace ProyectoV_Vuelos.Controllers
             try
             {
                 CSV.ActualizarConsecutivo(a.CSVID, a.Descripcion, a.Consecutivo, a.Posee_Prefijo, a.Prefijo, a.RangoInicial, a.RangoFinal);
+                BTC.GenerarBitacora(a.CSVID, 1, 2, DateTime.Now, "Modificar", "Modificación de un Consecutivo");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -139,7 +143,9 @@ namespace ProyectoV_Vuelos.Controllers
         {
 
             Consecutivos CSV = new Consecutivos();
+            Bitacoras BTC = new Bitacoras();
 
+            //BTC.GenerarBitacora(CSV.SP_Solicitar_Consec_Consec(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Consecutivo");
             CSV.EliminarConsecutivo(id);
 
             return RedirectToAction("Index");

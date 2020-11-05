@@ -60,3 +60,13 @@ CREATE PROCEDURE SP_Eliminar_Consecutivo
 AS
 
 DELETE FROM dbo.Consecutivo WHERE CSVID = @CSVID
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use WebDB
+Go
+CREATE PROCEDURE SP_Solicitar_Consec_ID(@CSVID int)
+
+AS
+
+Select CSVID from dbo.Consecutivo where CSVID = @CSVID  
