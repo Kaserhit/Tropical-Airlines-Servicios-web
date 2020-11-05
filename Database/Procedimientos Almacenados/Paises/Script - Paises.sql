@@ -14,23 +14,24 @@ Go
 Use WebDB
 Go
 CREATE PROCEDURE SP_Inserta_Pais
-( @CodPais nvarchar(150),
+( @Consec_Pais nvarchar(150),
+  @CodPais nvarchar(150),
   @Nombre nvarchar(150),
   @Imagen nvarchar(max))
 
  AS
 
-Insert into dbo.Pais(CodPais, Nombre,Imagen) values(@CodPais, @Nombre,@Imagen)
+Insert into dbo.Pais(Consec_Pais, CodPais, Nombre,Imagen) values(@Consec_Pais, @CodPais, @Nombre,@Imagen)
 Go
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Pais(@PAISID int, @CodPais nvarchar(150), @Nombre nvarchar(150), @Imagen nvarchar(max))  
+CREATE PROCEDURE SP_Actualiza_Pais(@PAISID int, @Consec_Pais bit, @CodPais nvarchar(150), @Nombre nvarchar(150), @Imagen nvarchar(max))  
 
 AS  
 
-update dbo.Pais set  CodPais = @CodPais, Nombre = @Nombre, Imagen = @Imagen
+update dbo.Pais set Consec_Pais = @Consec_Pais, CodPais = @CodPais, Nombre = @Nombre, Imagen = @Imagen
 where PAISID = @PAISID;  
 if @@rowcount <> 1   
 raiserror('ID Pais Invalido',16,1) 

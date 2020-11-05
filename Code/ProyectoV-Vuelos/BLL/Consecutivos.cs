@@ -15,17 +15,17 @@ namespace BLL
 
         public int CSVID { get; set; }
 
-        public int Consec_Pais { get; set; }
-
         public string Descripcion { get; set; }
 
         public string Consecutivo { get; set; }
 
+        public byte Posee_Prefijo { get; set; }
+
         public string Prefijo { get; set; }
 
-        public int RangoInicial { get; set; }
+        public int? RangoInicial { get; set; }
 
-        public int RangoFinal { get; set; }
+        public int? RangoFinal { get; set; }
 
         #endregion
 
@@ -80,7 +80,7 @@ namespace BLL
             }
         }
 
-        public DataSet GenerarConsecutivo(int Consec_Pais, string Descripcion, string Consecutivo, string Prefijo, int RangoInicial, int RangoFinal)
+        public DataSet GenerarConsecutivo(string Descripcion, string Consecutivo, byte Posee_Prefijo, string Prefijo, int RangoInicial, int RangoFinal)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
      
@@ -89,9 +89,9 @@ namespace BLL
                 conexion.Open();
                 SqlCommand cmd = new SqlCommand("SP_Inserta_Consecutivo", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Consec_Pais", Consec_Pais);
                 cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
                 cmd.Parameters.AddWithValue("@Consecutivo", Consecutivo);
+                cmd.Parameters.AddWithValue("@Posee_Prefijo", Posee_Prefijo);
                 cmd.Parameters.AddWithValue("@Prefijo", Prefijo);
                 cmd.Parameters.AddWithValue("@RangoInicial", RangoInicial);
                 cmd.Parameters.AddWithValue("@RangoFinal", RangoFinal);
@@ -108,7 +108,7 @@ namespace BLL
             }
         }
 
-        public DataSet ActualizarConsecutivo(int CSVID, int Consec_Pais, string Descripcion, string Consecutivo, string Prefijo, int RangoInicial, int RangoFinal)
+        public DataSet ActualizarConsecutivo(int CSVID, string Descripcion, string Consecutivo, byte Posee_Prefijo, string Prefijo, int RangoInicial, int RangoFinal)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
             try
@@ -117,9 +117,9 @@ namespace BLL
                 SqlCommand cmd = new SqlCommand("SP_Actualiza_Consecutivo", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@CSVID", CSVID);
-                cmd.Parameters.AddWithValue("@Consec_Pais", Consec_Pais);
                 cmd.Parameters.AddWithValue("@Descripcion", Descripcion);
                 cmd.Parameters.AddWithValue("@Consecutivo", Consecutivo);
+                cmd.Parameters.AddWithValue("@Posee_Prefijo", Posee_Prefijo);
                 cmd.Parameters.AddWithValue("@Prefijo", Prefijo);
                 cmd.Parameters.AddWithValue("@RangoInicial", RangoInicial);
                 cmd.Parameters.AddWithValue("@RangoFinal", RangoFinal);

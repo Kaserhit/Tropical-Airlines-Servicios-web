@@ -32,9 +32,9 @@ namespace ProyectoV_Vuelos.Controllers
                 Consecutivos.SP_Solicitar_Info_Consecutivos().Tables[0].AsEnumerable().Select(e => new ConsecutivosModel
                 {
                     CSVID = e.Field<int>("CSVID"),
-                    Consec_Pais = e.Field<int>("Consec_Pais"),
                     Descripcion = e.Field<string>("Descripcion"),
                     Consecutivo = e.Field<string>("Consecutivo"),
+                    Posee_Prefijo = e.Field<byte>("Posee_Prefijo"),
                     Prefijo = e.Field<string>("Prefijo"),
                     RangoInicial = e.Field<int>("RangoInicial"),
                     RangoFinal = e.Field<int>("RangoFinal"),
@@ -59,9 +59,9 @@ namespace ProyectoV_Vuelos.Controllers
                 Consecutivos.SP_Solicitar_Info_Consecutivo().Tables[0].AsEnumerable().Select(e => new ConsecutivosModel
                 {
                     CSVID = e.Field<int>("CSVID"),
-                    Consec_Pais = e.Field<int>("Consec_Pais"),
                     Descripcion = e.Field<string>("Descripcion"),
                     Consecutivo = e.Field<string>("Consecutivo"),
+                    Posee_Prefijo = e.Field<byte>("Posee_Prefijo"),
                     Prefijo = e.Field<string>("Prefijo"),
                     RangoInicial = e.Field<int>("RangoInicial"),
                     RangoFinal = e.Field<int>("RangoFinal"),
@@ -94,7 +94,7 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                CSV.GenerarConsecutivo(a.Consec_Pais, a.Descripcion, a.Consecutivo, a.Prefijo, a.RangoInicial, a.RangoFinal);
+                CSV.GenerarConsecutivo(a.Descripcion, a.Consecutivo, a.Posee_Prefijo, a.Prefijo, a.RangoInicial, a.RangoFinal);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -123,7 +123,7 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                CSV.ActualizarConsecutivo(a.CSVID, a.Consec_Pais, a.Descripcion, a.Consecutivo, a.Prefijo, a.RangoInicial, a.RangoFinal);
+                CSV.ActualizarConsecutivo(a.CSVID, a.Descripcion, a.Consecutivo, a.Posee_Prefijo, a.Prefijo, a.RangoInicial, a.RangoFinal);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

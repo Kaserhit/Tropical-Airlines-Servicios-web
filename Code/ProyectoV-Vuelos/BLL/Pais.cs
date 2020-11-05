@@ -15,6 +15,8 @@ namespace BLL
 
         public int PAISID { get; set; }
 
+        public int Consec_Pais { get; set; }
+
         public string CodPais { get; set; }
 
         public string Nombre { get; set; }
@@ -104,7 +106,7 @@ namespace BLL
             }
         }
 
-        public DataSet Generar(string CodPais, string Nombre, string Imagen)
+        public DataSet Generar(byte Consec_Pais, string CodPais, string Nombre, string Imagen)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
      
@@ -113,6 +115,7 @@ namespace BLL
                 conexion.Open();
                 SqlCommand cmd = new SqlCommand("SP_Inserta_Pais", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Consec_Pais", Consec_Pais);
                 cmd.Parameters.AddWithValue("@CodPais", CodPais);
                 cmd.Parameters.AddWithValue("@Nombre", Nombre);
                 cmd.Parameters.AddWithValue("@Imagen", Imagen);
@@ -129,7 +132,7 @@ namespace BLL
             }
         }
 
-        public DataSet Actualizar(int PAISID, string CodPais, string Nombre, string Imagen)
+        public DataSet Actualizar(int PAISID, byte Consec_Pais, string CodPais, string Nombre, string Imagen)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
             try
@@ -138,6 +141,7 @@ namespace BLL
                 SqlCommand cmd = new SqlCommand("SP_Actualiza_Pais", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@PAISID", PAISID);
+                cmd.Parameters.AddWithValue("@Consec_Pais", Consec_Pais);
                 cmd.Parameters.AddWithValue("@CodPais", CodPais);
                 cmd.Parameters.AddWithValue("@Nombre", Nombre);
                 cmd.Parameters.AddWithValue("@Imagen", Imagen);

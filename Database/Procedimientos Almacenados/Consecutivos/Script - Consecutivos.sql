@@ -13,27 +13,27 @@ Go
 USE WebDB
 Go
 CREATE PROCEDURE SP_Inserta_Consecutivo
-( @Consec_Pais int,
-  @Descripcion nvarchar(150),
+( @Descripcion nvarchar(150),
   @Consecutivo nvarchar(150),
+  @Posee_Prefijo bit,
   @Prefijo nvarchar(150),
   @RangoInicial int,
   @RangoFinal int)
 
  AS
 
-INSERT INTO dbo.Consecutivo(Consec_Pais, Descripcion,Consecutivo,Prefijo, RangoInicial, RangoFinal) VALUES (@Consec_Pais, @Descripcion,@Consecutivo, @Prefijo,@RangoInicial,@RangoFinal)
+INSERT INTO dbo.Consecutivo(Descripcion,Consecutivo, Posee_Prefijo,Prefijo, RangoInicial, RangoFinal) VALUES (@Descripcion,@Consecutivo, @Posee_Prefijo, @Prefijo,@RangoInicial,@RangoFinal)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Go
 
 USE WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Consecutivo(@CSVID int, @Consec_Pais int, @Descripcion nvarchar(150), @Consecutivo nvarchar(150), @Prefijo nvarchar(150), @RangoInicial int, @RangoFinal int )  
+CREATE PROCEDURE SP_Actualiza_Consecutivo(@CSVID int, @Descripcion nvarchar(150), @Consecutivo nvarchar(150), @Posee_Prefijo bit, @Prefijo nvarchar(150), @RangoInicial int, @RangoFinal int )  
 
 AS  
 
-UPDATE dbo.Consecutivo SET Consec_Pais= @Consec_Pais, Descripcion = @Descripcion, Consecutivo = @Consecutivo, Prefijo = @Prefijo, RangoInicial = @RangoInicial, RangoFinal = @RangoFinal  
+UPDATE dbo.Consecutivo SET Descripcion = @Descripcion, Consecutivo = @Consecutivo, Posee_Prefijo = @Posee_Prefijo, Prefijo = @Prefijo, RangoInicial = @RangoInicial, RangoFinal = @RangoFinal  
 WHERE CSVID = @CSVID;  
 IF @@rowcount <> 1   
 RAISERROR('ID Consecutivo Invalido',16,1) 
