@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ProyectoV_Vuelos.Models.SeguridadModel>
+﻿
+@model IEnumerable<ProyectoV_Vuelos.Models.SeguridadModel>
 
 @{
     ViewBag.Title = "Index";
@@ -18,61 +19,78 @@
             Lista de Roles
         </th>
 
-        <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
-<tr>
-    <td>
 
-        <a class="btn btn-default" value="Seleccionar" id="Seleccionar"> @Html.DisplayFor(modelItem => item.Usuario)</a>
+    <tr>
 
-    </td>
-    <td>
+        <div class="list-group">
+            <th>
+                @foreach (var item in Model)
+                {
+                    <button class="list-group-item list-group-item-success-action" value="Seleccionar" id="Seleccionar"> @Html.DisplayFor(modelItem => item.Usuario)</button>
+                }
+            </th>
+        </div>
 
-        @{
+        <th>
+            <table class="table">
+                <tr>
+                    <th>
 
-            if (item.ID_Rol == 1)
-            {
-                <span> Administrador </span>
-            }
-            if (item.ID_Rol == 2)
-            {
-                <span> Seguridad </span>
-            }
-            if (item.ID_Rol == 3)
-            {
-                <span> Consecutivo </span>
-            }
-            if (item.ID_Rol == 4)
-            {
-                <span> Mantenimiento </span>
-            }
-            if (item.ID_Rol == 5)
-            {
-                <span> Consulta </span>
-            }
-            if (item.ID_Rol == 6)
-            {
-                <span> Cliente </span>
-            }
+                        <h5>Administrador</h5>
+                        @Html.CheckBox("Administrador", true)
+
+                    </th>
+                    <th>
+
+                        <h5>Seguridad</h5>
+                        @Html.CheckBox("Seguridad", true)
+                    </th>
+                    <th>
+                        <h5>Consecutivo</h5>
+                        @Html.CheckBox("Consecutivo", true)
+                    </th>
+                </tr>
 
 
-        }
-    </td>
+                <tr>
+                    <th>
+                        <h5>Mantenimiento</h5>
 
-    <td>
-        @Html.ActionLink("Editar", "Actualizar", new { id = item.USRID }, null) |
-        @Html.ActionLink("Detalles", "Detalles", new { id = item.USRID }, null) |
-    </td>
-</tr>
-}
+                        @Html.CheckBox("Mantenimiento", true)
+                    </th>
+                    <th>
+                        <h5>Consultas</h5>
+                        @Html.CheckBox("Consultas", true)
+                    </th>
+                    <th>
+                        <h5>Cliente</h5>
+                        @Html.CheckBox("Cliente", true)
+                    </th>
+                </tr>
+
+
+    </tr>
+</table>
+        </th>
 
 </table>
 
 <center>
-
+    <a class="btn btn-default" @Html.ActionLink("Actualizar Roles", "Detalles", new { area = "" }, null) </a>
     <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
 
 </center>
+
+
+
+
+
+
+
+
+
+
+
+
