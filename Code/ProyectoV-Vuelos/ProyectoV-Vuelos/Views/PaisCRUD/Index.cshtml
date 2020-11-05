@@ -16,6 +16,9 @@
             @Html.DisplayNameFor(model => model.PAISID)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Consec_Pais)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.CodPais)
         </th>
         <th>
@@ -29,25 +32,28 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PAISID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodPais)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imagen)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Actualizar", new { id = item.PAISID }, null) |
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.PAISID }, null) |
-                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PAISID }, new { @Class = "MEliminar" })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.PAISID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Consec_Pais)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CodPais)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Imagen)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Actualizar", new { id = item.PAISID }, null) |
+        @Html.ActionLink("Detalles", "Detalles", new { id = item.PAISID }, null) |
+        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PAISID }, new { @Class = "MEliminar" })
+    </td>
+</tr>
     }
 
 </table>

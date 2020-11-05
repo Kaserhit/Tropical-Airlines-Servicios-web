@@ -15,7 +15,7 @@ Go
 CREATE PROCEDURE SP_Inserta_Consecutivo
 ( @Descripcion nvarchar(150),
   @Consecutivo nvarchar(150),
-  @Posee_Prefijo bit,
+  @Posee_Prefijo int,
   @Prefijo nvarchar(150),
   @RangoInicial int,
   @RangoFinal int)
@@ -29,7 +29,7 @@ Go
 
 USE WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Consecutivo(@CSVID int, @Descripcion nvarchar(150), @Consecutivo nvarchar(150), @Posee_Prefijo bit, @Prefijo nvarchar(150), @RangoInicial int, @RangoFinal int )  
+CREATE PROCEDURE SP_Actualiza_Consecutivo(@CSVID int, @Descripcion nvarchar(150), @Consecutivo nvarchar(150), @Posee_Prefijo int, @Prefijo nvarchar(150), @RangoInicial int, @RangoFinal int )  
 
 AS  
 

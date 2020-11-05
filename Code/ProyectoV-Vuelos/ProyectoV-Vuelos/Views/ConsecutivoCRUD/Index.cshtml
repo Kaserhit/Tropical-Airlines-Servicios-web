@@ -14,13 +14,13 @@
             @Html.DisplayNameFor(model => model.CSVID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Consec_Pais)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Descripcion)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Consecutivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Posee_Prefijo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Prefijo)
@@ -38,36 +38,36 @@
     {
         foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CSVID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Consec_Pais)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Consecutivo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Prefijo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RangoInicial)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RangoFinal)
-                </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CSVID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Descripcion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Consecutivo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Posee_Prefijo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Prefijo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RangoInicial)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RangoFinal)
+    </td>
 
-                <td>
-                    @Html.ActionLink("Editar", "Actualizar", new { id = item.CSVID }, null) |
-                    @Html.ActionLink("Detalles", "Detalles", new { id = item.CSVID }, null) |
-                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.CSVID }, new { @Class = "MEliminar" })
-                </td>
+    <td>
+        @Html.ActionLink("Editar", "Actualizar", new { id = item.CSVID }, null) |
+        @Html.ActionLink("Detalles", "Detalles", new { id = item.CSVID }, null) |
+        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.CSVID }, new { @Class = "MEliminar" })
+    </td>
 
-            </tr>
+</tr>
         }
     }
 

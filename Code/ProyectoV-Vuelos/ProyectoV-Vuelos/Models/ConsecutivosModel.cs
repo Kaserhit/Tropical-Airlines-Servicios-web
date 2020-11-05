@@ -20,7 +20,7 @@ namespace ProyectoV_Vuelos.Models
         public string Consecutivo { get; set; }
 
         [DataMember]
-        public byte Posee_Prefijo { get; set; }
+        public int Posee_Prefijo { get; set; }
 
         [DataMember]
         public string Prefijo { get; set; }
@@ -35,7 +35,7 @@ namespace ProyectoV_Vuelos.Models
 
         #region Constructores
 
-        public ConsecutivosModel(int CSVID, string Descripcion, string Consecutivo, byte Posee_Prefijo, string Prefijo, int RangoInicial, int RangoFinal)
+        public ConsecutivosModel(int CSVID, string Descripcion, string Consecutivo, int Posee_Prefijo, string Prefijo, int RangoInicial, int RangoFinal)
         {
             this.CSVID = CSVID;
             this.Descripcion = Descripcion;

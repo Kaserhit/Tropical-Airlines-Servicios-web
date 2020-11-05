@@ -84,7 +84,7 @@ CREATE TABLE [dbo].[Consecutivo](
 	[CSVID] [INT] NOT NULL IDENTITY,
 	[Descripcion] [NVARCHAR] (150) NOT NULL,
 	[Consecutivo] [NVARCHAR] (150) NOT NULL,
-	[Posee_Prefijo][bit] NOT NULL,
+	[Posee_Prefijo][INT] NOT NULL,
 	[Prefijo] [NVARCHAR] (5),
 	[RangoInicial] [INT],
 	[RangoFinal] [INT]

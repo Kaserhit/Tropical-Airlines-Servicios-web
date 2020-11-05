@@ -19,13 +19,13 @@ namespace BLL
 
         public string Consecutivo { get; set; }
 
-        public byte Posee_Prefijo { get; set; }
+        public int Posee_Prefijo { get; set; }
 
         public string Prefijo { get; set; }
 
-        public int? RangoInicial { get; set; }
+        public int RangoInicial { get; set; }
 
-        public int? RangoFinal { get; set; }
+        public int RangoFinal { get; set; }
 
         #endregion
 
@@ -80,7 +80,7 @@ namespace BLL
             }
         }
 
-        public DataSet GenerarConsecutivo(string Descripcion, string Consecutivo, byte Posee_Prefijo, string Prefijo, int RangoInicial, int RangoFinal)
+        public DataSet GenerarConsecutivo(string Descripcion, string Consecutivo, int Posee_Prefijo, string Prefijo, int RangoInicial, int RangoFinal)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
      
@@ -108,7 +108,7 @@ namespace BLL
             }
         }
 
-        public DataSet ActualizarConsecutivo(int CSVID, string Descripcion, string Consecutivo, byte Posee_Prefijo, string Prefijo, int RangoInicial, int RangoFinal)
+        public DataSet ActualizarConsecutivo(int CSVID, string Descripcion, string Consecutivo, int Posee_Prefijo, string Prefijo, int RangoInicial, int RangoFinal)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
             try
