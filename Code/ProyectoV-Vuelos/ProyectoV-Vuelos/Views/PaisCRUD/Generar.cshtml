@@ -45,7 +45,14 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control" } })
+            <select class="form-control" id="Imagen" name="Imagen">
+                <option value="https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Costa_Rica_%28state%29.svg">Costa Rica</option>
+                <option value="https://upload.wikimedia.org/wikipedia/commons/8/82/Flag_of_Honduras.svg">Honduras</option>
+                <option value="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Flag_of_Panama.svg/1200px-Flag_of_Panama.svg.png">Panama</option>
+                <option value="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Nicaragua.svg/1000px-Flag_of_Nicaragua.svg.png">Nicaragua</option>
+                <option value="https://cdn.countryflags.com/thumbs/colombia/flag-400.png">Colombia</option>
+                <option value="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/220px-Flag_of_Chile.svg.png">Chile</option>
+            </select>
             @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
         </div>
     </div>

@@ -66,6 +66,7 @@ CREATE PROCEDURE SP_Solicitar_Filtro_Pais(@Nombre nvarchar(150))
 AS
 
 SELECT PAISID FROM dbo.Pais WHERE Nombre = @Nombre
+GO
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

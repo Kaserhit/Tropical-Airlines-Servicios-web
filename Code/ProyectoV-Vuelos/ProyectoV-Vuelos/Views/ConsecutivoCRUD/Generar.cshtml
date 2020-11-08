@@ -1,95 +1,91 @@
 ﻿@model ProyectoV_Vuelos.Models.ConsecutivosModel
 
-@{
-    ViewBag.Title = "Generar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "Generar";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <h2>Generar</h2>
 
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>ConsecutivosModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-horizontal">
+                    <h4>ConsecutivosModel</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            <h5 class=" col-md-2">Descripción</h5>
-            <div class="col-md-10">
-                <select class="form-control" id="Descripcion" name="Descripcion">
-                    <option value="Aerolineas">Aerolineas</option>
-                    <option value="Paises">Paises</option>
-                    <option value="Aeropuertos">Aereopuertos</option>
+                    <div class="form-group">
+                        <h5 class=" col-md-2">Descripción</h5>
+                        <div class="col-md-10">
+                            <select class="form-control" id="Descripcion" name="Descripcion">
+                                <option value="Aerolineas">Aerolineas</option>
+                                <option value="Paises">Paises</option>
+                                <option value="Aeropuertos">Aereopuertos</option>
 
-                </select>
-                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <h5 class=" col-md-2">Consecutivo</h5>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Consecutivo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Consecutivo, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
 
-        <div class="form-group">
-            <h5 class=" col-md-2">Posee Prefijo:</h5>
-            <div class="col-md-10">
-                <input type="checkbox" id="myCheck" onclick="myFunction()"> Si
-                <input type="checkbox" id="myCheck2" onclick="myFunction2()"> No
-            </div>
-        </div>
+                    <div class="form-group">
+                        <h5 class=" col-md-2">Consecutivo</h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Consecutivo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Consecutivo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
 
-        <div class="form-group">
-            <h5 class=" col-md-2">Prefijo</h5>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Prefijo, new { htmlAttributes = new { @id = "Prefijo", @class = "form-control", @disabled = "disabled" } })
-                @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        <h5 class=" col-md-2">Posee Prefijo:</h5>
+                        <div class="col-md-10">
+                            <input type="checkbox" id="CheckPrefijo"> Si
+                        </div>
+                    </div>
 
 
-        <div class="form-group">
-            <h5 class="col-md-2">Posee Rango:</h5>
-            <div class="col-md-10">
-                <input type="checkbox" id="myCheck" onclick="myFunction3()"> Si
-                <input type="checkbox" id="myCheck2" onclick="myFunction4()"> No
-                @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        <h5 class=" col-md-2">Prefijo</h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Prefijo, new { htmlAttributes = new { @id = "Prefijo", @class = "form-control", @disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <h5 class="col-md-2">Rango Inicial</h5>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RangoInicial, new { htmlAttributes = new { @id = "rangoI", @class = "form-control", @disabled = "disabled" } })
-                @Html.ValidationMessageFor(model => model.RangoInicial, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            <h5 class="col-md-2">Rango Final</h5>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RangoFinal, new { htmlAttributes = new { @id = "rangoF", @class = "form-control", disabled = "disabled" } })
-                @Html.ValidationMessageFor(model => model.RangoFinal, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        <h5 class="col-md-2">Posee Rango:</h5>
+                        <div class="col-md-10">
+                            <input type="checkbox" id="CheckRango"> Si
+                            @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
+                    <div class="form-group">
+                        <h5 class="col-md-2">Rango Inicial</h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.RangoInicial, new { htmlAttributes = new { @id = "rangoI", @class = "form-control", @disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.RangoInicial, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h5 class="col-md-2">Rango Final</h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.RangoFinal, new { htmlAttributes = new { @id = "rangoF", @class = "form-control", disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.RangoFinal, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>}
 
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -98,42 +94,48 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
+    <script type="text/javascript">
+        (function () {
 
-    <script>
-        function myFunction() {
-
-            document.getElementById("Prefijo").disabled = false;
-
-        }
-    </script>
+            var Prefijo = document.getElementById("Prefijo");
+            var rangoI = document.getElementById("rangoI");
+            var rangoF = document.getElementById("rangoF");
 
 
-    <script>
-        function myFunction2() {
-
-            document.getElementById("Prefijo").disabled = true;
-
-        }
-    </script>
+            var CheckPrefijo = document.getElementById("CheckPrefijo");
+            var CheckRango = document.getElementById("CheckRango");
 
 
-    <script>
-        function myFunction3() {
 
-            document.getElementById("rangoI").disabled = false;
-            document.getElementById("rangoF").disabled = false;
+            CheckPrefijo.addEventListener("click", function () {
 
-        }
-    </script>
+                if (this.checked) {
+                    Prefijo.disabled = "";
 
 
-    <script>
-        function myFunction4() {
+                }
+                else {
+                    Prefijo.disabled = "disabled";
+                    Prefijo.value = "";
+                }
+            });
 
 
-            document.getElementById("rangoI").disabled = true;
-            document.getElementById("rangoF").disabled = true;
+            CheckRango.addEventListener("click", function () {
 
-        }
+                if (this.checked) {
+                    rangoI.disabled = "";
+                    rangoF.disabled = "";
+
+                }
+                else {
+                    rangoI.disabled = "disabled";
+                    rangoF.disabled = "disabled";
+                }
+            });
+
+
+
+        })();
     </script>
 }

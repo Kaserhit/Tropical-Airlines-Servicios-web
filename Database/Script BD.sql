@@ -84,7 +84,6 @@ CREATE TABLE [dbo].[Consecutivo](
 	[CSVID] [INT] NOT NULL IDENTITY,
 	[Descripcion] [NVARCHAR] (150) NOT NULL,
 	[Consecutivo] [NVARCHAR] (150) NOT NULL,
-	[Posee_Prefijo][INT] NOT NULL,
 	[Prefijo] [NVARCHAR] (5),
 	[RangoInicial] [INT],
 	[RangoFinal] [INT]
@@ -93,7 +92,7 @@ CREATE TABLE [dbo].[Consecutivo](
 )
 GO
 
-INSERT INTO [dbo].[Consecutivo] values ('Aerolínea', '150', 1, 'AE-', 100, 200)
+INSERT INTO [dbo].[Consecutivo] values ('Aerolínea', '150', 'AE-', 100, 200)
 GO
 
 
@@ -121,16 +120,23 @@ CREATE TABLE [dbo].[Bitacora](
 	[Cod_Registro] [INT] NOT NULL,
 	[Fecha] [DATETIME] NOT NULL,
 	[Tipo] [NVARCHAR] (150) NOT NULL,
-	[Descripcion] [NVARCHAR] (150) NOT NULL
+	[Descripcion] [NVARCHAR] (150) NOT NULL,
+	[Codigo] [NVARCHAR] (150),
+	[Nombre] [NVARCHAR] (150),
+	[Imagen] [NVARCHAR] (MAX),
+	[Cod_Puerta] [NVARCHAR] (150),
+	[Num_Puerta] [INT],
+	[Detalle] [NVARCHAR] (150),
+	[CSVID] [INT],
+	[Consec_Descripcion] [NVARCHAR] (150),
+	[Consecutivo] [NVARCHAR] (150),
+
 
 	CONSTRAINT [PK_BITAC_BTCID] PRIMARY KEY([BTCID]),
 	CONSTRAINT [FK1_BITAC_USER] FOREIGN KEY ([Usuario_Bitac]) REFERENCES Usuario([USRID]),
 	CONSTRAINT [FK2_BITAC_CONSEC] FOREIGN KEY ([Consec_Bitacora]) REFERENCES Consecutivo([CSVID])
 	
 )
-GO
-
-INSERT INTO [dbo].[Bitacora] values (1, 1, 1, 07/02/2020, 'Agregar', 'Inserción de un nuevo servicio de pago')
 GO
 
 CREATE TABLE [dbo].[Error](
@@ -144,9 +150,6 @@ CREATE TABLE [dbo].[Error](
 	CONSTRAINT [PK_ERROR_ERRID] PRIMARY KEY([ERRID]),
 	CONSTRAINT [FK_ERROR_BITAC] FOREIGN KEY ([Bitac_Error]) REFERENCES Bitacora([BTCID])
 )
-GO
-
-INSERT INTO [dbo].[Error] values (1, 1, 07/02/2020, 'Error a la hora de insertar un nuevo servicio de pago')
 GO
 
 CREATE TABLE [dbo].[Compra](

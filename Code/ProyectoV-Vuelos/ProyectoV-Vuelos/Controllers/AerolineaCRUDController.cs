@@ -158,7 +158,7 @@ namespace ProyectoV_Vuelos.Controllers
             Aerolineas ALN = new Aerolineas();
             Bitacoras BTC = new Bitacoras();
 
-            //BTC.GenerarBitacora(ALN.SP_Solicitar_Consec_Aerolinea(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de una Aerolínea");
+            BTC.GenerarBitacora(ALN.SP_Solicitar_Consec_Aerolinea(id).Consec_Aerol, 1, 3, DateTime.Now, "Eliminar", "Eliminación de una Aerolínea");
             ALN.EliminarAerolinea(id);
 
             return RedirectToAction("Index");

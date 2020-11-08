@@ -78,6 +78,35 @@ namespace BLL
             }
         }
 
+        public Aeropuertos SP_Solicitar_Consec_Aeropuerto(int APTID)
+        {
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Solicitar_Consec_Aeropuerto", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@APTID", APTID);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    Aeropuertos aeropuertos = new Aeropuertos();
+                    aeropuertos.Consec_Aerop = Convert.ToInt32(dr["consec_aerop"]);
+                    return aeropuertos;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
         public DataSet GenerarAeropuerto(int Consec_Aerop, string Cod_Puerta, int Num_Puerta, string Detalle)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);

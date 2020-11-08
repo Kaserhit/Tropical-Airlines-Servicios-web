@@ -34,7 +34,6 @@ namespace ProyectoV_Vuelos.Controllers
                     CSVID = e.Field<int>("CSVID"),
                     Descripcion = e.Field<string>("Descripcion"),
                     Consecutivo = e.Field<string>("Consecutivo"),
-                    Posee_Prefijo = e.Field<int>("Posee_Prefijo"),
                     Prefijo = e.Field<string>("Prefijo"),
                     RangoInicial = e.Field<int>("RangoInicial"),
                     RangoFinal = e.Field<int>("RangoFinal"),
@@ -61,7 +60,6 @@ namespace ProyectoV_Vuelos.Controllers
                     CSVID = e.Field<int>("CSVID"),
                     Descripcion = e.Field<string>("Descripcion"),
                     Consecutivo = e.Field<string>("Consecutivo"),
-                    Posee_Prefijo = e.Field<int>("Posee_Prefijo"),
                     Prefijo = e.Field<string>("Prefijo"),
                     RangoInicial = e.Field<int>("RangoInicial"),
                     RangoFinal = e.Field<int>("RangoFinal"),
@@ -95,7 +93,12 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                CSV.GenerarConsecutivo(a.Descripcion, a.Consecutivo, a.Posee_Prefijo, a.Prefijo, a.RangoInicial, a.RangoFinal);
+                if (a.Prefijo == null)
+                {
+                    a.Prefijo = "No";
+                }
+
+                CSV.GenerarConsecutivo(a.Descripcion, a.Consecutivo, a.Prefijo, a.RangoInicial, a.RangoFinal);
                 BTC.GenerarBitacora(a.CSVID, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Consecutivo");
                 return RedirectToAction("Index");
             }
@@ -126,7 +129,7 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                CSV.ActualizarConsecutivo(a.CSVID, a.Descripcion, a.Consecutivo, a.Posee_Prefijo, a.Prefijo, a.RangoInicial, a.RangoFinal);
+                CSV.ActualizarConsecutivo(a.CSVID, a.Descripcion, a.Consecutivo, a.Prefijo, a.RangoInicial, a.RangoFinal);
                 BTC.GenerarBitacora(a.CSVID, 1, 2, DateTime.Now, "Modificar", "Modificación de un Consecutivo");
                 return RedirectToAction("Index");
             }
@@ -145,12 +148,12 @@ namespace ProyectoV_Vuelos.Controllers
             Consecutivos CSV = new Consecutivos();
             Bitacoras BTC = new Bitacoras();
 
-            //BTC.GenerarBitacora(CSV.SP_Solicitar_Consec_Consec(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Consecutivo");
+            BTC.GenerarBitacora(CSV.SP_Solicitar_Consec_ID(id).CSVID, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Consecutivo");
             CSV.EliminarConsecutivo(id);
 
             return RedirectToAction("Index");
         }
-
+        
     }
 
 }

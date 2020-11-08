@@ -18,22 +18,18 @@ CREATE PROCEDURE SP_Inserta_Bitacora
   @Cod_Registro int,
   @Fecha datetime,
   @Tipo nvarchar(150),
-  @Descripcion nvarchar(150))
+  @Descripcion nvarchar(150),
+  @Codigo nvarchar(150),
+  @Nombre nvarchar(150),
+  @Imagen nvarchar(MAX),
+  @Cod_Puerta nvarchar(150),
+  @Num_Puerta int,
+  @Detalle nvarchar(150),
+  @CSVID int,
+  @Consec_Descripcion nvarchar(150),
+  @Consecutivo nvarchar(150))
 
  AS
 
-INSERT INTO dbo.Bitacora(Consec_Bitacora, Usuario_Bitac, Cod_Registro, Fecha, Tipo, Descripcion) VALUES (@Consec_Bitacora,@Usuario_Bitac, @Cod_Registro, @Fecha,@Tipo,@Descripcion)
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Go
-
-USE WebDB
-Go
-CREATE PROCEDURE SP_Actualiza_Bitacora(@BTCID int, @Consec_Bitacora int, @Usuario_Bitac int, @Cod_Registro int, @Fecha datetime, @Tipo nvarchar(150), @Descripcion nvarchar(150))  
-
-AS  
-
-UPDATE dbo.Bitacora SET Consec_Bitacora = @Consec_Bitacora, Usuario_Bitac = @Usuario_Bitac, Cod_Registro = @Cod_Registro, Fecha = @Fecha, Tipo = @Tipo, Descripcion = @Descripcion  
-WHERE BTCID = @BTCID;  
-IF @@rowcount <> 1   
-RAISERROR('ID Bitacora Invalido',16,1) 
+INSERT INTO dbo.Bitacora(Consec_Bitacora, Usuario_Bitac, Cod_Registro, Fecha, Tipo, Descripcion, Codigo, Nombre, Imagen, Cod_Puerta, Num_Puerta, Detalle, CSVID, Consec_Descripcion, Consecutivo) 
+VALUES (@Consec_Bitacora,@Usuario_Bitac, @Cod_Registro, @Fecha,@Tipo,@Descripcion,@Codigo,@Nombre,@Imagen,@Cod_Puerta,@Num_Puerta,@Detalle,@CSVID,@Consec_Descripcion,@Consecutivo)

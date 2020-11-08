@@ -144,7 +144,7 @@ namespace ProyectoV_Vuelos.Controllers
             Aeropuertos APT = new Aeropuertos();
             Bitacoras BTC = new Bitacoras();
 
-            //BTC.GenerarBitacora(CSV.SP_Solicitar_Consec_Aeropuerto(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Aeropuerto");
+            BTC.GenerarBitacora(APT.SP_Solicitar_Consec_Aeropuerto(id).Consec_Aerop, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Aeropuerto");
             APT.EliminarAeropuerto(id);
 
             return RedirectToAction("Index");

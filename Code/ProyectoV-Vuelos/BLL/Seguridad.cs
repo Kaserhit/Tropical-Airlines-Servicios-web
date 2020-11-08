@@ -141,10 +141,6 @@ namespace BLL
             }
         }
 
-
-
-
-
         public Boolean Login(string Usuario, string Contrasena)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -189,8 +185,6 @@ namespace BLL
 
         }
 
-
-
         public DataSet Actualizarcontrasena(string contrasena, string newcontrasena)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -213,12 +207,6 @@ namespace BLL
                 conexion.Close();
             }
         }
-
-
-
-
-
-
 
         #endregion
     }

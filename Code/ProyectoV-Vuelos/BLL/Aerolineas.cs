@@ -81,6 +81,35 @@ namespace BLL
             }
         }
 
+        public Aerolineas SP_Solicitar_Consec_Aerolinea(int ALNID)
+        {
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Solicitar_Consec_Aerolinea", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ALNID", ALNID);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    Aerolineas aerolineas = new Aerolineas();
+                    aerolineas.Consec_Aerol = Convert.ToInt32(dr["consec_aerol"]);
+                    return aerolineas;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
         public DataSet GenerarAerolinea(int Aerol_Pais, int Consec_Aerol, string Codigo, string Nombre, string Imagen)
         {
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
