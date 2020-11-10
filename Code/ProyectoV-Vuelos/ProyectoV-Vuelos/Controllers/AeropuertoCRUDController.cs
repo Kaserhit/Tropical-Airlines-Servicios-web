@@ -95,7 +95,8 @@ namespace ProyectoV_Vuelos.Controllers
             try
             {
                 APT.GenerarAeropuerto(a.Consec_Aerop, a.Cod_Puerta, a.Num_Puerta, a.Detalle);
-                BTC.GenerarBitacora(a.Consec_Aerop, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Aeropuerto");
+                BTC.GenerarBitacora(a.Consec_Aerop, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Aeropuerto",
+                "", "", "", a.Cod_Puerta, a.Num_Puerta, a.Detalle, 0, "", "");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -126,7 +127,8 @@ namespace ProyectoV_Vuelos.Controllers
             try
             {
                 APT.ActualizarAeropuerto(a.APTID, a.Consec_Aerop, a.Cod_Puerta, a.Num_Puerta, a.Detalle);
-                BTC.GenerarBitacora(a.Consec_Aerop, 1, 2, DateTime.Now, "Modificar", "Modificación de un Aeropuerto");
+                BTC.GenerarBitacora(a.Consec_Aerop, 1, 2, DateTime.Now, "Modificar", "Modificación de un Aeropuerto",
+                "", "", "", a.Cod_Puerta, a.Num_Puerta, a.Detalle, 0, "", "");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -144,7 +146,8 @@ namespace ProyectoV_Vuelos.Controllers
             Aeropuertos APT = new Aeropuertos();
             Bitacoras BTC = new Bitacoras();
 
-            BTC.GenerarBitacora(APT.SP_Solicitar_Consec_Aeropuerto(id).Consec_Aerop, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Aeropuerto");
+            BTC.GenerarBitacora(APT.SP_Solicitar_Consec_Aeropuerto(id).Consec_Aerop, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Aeropuerto",
+                "", "", "", "", 0, "", 0, "", "");
             APT.EliminarAeropuerto(id);
 
             return RedirectToAction("Index");

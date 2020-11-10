@@ -23,11 +23,6 @@ namespace ProyectoV_Vuelos.Controllers
             return View(BuscarPaises().Where(e => e.PAISID == id).First());
         }
 
-        public ActionResult DetalleRegistro(int id)
-        {
-            return View(BuscarPaises().Where(e => e.PAISID == id).First());
-        }
-
         public List<PaisModel> BuscarPaises()
         {
             try
@@ -73,7 +68,8 @@ namespace ProyectoV_Vuelos.Controllers
             try
             {
                 PAIS.Generar(a.Consec_Pais, a.CodPais, a.Nombre, a.Imagen);
-                BTC.GenerarBitacora(a.Consec_Pais, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo País");
+                BTC.GenerarBitacora(a.Consec_Pais, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo País", 
+                    a.CodPais, a.Nombre, a.Imagen, "", 0, "", 0, "", "");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -104,7 +100,8 @@ namespace ProyectoV_Vuelos.Controllers
             try
             {
                 PAIS.Actualizar(a.PAISID, a.Consec_Pais, a.CodPais, a.Nombre, a.Imagen);
-                BTC.GenerarBitacora(a.Consec_Pais, 1, 2, DateTime.Now, "Modificar", "Modificación de un País");
+                BTC.GenerarBitacora(a.Consec_Pais, 1, 2, DateTime.Now, "Modificar", "Modificación de un País",
+                    a.CodPais, a.Nombre, a.Imagen, "", 0, "", 0, "", "");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -122,7 +119,8 @@ namespace ProyectoV_Vuelos.Controllers
             Pais PAIS = new Pais();
             Bitacoras BTC = new Bitacoras();
 
-            BTC.GenerarBitacora(PAIS.SP_Solicitar_Consec_Pais(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un País");
+            BTC.GenerarBitacora(PAIS.SP_Solicitar_Consec_Pais(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un País",
+                "", "", "", "", 0, "", 0, "", "");
             PAIS.Eliminar(id);
 
             return RedirectToAction("Index");

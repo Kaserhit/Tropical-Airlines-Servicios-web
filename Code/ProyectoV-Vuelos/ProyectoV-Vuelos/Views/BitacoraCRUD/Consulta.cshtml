@@ -5,53 +5,132 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Consulta</h2>
+<h2>Consultas de Bitácoras</h2>
+
+@*@using (Html.BeginForm("Busqueda", "BitacoraCRUD", FormMethod.Post))
+    {
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="col-md-1">
+                <h4 class="control-label">Usuario:</h4>
+            </div>
+            <div class="col-sm-2">
+                @Html.TextBox("id", "", new { @class = "form-control" })
+            </div>
+            <div>
+                <input type="submit" value="Buscar" class="btn btn-default">
+            </div>
+        </div>
+    </div>
+    }*@
+
+@*<form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>*@
+
+@using (Html.BeginForm("Busqueda", "BitacoraCRUD", FormMethod.Post))
+{
+    <form class="form-group">
+
+        <div>
+            <div>
+                <div>
+                    <div class="form-group mb-1">
+                        <label class="font-weight-bold">Usuario</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.TextBox("user", "", new { @class = "form-control" })
+                </div>
+                <div>
+                    <div class="form-group mb-1">
+                        <label class="font-weight-bold">Fecha Inicio</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.TextBox("fechainicio", "", new { @class = "form-control datepicker" })
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <div class="form-group mb-1">
+                        <label class="font-weight-bold">Fecha Final</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.TextBox("fechafinal", "", new { @class = "form-control datepicker" })
+                </div>
+                <div>
+                    <div class="form-group mb-1">
+                        <label class="font-weight-bold">Tipo</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.TextBox("tipo", "", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-dark mb-3">Buscar</button>
+
+    </form>
+}
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Consec_Bitacora)
+            Registro
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cod_Registro)
+            Fecha y Hora
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            Descripción
         </th>
         <th></th>
     </tr>
-
-    @foreach (var item in Model)
+    @if (Model != null)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Consec_Bitacora)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cod_Registro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.ActionLink("Registro en Detalle", "DetalleRegistro", new { id = item.BTCID }, null)
-            </td>
-        </tr>
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cod_Registro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @if (item.Tipo == "Eliminar")
+                    {
+                        <text></text>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Registro en Detalle", "DetalleRegistro", new { id = item.BTCID, descripcion = item.Descripcion })
+                    }
+                </td>
+            </tr>
+        }
     }
-
-</table>
+    </table>
 
 <br></br>
 
 <center>
 
-    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
-    <a class="btn btn-default" @Html.ActionLink("Mostrar Todos", "Consulta", "BitacoraCRUD", new { area = "" }, null)</a>
+    <a class="btn btn-dark" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-dark" @Html.ActionLink("Mostrar Todos", "Consulta", "BitacoraCRUD", new { area = "" }, null)</a>
 
 </center>

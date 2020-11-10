@@ -9,19 +9,34 @@
 
 @using (Html.BeginForm("Busqueda", "ErrorCRUD", FormMethod.Post))
 {
-    <div class="row">
-        <div class="col-sm-13">
-            <div class="col-md-2">
-                <h4 class="control-label">Buscar por fecha:</h4>
-            </div>
-            <div class="col-sm-3">
-                @Html.TextBox("id", "", new { @class = "form-control" })
-            </div>
+    <form class="form-group">
+
+        <div>
             <div>
-                <input type="submit" value="Buscar" class="btn btn-default">
+                <div>
+                    <div class="form-group mb-1">
+                        <label class="font-weight-bold">Fecha Inicio</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.TextBox("fechainicio", "", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <div class="form-group mb-1">
+                        <label class="font-weight-bold">Fecha Final</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.TextBox("fechafinal", "", new { @class = "form-control" })
+                </div>
             </div>
         </div>
-    </div>
+        <button type="submit" class="btn btn-dark mb-3">Buscar</button>
+
+    </form>
 }
 
 <table class="table">
@@ -37,29 +52,30 @@
         </th>
         <th></th>
     </tr>
-
-    @foreach (var item in Model)
+    @if (Model != null)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Num_Error)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mensaje_Error)
-            </td>
-        </tr>
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Num_Error)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mensaje_Error)
+                </td>
+            </tr>
+        }
     }
-
-</table>
+    </table>
 
 <br></br>
 
 <center>
 
-    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
-    <a class="btn btn-default" @Html.ActionLink("Mostrar Todos", "Consulta", "ErrorCRUD", new { area = "" }, null)</a>
+    <a class="btn btn-dark" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-dark" @Html.ActionLink("Mostrar Todos", "Consulta", "ErrorCRUD", new { area = "" }, null)</a>
 
 </center>

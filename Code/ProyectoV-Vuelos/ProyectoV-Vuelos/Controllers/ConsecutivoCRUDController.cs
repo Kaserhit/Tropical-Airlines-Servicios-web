@@ -98,8 +98,15 @@ namespace ProyectoV_Vuelos.Controllers
                     a.Prefijo = "No";
                 }
 
+
+                if (a.RangoInicial > a.RangoFinal)
+                {
+                    return View("");
+                }
+
                 CSV.GenerarConsecutivo(a.Descripcion, a.Consecutivo, a.Prefijo, a.RangoInicial, a.RangoFinal);
-                BTC.GenerarBitacora(a.CSVID, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Consecutivo");
+                BTC.GenerarBitacora(a.CSVID, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Consecutivo",
+                "", "", "", "", 0, "", a.CSVID, a.Descripcion, a.Consecutivo);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -129,8 +136,20 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
+                if (a.Prefijo == null)
+                {
+                    a.Prefijo = "No";
+                }
+
+
+                if (a.RangoInicial > a.RangoFinal)
+                {
+                    return View("");
+                }
+
                 CSV.ActualizarConsecutivo(a.CSVID, a.Descripcion, a.Consecutivo, a.Prefijo, a.RangoInicial, a.RangoFinal);
-                BTC.GenerarBitacora(a.CSVID, 1, 2, DateTime.Now, "Modificar", "Modificación de un Consecutivo");
+                BTC.GenerarBitacora(a.CSVID, 1, 2, DateTime.Now, "Modificar", "Modificación de un Consecutivo",
+                "", "", "", "", 0, "", a.CSVID, a.Descripcion, a.Consecutivo);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -148,7 +167,8 @@ namespace ProyectoV_Vuelos.Controllers
             Consecutivos CSV = new Consecutivos();
             Bitacoras BTC = new Bitacoras();
 
-            BTC.GenerarBitacora(CSV.SP_Solicitar_Consec_ID(id).CSVID, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Consecutivo");
+            BTC.GenerarBitacora(CSV.SP_Solicitar_Consec_ID(id).CSVID, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Consecutivo",
+                "", "", "", "", 0, "", 0, "", "");
             CSV.EliminarConsecutivo(id);
 
             return RedirectToAction("Index");

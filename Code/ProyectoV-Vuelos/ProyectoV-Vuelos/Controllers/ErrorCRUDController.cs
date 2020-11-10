@@ -19,10 +19,34 @@ namespace ProyectoV_Vuelos.Controllers
 
         public ActionResult Busqueda(FormCollection item)
         {
-            DateTime Fecha = Convert.ToDateTime(item["id"]);
-            var datos = BuscarErrores().Where(x => x.Fecha == Fecha).Select(x => x).ToList();
+            string fechainicio = item["fechainicio"];
+            string fechafinal = item["fechafinal"];
 
-            return View("~/Views/ErrorCRUD/Consulta.cshtml", datos);
+            if (fechainicio == "" && fechafinal == "")
+            {
+                return View("~/Views/ErrorCRUD/Consulta.cshtml", BuscarErrores());
+            }
+            else
+            {
+                if (fechainicio != "" && fechafinal != "")
+                {
+                    var datos = BuscarErrores().Where(x => x.Fecha >= Convert.ToDateTime(fechainicio) && x.Fecha <= Convert.ToDateTime(fechafinal)).Select(x => x).ToList();
+                    return View("~/Views/ErrorCRUD/Consulta.cshtml", datos);
+                }
+
+                if (fechainicio != "")
+                {
+                    var datos = BuscarErrores().Where(x => x.Fecha >= Convert.ToDateTime(fechainicio)).Select(x => x).ToList();
+                    return View("~/Views/BitacoraCRUD/Consulta.cshtml", datos);
+                }
+
+                if (fechafinal != "")
+                {
+                    var datos = BuscarErrores().Where(x => x.Fecha <= Convert.ToDateTime(fechafinal)).Select(x => x).ToList();
+                    return View("~/Views/BitacoraCRUD/Consulta.cshtml", datos);
+                }   
+            }
+            return View("~/Views/ErrorCRUD/Consulta.cshtml", BuscarErrores());
         }
 
         public List<ErrorModel> BuscarErrores()

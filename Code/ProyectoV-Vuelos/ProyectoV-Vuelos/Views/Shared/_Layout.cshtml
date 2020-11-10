@@ -5,39 +5,166 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @RenderSection("Css", required: false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Tropical Airlines", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                </ul>
-            </div>
+
+<header id="header">
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark  scrolling-navbar bg-info">
+        <a class="navbar-brand" href="#"><strong>Tropical Airlines</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Seguridad
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">1</a>
+                            <a class="dropdown-item" href="#">2</a>
+                            <a class="dropdown-item" href="#">3</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administracion
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">@Html.ActionLink("Consecutivos »", "Index", "ConsecutivoCRUD", new { area = "" }, null)</a>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("Aereolineas »", "Index", "AerolineaCRUD", new { area = "" }, null)</a>
+                            <a class="dropdown-item" href="#">@Html.ActionLink("Aereopuerto »", "Index", "AeropuertoCRUD", new { area = "" }, null)</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Consultas
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">1</a>
+                            <a class="dropdown-item" href="#">2</a>
+                            <a class="dropdown-item" href="#">3</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Opciones
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">1</a>
+                            <a class="dropdown-item" href="#">2</a>
+                            <a class="dropdown-item" href="#">3</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fab fa-instagram"></i></a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
+
+</header>
+
+
+<br />
+<br />
+<br />
+
+
+<body>
+
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Tropical Airlines</p>
-        </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
 </body>
+
+
+
+<br />
+<br />
+<br />s
+<br />
+<br />
+
+
+
+
+<footer class="bg-info text-white">
+    <div class="row">
+        <div class="col-md-4">
+            <br></br>
+            <p></p>
+            <br></br>
+            <center>
+                <h4><img src="~/Content/Logo/linea aeria blanco-04.png" alt="Icono" / width="150px" height="100px"> <a></a> <b> Tropical Airlines </b></h4>
+            </center>
+            <br></br>
+            <p></p>
+            <br></br>
+        </div>
+
+        <div class="col-md-3">
+            <h4><b>Compañia</b></h4>
+            <br></br>
+            <p><a href="#" class="text-white">Acerca de nosotros</a></p>
+            <br></br>
+            <p><a href="#" class="text-white">Novedades</a></p>
+            <br></br>
+            <p><a href="#" class="text-white">Asociaciones</a></p>
+            <br></br>
+        </div>
+
+        <div class="col-md-2">
+            <h4><b>Soporte</b></h4>
+            <br></br>
+            <p><a href="#" class="text-white">Ayuda</a></p>
+            <br></br>
+            <p><a href="#" class="text-white">Contactenos</a></p>
+        </div>
+
+        <div class="col-md-3">
+            <br></br>
+            <p></p>
+            <br></br>
+            <center>
+                <h4><img src="~/Content/icons/circle-cropped.png" alt="Icono" / width="100px" height="100px"></h4>
+            </center>
+            <br></br>
+            <p></p>
+            <br></br>
+        </div>
+    </div>
+</footer>
+
+<script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="~/Scripts/popper.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+@RenderSection("Scripts", required: false)
+
 </html>

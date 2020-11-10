@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.BitacorasModel>
+
+@{
+    ViewBag.Title = "Detalle_Consecutivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle_Consecutivo</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CSVID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consec_Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consecutivo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CSVID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Consec_Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Consecutivo)
+        </td>
+    </tr>
+}
+
+</table>
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-dark" @Html.ActionLink("Regresar", "Consulta", "BitacoraCRUD", new { area = "" }, null)</a>
+
+</center>

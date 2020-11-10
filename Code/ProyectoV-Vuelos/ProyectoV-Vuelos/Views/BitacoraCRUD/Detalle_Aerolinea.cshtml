@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.BitacorasModel>
+
+@{
+    ViewBag.Title = "Detalle_Aerolinea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle_Aerolinea</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.Imagen)" width="70px" height="50px" alt="Aerolinea">
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-dark" @Html.ActionLink("Regresar", "Consulta", "BitacoraCRUD", new { area = "" }, null)</a>
+
+</center>
