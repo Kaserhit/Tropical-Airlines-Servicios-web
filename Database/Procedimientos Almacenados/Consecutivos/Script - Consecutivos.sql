@@ -36,20 +36,9 @@ UPDATE dbo.Consecutivo SET Descripcion = @Descripcion, Consecutivo = @Consecutiv
 WHERE CSVID = @CSVID;  
 IF @@rowcount <> 1   
 RAISERROR('ID Consecutivo Invalido',16,1) 
+Go
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Go
-
-USE WebDB
-Go
-CREATE PROCEDURE SP_Solicitar_Info_Consecutivo(@CSVID int)  
-
-AS 
-
-SELECT * FROM dbo.Consecutivo WHERE CSVID = @CSVID
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Go
 
 USE WebDB
 Go

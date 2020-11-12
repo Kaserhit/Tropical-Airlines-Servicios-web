@@ -47,7 +47,7 @@ INSERT INTO [dbo].[Rol] values ('Administrador', 'Acceso a todas las funciones.'
 
 INSERT INTO [dbo].[Rol] values ('Seguridad', 'Acceso exclusivo a la creación de nuevos usuarios y ver los usuarios.')
 
-INSERT INTO [dbo].[Rol] values ('Consecutivo', 'Acceso exclusivo a los  consecutivos.')
+INSERT INTO [dbo].[Rol] values ('Consecutivo', 'Acceso exclusivo a los consecutivos.')
 
 INSERT INTO [dbo].[Rol] values ('Mantenimiento', 'Acceso a crear, modificar y eliminar registros del menú administración.')
 
@@ -55,13 +55,11 @@ INSERT INTO [dbo].[Rol] values ('Consultas', ' Acceso exclusivo a las consultas 
 
 INSERT INTO [dbo].[Rol] values ('Cliente', 'Acceso a los vuelos del sistema.')
 
-
 GO
 
 CREATE TABLE [dbo].[Usuario](
 
 	[USRID] [INT] NOT NULL IDENTITY,
-	[ID_Rol] [INT] NOT NULL,
 	[Usuario] [NVARCHAR] (150),
 	[Contrasena] [NVARCHAR] (150) NOT NULL,
 	[Nombre] [NVARCHAR] (150),
@@ -69,14 +67,45 @@ CREATE TABLE [dbo].[Usuario](
 	[Segundo_Apellido] [NVARCHAR] (150),
 	[Pregunta] [NVARCHAR] (150) NOT NULL,
     [Respuesta] [NVARCHAR] (150) NOT NULL,
-	[Correo] [NVARCHAR] (150) NOT NULL
+	[Correo] [NVARCHAR] (150) NOT NULL,
+	[Administrador][INT],
+	[Seguridad][INT],
+	[Consecutivo][INT],
+	[Mantenimiento][INT],
+	[Consulta][INT],
+	[Cliente][INT]
 
-	CONSTRAINT [PK_USER_USRID] PRIMARY KEY([USRID]),
-	CONSTRAINT [FK_USER_ROL] FOREIGN KEY ([ID_Rol]) REFERENCES Rol([ROLID])
+	CONSTRAINT [PK_USER_USRID] PRIMARY KEY([USRID])
 )
 GO
 
-INSERT INTO [dbo].[Usuario] values (1, 'user', 'pass', 'Mauricio', 'P', 'M', '¿Cual es su videojuego favorito?', 'War Rock', 'mpm@gmail.com')
+INSERT INTO [dbo].[Usuario] values ('user', 'pass', 'Mauricio', 'P', 'M', '¿Cual es su videojuego favorito?', 'War Rock', 'mpm@gmail.com', 1, 1, 1, 1, 1, 0)
+GO
+
+CREATE TABLE [dbo].[Rol_Usuario](
+
+	[USRID] [INT] NOT NULL,
+	[ROLID] [INT] NOT NULL,
+	[Estado] [INT]
+
+	CONSTRAINT [PK_ROL_USER_ID] PRIMARY KEY([USRID],[ROLID])
+	CONSTRAINT [FK1_ROL_USER_USER] FOREIGN KEY ([USRID]) REFERENCES Usuario([USRID]),
+	CONSTRAINT [FK2_ROL_USER_ROL] FOREIGN KEY ([ROLID]) REFERENCES Rol([ROLID])
+)
+GO
+
+INSERT INTO [dbo].[Rol_Usuario] values (1, 1, 1)
+
+INSERT INTO [dbo].[Rol_Usuario] values (1, 2, 1)
+
+INSERT INTO [dbo].[Rol_Usuario] values (1, 3, 1)
+
+INSERT INTO [dbo].[Rol_Usuario] values (1, 4, 1)
+
+INSERT INTO [dbo].[Rol_Usuario] values (1, 5, 1)
+
+INSERT INTO [dbo].[Rol_Usuario] values (1, 6, 0)
+
 GO
 
 CREATE TABLE [dbo].[Consecutivo](
@@ -93,6 +122,7 @@ CREATE TABLE [dbo].[Consecutivo](
 GO
 
 INSERT INTO [dbo].[Consecutivo] values ('Aerolínea', '150', 'AE-', 100, 200)
+
 GO
 
 
@@ -142,13 +172,10 @@ GO
 CREATE TABLE [dbo].[Error](
 
 	[ERRID] [INT] NOT NULL IDENTITY,
-	[Bitac_Error] [INT] NOT NULL,
-	[Num_Error] [INT] NOT NULL,
 	[Fecha] [DATETIME] NOT NULL,
 	[Mensaje_Error] [NVARCHAR] (150) NOT NULL
 
-	CONSTRAINT [PK_ERROR_ERRID] PRIMARY KEY([ERRID]),
-	CONSTRAINT [FK_ERROR_BITAC] FOREIGN KEY ([Bitac_Error]) REFERENCES Bitacora([BTCID])
+	CONSTRAINT [PK_ERROR_ERRID] PRIMARY KEY([ERRID])
 )
 GO
 

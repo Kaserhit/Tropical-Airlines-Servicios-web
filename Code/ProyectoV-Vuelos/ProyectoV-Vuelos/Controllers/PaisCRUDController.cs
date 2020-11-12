@@ -15,16 +15,31 @@ namespace ProyectoV_Vuelos.Controllers
 
         public ActionResult Index()
         {
-            return View(BuscarPaises());
-        }
+            Errores Error = new Errores();
 
-        public ActionResult Detalles(int id)
-        {
-            return View(BuscarPaises().Where(e => e.PAISID == id).First());
+            try
+            {
+                if (BuscarPaises() != null)
+                {
+                    return View(BuscarPaises());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al mostrar el Index en la Tabla País: " + ex);
+                throw;
+            }
         }
 
         public List<PaisModel> BuscarPaises()
         {
+            Errores Error = new Errores();
+
             try
             {
                 Pais Paises = new Pais();
@@ -45,6 +60,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine("Valor Null detectado");
+                Error.GenerarError(DateTime.Now, "Error al buscar los países en la Tabla País: " + ex);
                 throw;
             }
         }
@@ -59,6 +75,7 @@ namespace ProyectoV_Vuelos.Controllers
         {
             Pais PAIS = new Pais();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -75,7 +92,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al Generar el Pais", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al generar un nuevo país en la Tabla País: " + ex);
                 return View();
             }
 
@@ -83,7 +100,25 @@ namespace ProyectoV_Vuelos.Controllers
 
         public ActionResult Actualizar(int id)
         {
-            return View(BuscarPaises().Where(e => e.PAISID == id).First());
+            Errores Error = new Errores();
+
+            try
+            {
+                if (BuscarPaises().Where(e => e.PAISID == id).First() != null)
+                {
+                    return View(BuscarPaises().Where(e => e.PAISID == id).First());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al buscar un país en la Tabla País: " + ex);
+                throw;
+            }
         }
 
         [HttpPost]
@@ -91,6 +126,7 @@ namespace ProyectoV_Vuelos.Controllers
         {
             Pais PAIS = new Pais();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -107,7 +143,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al actualizar el Pais", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al actualizar un país en la Tabla País: " + ex);
                 return View();
             }
 
@@ -118,14 +154,20 @@ namespace ProyectoV_Vuelos.Controllers
 
             Pais PAIS = new Pais();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
-            BTC.GenerarBitacora(PAIS.SP_Solicitar_Consec_Pais(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un País",
+            try
+            {
+                BTC.GenerarBitacora(PAIS.SP_Solicitar_Consec_Pais(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un País",
                 "", "", "", "", 0, "", 0, "", "");
-            PAIS.Eliminar(id);
-
-            return RedirectToAction("Index");
+                PAIS.Eliminar(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al eliminar un país en la Tabla País: " + ex);
+                throw;
+            }
         }
-
     }
-
 }

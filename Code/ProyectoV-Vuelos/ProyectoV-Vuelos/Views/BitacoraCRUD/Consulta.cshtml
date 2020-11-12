@@ -7,35 +7,6 @@
 
 <h2>Consultas de Bitácoras</h2>
 
-@*@using (Html.BeginForm("Busqueda", "BitacoraCRUD", FormMethod.Post))
-    {
-    <div class="row">
-        <div class="col-sm-9">
-            <div class="col-md-1">
-                <h4 class="control-label">Usuario:</h4>
-            </div>
-            <div class="col-sm-2">
-                @Html.TextBox("id", "", new { @class = "form-control" })
-            </div>
-            <div>
-                <input type="submit" value="Buscar" class="btn btn-default">
-            </div>
-        </div>
-    </div>
-    }*@
-
-@*<form>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>*@
-
 @using (Html.BeginForm("Busqueda", "BitacoraCRUD", FormMethod.Post))
 {
     <form class="form-group">
@@ -124,7 +95,7 @@
             </tr>
         }
     }
-    </table>
+</table>
 
 <br></br>
 

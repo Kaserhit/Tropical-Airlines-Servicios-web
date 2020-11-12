@@ -12,19 +12,33 @@ namespace ProyectoV_Vuelos.Controllers
 {
     public class ConsecutivoCRUDController : Controller
     {
-
         public ActionResult Index()
         {
-            return View(BuscarConsecutivos());
-        }
+            Errores Error = new Errores();
 
-        public ActionResult Detalles(int id)
-        {
-            return View(BuscarConsecutivos().Where(e => e.CSVID == id).First());
+            try
+            {
+                if (BuscarConsecutivos() != null)
+                {
+                    return View(BuscarConsecutivos());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al mostrar el Index en la Tabla Consecutivo: " + ex);
+                throw;
+            }
         }
 
         public List<ConsecutivosModel> BuscarConsecutivos()
         {
+            Errores Error = new Errores();
+
             try
             {
                 Consecutivos Consecutivos = new Consecutivos();
@@ -45,32 +59,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine("Valor Null detectado");
-                throw;
-            }
-        }
-
-        public List<ConsecutivosModel> BuscarConsecutivo()
-        {
-            try
-            {
-                Consecutivos Consecutivos = new Consecutivos();
-                List<ConsecutivosModel> lista =
-                Consecutivos.SP_Solicitar_Info_Consecutivo().Tables[0].AsEnumerable().Select(e => new ConsecutivosModel
-                {
-                    CSVID = e.Field<int>("CSVID"),
-                    Descripcion = e.Field<string>("Descripcion"),
-                    Consecutivo = e.Field<string>("Consecutivo"),
-                    Prefijo = e.Field<string>("Prefijo"),
-                    RangoInicial = e.Field<int>("RangoInicial"),
-                    RangoFinal = e.Field<int>("RangoFinal"),
-
-                }).ToList();
-
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Valor Null detectado");
+                Error.GenerarError(DateTime.Now, "Error al buscar los consecutivos en la Tabla Consecutivo: " + ex);
                 throw;
             }
         }
@@ -85,6 +74,7 @@ namespace ProyectoV_Vuelos.Controllers
         {
             Consecutivos CSV = new Consecutivos();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -112,7 +102,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al Generar Consecutivo", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al generar un nuevo consecutivo en la Tabla Consecutivo: " + ex);
                 return View();
             }
 
@@ -120,7 +110,26 @@ namespace ProyectoV_Vuelos.Controllers
 
         public ActionResult Actualizar(int id)
         {
-            return View(BuscarConsecutivos().Where(e => e.CSVID == id).First());
+            Errores Error = new Errores();
+
+            try
+            {
+                if (BuscarConsecutivos().Where(e => e.CSVID == id).First() != null)
+                {
+                    return View(BuscarConsecutivos().Where(e => e.CSVID == id).First());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al buscar un consecutivo en la Tabla Consecutivo: " + ex);
+                throw;
+            }
+            
         }
 
         [HttpPost]
@@ -128,6 +137,7 @@ namespace ProyectoV_Vuelos.Controllers
         {
             Consecutivos CSV = new Consecutivos();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -140,7 +150,6 @@ namespace ProyectoV_Vuelos.Controllers
                 {
                     a.Prefijo = "No";
                 }
-
 
                 if (a.RangoInicial > a.RangoFinal)
                 {
@@ -155,7 +164,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al Actualizar Consecutivo", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al actualizar un consecutivo en la Tabla Consecutivo: " + ex);
                 return View();
             }
 
@@ -163,17 +172,22 @@ namespace ProyectoV_Vuelos.Controllers
 
         public ActionResult Eliminar(int id)
         {
-
             Consecutivos CSV = new Consecutivos();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
-            BTC.GenerarBitacora(CSV.SP_Solicitar_Consec_ID(id).CSVID, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Consecutivo",
-                "", "", "", "", 0, "", 0, "", "");
-            CSV.EliminarConsecutivo(id);
-
-            return RedirectToAction("Index");
+            try
+            {
+                BTC.GenerarBitacora(CSV.SP_Solicitar_Consec_ID(id).CSVID, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Consecutivo",
+                                "", "", "", "", 0, "", 0, "", "");
+                CSV.EliminarConsecutivo(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al eliminar un consecutivo en la Tabla Consecutivo: " + ex);
+                throw;
+            }
         }
-        
     }
-
 }

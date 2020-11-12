@@ -9,73 +9,71 @@
 <h2>Ver Usuarios</h2>
 
 
-<table class="table">
-    <tr>
-        <th>
-            Lista de Usuarios
-        </th>
-
-        <th>
-            Lista de Roles
-        </th>
-
-    </tr>
-
-
-    <tr>
-
-        <div class="list-group">
+    <table class="table">
+        <tr>
             <th>
-                @foreach (var item in Model)
-                {
-                    <button class="list-group-item list-group-item-success-action" value="Seleccionar" id="Seleccionar"> @Html.DisplayFor(modelItem => item.Usuario)</button>
-                }
+                Lista de Usuarios
             </th>
-        </div>
 
-        <th>
-            <table class="table">
-                <tr>
-                    <th>
+            <th>
+                Lista de Roles
+            </th>
 
-                        <h5>Administrador</h5>
-                        @Html.CheckBox("Administrador", true)
+        </tr>
 
-                    </th>
-                    <th>
+        <tr>
+@using (Html.BeginForm("Test", "SeguridadCRUD", FormMethod.Post))
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a class="btn-dark" value="Seleccionar" id="Seleccionar">@Html.ActionLink("user", "Test", new { id = item.USRID }, null)</a>
+            </td>
+        </tr>
+    }
+}
 
-                        <h5>Seguridad</h5>
-                        @Html.CheckBox("Seguridad", true)
-                    </th>
-                    <th>
-                        <h5>Consecutivo</h5>
-                        @Html.CheckBox("Consecutivo", true)
-                    </th>
-                </tr>
+@using (Html.BeginForm("ActualizarRol", "SeguridadCRUD", FormMethod.Post))
+{
+                <table class="table">
+                    <tr>
+                        <th>
 
+                            <h5>Administrador</h5>
+                            @Html.CheckBox("Administrador", false)
 
-                <tr>
-                    <th>
-                        <h5>Mantenimiento</h5>
+                        </th>
+                        <th>
 
-                        @Html.CheckBox("Mantenimiento", true)
-                    </th>
-                    <th>
-                        <h5>Consultas</h5>
-                        @Html.CheckBox("Consultas", true)
-                    </th>
-                    <th>
-                        <h5>Cliente</h5>
-                        @Html.CheckBox("Cliente", true)
-                    </th>
-                </tr>
+                            <h5>Seguridad</h5>
+                            @Html.CheckBox("Seguridad", false)
+                        </th>
+                        <th>
+                            <h5>Consecutivo</h5>
+                            @Html.CheckBox("Consecutivo", false)
+                        </th>
+                    </tr>
 
-
-    </tr>
-</table>
-        </th>
-
-</table>
+                    <tr>
+                        <th>
+                            <h5>Mantenimiento</h5>
+                            @Html.CheckBox("Mantenimiento", false)
+                        </th>
+                        <th>
+                            <h5>Consultas</h5>
+                            @Html.CheckBox("Consultas", false)
+                        </th>
+                        <th>
+                            <h5>Cliente</h5>
+                            @Html.CheckBox("Cliente", false)
+                        </th>
+                    </tr>
+                    </table>
+        
+   
+    <button type="submit" class="btn btn-dark mb-3">Actualizar Roles</button>
+}
 
 <center>
     <a class="btn btn-default" @Html.ActionLink("Actualizar Roles", "Detalles", new { area = "" }, null) </a>
@@ -83,14 +81,18 @@
 
 </center>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 
+    <script type="text/javascript">
 
+        $('button#Seleccionar').click(function () {
+            var text = $(this).html()
 
+            alert(text)
 
-
-
-
-
-
-
-
+            Usuario.value = text;
+        })
+        
+    </script>
+}

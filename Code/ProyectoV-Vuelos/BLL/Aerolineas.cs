@@ -13,9 +13,9 @@ namespace BLL
     public class Aerolineas
     {
         #region Propiedades
-     
+
         public int ALNID { get; set; }
-  
+
         public int Aerol_Pais { get; set; }
 
         public int Consec_Aerol { get; set; }
@@ -39,51 +39,42 @@ namespace BLL
         #region Metodos
         public DataSet SP_Solicitar_Info_Aerolineas()
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-            if (conexion == null)
-            {
-                return null;
-            }
-            else
-            {
-                sql = "dbo.SP_Solicitar_Info_Aerolineas";
-                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
-                if (numero_error != 0)
-                {
-                    return null;
-                }
-                else
-                {
-                    return ds;
-                }
-            }
-        }
 
-        public DataSet SP_Solicitar_Info_Aerolinea()
-        {
-            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-            if (conexion == null)
+            try
             {
-                return null;
-            }
-            else
-            {
-                sql = "dbo.SP_Solicitar_Info_Aerolinea";
-                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
-                if (numero_error != 0)
+                if (conexion == null)
                 {
+                    Error.GenerarError(DateTime.Now, "Error con la conexión con la base de datos");
                     return null;
                 }
                 else
                 {
-                    return ds;
+                    sql = "dbo.SP_Solicitar_Info_Aerolineas";
+                    ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                    if (numero_error != 0)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        return ds;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Info_Aerolineas en la Tabla Aerolínea: " + ex);
+                throw;
             }
         }
 
         public Aerolineas SP_Solicitar_Consec_Aerolinea(int ALNID)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
             try
             {
                 conexion.Open();
@@ -98,11 +89,12 @@ namespace BLL
                     return aerolineas;
                 }
                 else
-                    return null;
+                    throw new Exception();
             }
             catch (Exception ex)
             {
-                return null;
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Consec_Aerolinea en la Tabla Aerolínea: " + ex);
+                throw;
             }
             finally
             {
@@ -112,6 +104,7 @@ namespace BLL
 
         public DataSet GenerarAerolinea(int Aerol_Pais, int Consec_Aerol, string Codigo, string Nombre, string Imagen)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
 
             try
@@ -129,6 +122,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Inserta_Aerolinea en la Tabla Aerolínea: " + ex);
                 return ds;
             }
             finally
@@ -139,7 +133,9 @@ namespace BLL
 
         public DataSet ActualizarAerolinea(int ALNID, int Aerol_Pais, int Consec_Aerol, string Codigo, string Nombre, string Imagen)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
             try
             {
                 conexion.Open();
@@ -156,6 +152,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Actualiza_Aerolinea en la Tabla Aerolínea: " + ex);
                 return ds;
             }
             finally
@@ -166,6 +163,7 @@ namespace BLL
 
         public DataSet EliminarAerolinea(int ALNID)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
 
             try
@@ -179,6 +177,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Eliminar_Aerolinea en la Tabla Aerolínea: " + ex);
                 return ds;
             }
             finally

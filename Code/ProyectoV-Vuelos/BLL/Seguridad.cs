@@ -15,8 +15,6 @@ namespace BLL
 
         public int USRID { get; set; }
 
-        public int ID_Rol { get; set; }
-
         public string Usuario { get; set; }
 
         public string Contrasena { get; set; }
@@ -33,6 +31,17 @@ namespace BLL
 
         public string Correo { get; set; }
 
+        public int Administrador { get; set; }
+
+        public int Rol_Seguridad { get; set; }
+
+        public int Consecutivo { get; set; }
+
+        public int Mantenimiento { get; set; }
+
+        public int Consulta { get; set; }
+
+        public int Cliente { get; set; }
 
         #endregion
 
@@ -47,56 +56,48 @@ namespace BLL
         #region Metodos
         public DataSet SP_Solicitar_Info_Usuarios()
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-            if (conexion == null)
-            {
-                return null;
-            }
-            else {
-                sql = "dbo.SP_Solicitar_Info_Usuarios";
-                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
-                if (numero_error != 0)
-                {
-                    return null;
-                }
-                else {
-                    return ds;
-                }
-            }                        
-        }
 
-        public DataSet SP_Solicitar_Info_Usuario()
-        {
-            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-            if (conexion == null)
+            try
             {
-                return null;
-            }
-            else
-            {
-                sql = "dbo.SP_Solicitar_Info_Usuario";
-                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
-                if (numero_error != 0)
+                if (conexion == null)
                 {
+                    Error.GenerarError(DateTime.Now, "Error con la conexión con la base de datos");
                     return null;
                 }
                 else
                 {
-                    return ds;
+                    sql = "dbo.SP_Solicitar_Info_Usuarios";
+                    ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                    if (numero_error != 0)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        return ds;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Info_Usuarios en la Tabla Seguridad: " + ex);
+                throw;
             }
         }
 
-        public DataSet Generar(int ID_Rol, string Usuario, string Contrasena, string Nombre, string Primer_Apellido, string Segundo_Apellido, string Pregunta, string Respuesta, string Correo)
+        public DataSet Generar(string Usuario, string Contrasena, string Nombre, string Primer_Apellido, string Segundo_Apellido, string Pregunta, string Respuesta, string Correo,
+            int Administrador, int Rol_Seguridad, int Consecutivo, int Mantenimiento, int Consulta, int Cliente)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-     
+
             try
             {
                 conexion.Open();
                 SqlCommand cmd = new SqlCommand("SP_Inserta_Usuario", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID_Rol", ID_Rol);
                 cmd.Parameters.AddWithValue("@Usuario", Usuario);
                 cmd.Parameters.AddWithValue("@Contrasena", Contrasena);
                 cmd.Parameters.AddWithValue("@Nombre", Nombre);
@@ -105,35 +106,19 @@ namespace BLL
                 cmd.Parameters.AddWithValue("@Pregunta", Pregunta);
                 cmd.Parameters.AddWithValue("@Respuesta", Respuesta);
                 cmd.Parameters.AddWithValue("@Correo", Correo);
+                cmd.Parameters.AddWithValue("@Administrador", Administrador);
+                cmd.Parameters.AddWithValue("@Rol_Seguridad", Rol_Seguridad);
+                cmd.Parameters.AddWithValue("@Consecutivo", Consecutivo);
+                cmd.Parameters.AddWithValue("@Mantenimiento", Mantenimiento);
+                cmd.Parameters.AddWithValue("@Consulta", Consulta);
+                cmd.Parameters.AddWithValue("@Cliente", Cliente);
                 cmd.ExecuteNonQuery();
                 return null; // success   
             }
             catch (Exception ex)
             {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Inserta_Usuario en la Tabla Seguridad: " + ex);
                 return ds;
-            }
-            finally
-            {
-                conexion.Close();
-            }
-        }
-
-        public DataSet Actualizar(int USRID, int ID_Rol)
-        {
-            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-            try
-            {
-                conexion.Open();
-                SqlCommand cmd = new SqlCommand("SP_Actualiza_Usuario", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@USRID", USRID);
-                cmd.Parameters.AddWithValue("@ID_Rol", ID_Rol);
-                cmd.ExecuteNonQuery();
-                return null; // success   
-            }
-            catch (Exception ex)
-            {
-                return ds; 
             }
             finally
             {
@@ -143,7 +128,9 @@ namespace BLL
 
         public Boolean Login(string Usuario, string Contrasena)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
             try
             {
                 conexion.Open();
@@ -166,7 +153,7 @@ namespace BLL
                 {
                     return true;
                 }
-                else 
+                else
                 {
                     return false;
                 }
@@ -175,19 +162,20 @@ namespace BLL
             }
             catch (Exception ex)
             {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Login_Usuario en la Tabla Seguridad: " + ex);
                 return false;
             }
             finally
             {
                 conexion.Close();
             }
-
-
         }
 
         public DataSet Actualizarcontrasena(string contrasena, string newcontrasena)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
             try
             {
                 conexion.Open();
@@ -200,6 +188,169 @@ namespace BLL
             }
             catch (Exception ex)
             {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Actualiza_contrasena en la Tabla Seguridad: " + ex);
+                return ds;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public DataSet SP_Actualiza_Rol_Administrador(int USRID, int Administrador)
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Actualiza_Rol_Administrador", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@USRID", USRID);
+                cmd.Parameters.AddWithValue("@Administrador", Administrador);
+
+                cmd.ExecuteNonQuery();
+                return null; // success   
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Actualiza_Rol_Administrador en la Tabla Seguridad: " + ex);
+                return ds;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public DataSet SP_Actualiza_Rol_Seguridad(int USRID, int Seguridad)
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Actualiza_Rol_Seguridad", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@USRID", USRID);
+                cmd.Parameters.AddWithValue("@Seguridad", Seguridad);
+
+                cmd.ExecuteNonQuery();
+                return null; // success   
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Actualiza_Rol_Seguridad en la Tabla Seguridad: " + ex);
+                return ds;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public DataSet SP_Actualiza_Rol_Consecutivo(int USRID, int Consecutivo)
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Actualiza_Rol_Consecutivo", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@USRID", USRID);
+                cmd.Parameters.AddWithValue("@Consecutivo", Consecutivo);
+
+                cmd.ExecuteNonQuery();
+                return null; // success   
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Actualiza_Rol_Consecutivo en la Tabla Seguridad: " + ex);
+                return ds;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public DataSet SP_Actualiza_Rol_Mantenimiento(int USRID, int Mantenimiento)
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Actualiza_Rol_Mantenimiento", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@USRID", USRID);
+                cmd.Parameters.AddWithValue("@Mantenimiento", Mantenimiento);
+
+                cmd.ExecuteNonQuery();
+                return null; // success   
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Actualiza_Rol_Mantenimiento en la Tabla Seguridad: " + ex);
+                return ds;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public DataSet SP_Actualiza_Rol_Consulta(int USRID, int Consulta)
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Actualiza_Rol_Consulta", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@USRID", USRID);
+                cmd.Parameters.AddWithValue("@Consulta", Consulta);
+
+                cmd.ExecuteNonQuery();
+                return null; // success   
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Actualiza_Rol_Consulta en la Tabla Seguridad: " + ex);
+                return ds;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public DataSet SP_Actualiza_Rol_Cliente(int USRID, int Cliente)
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Actualiza_Rol_Cliente", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@USRID", USRID);
+                cmd.Parameters.AddWithValue("@Cliente", Cliente);
+
+                cmd.ExecuteNonQuery();
+                return null; // success   
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Actualiza_Rol_Cliente en la Tabla Seguridad: " + ex);
                 return ds;
             }
             finally
@@ -210,9 +361,4 @@ namespace BLL
 
         #endregion
     }
-}  
-
-      
-
-    
-
+}

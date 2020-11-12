@@ -12,19 +12,34 @@ namespace ProyectoV_Vuelos.Controllers
 {
     public class SeguridadCRUDController : Controller
     {
+        public static string test;
 
         public ActionResult Index()
         {
-            return View(BuscarUsuarios());
-        }
+            Errores Error = new Errores();
 
-        public ActionResult Detalles(int id)
-        {
-            return View(BuscarUsuarios().Where(e => e.USRID == id).First());
+            try
+            {
+                if (BuscarUsuarios() != null)
+                {
+                    return View(BuscarUsuarios());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al mostrar el Index en la Tabla Seguridad: " + ex);
+                throw;
+            }
         }
 
         public List<SeguridadModel> BuscarUsuarios()
         {
+            Errores Error = new Errores();
+
             try
             {
                 Seguridad usuarios = new Seguridad();
@@ -32,13 +47,18 @@ namespace ProyectoV_Vuelos.Controllers
                 usuarios.SP_Solicitar_Info_Usuarios().Tables[0].AsEnumerable().Select(e => new SeguridadModel
                 {
                     USRID = e.Field<int>("USRID"),
-                    ID_Rol = e.Field<int>("ID_Rol"),
                     Usuario = e.Field<string>("Usuario"),
                     Contrasena = e.Field<string>("Contrasena"),
                     Nombre = e.Field<string>("Nombre"),
                     Primer_Apellido = e.Field<string>("Primer_Apellido"),
                     Segundo_Apellido = e.Field<string>("Segundo_Apellido"),
                     Correo = e.Field<string>("Correo"),
+                    Administrador = e.Field<int>("Administrador"),
+                    Seguridad = e.Field<int>("Seguridad"),
+                    Consecutivo = e.Field<int>("Consecutivo"),
+                    Mantenimiento = e.Field<int>("Mantenimiento"),
+                    Consulta = e.Field<int>("Consulta"),
+                    Cliente = e.Field<int>("Cliente"),
 
                 }).ToList();
 
@@ -47,10 +67,10 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine("Valor Null detectado");
+                Error.GenerarError(DateTime.Now, "Error al buscar los usuarios en la Tabla Usuarios: " + ex);
                 throw;
             }
         }
-
 
         public ActionResult Generar()
         {
@@ -61,6 +81,8 @@ namespace ProyectoV_Vuelos.Controllers
         public ActionResult Generar(SeguridadModel a)
         {
             Seguridad CSV = new Seguridad();
+            Rol_Usuarios Roles = new Rol_Usuarios();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -72,8 +94,14 @@ namespace ProyectoV_Vuelos.Controllers
 
                 if (a.Contrasena == a.newcontrasena2)
                 {
-                    CSV.Generar(a.ID_Rol = 6, a.Usuario, a.Contrasena, a.Nombre, a.Primer_Apellido, a.Segundo_Apellido, a.Pregunta, a.Respuesta, a.Correo);
-              
+                    CSV.Generar(a.Usuario, a.Contrasena, a.Nombre, a.Primer_Apellido, a.Segundo_Apellido, a.Pregunta, a.Respuesta, a.Correo, 0, 0, 0, 0, 0, 0);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 1, 0);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 2, 0);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 3, 0);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 4, 0);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 5, 0);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 6, 0);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -85,21 +113,15 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al Generar el Usuario", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al generar el rol a un usuario en la Tabla Seguridad: " + ex);
                 return View();
             }
 
         }
 
-        public ActionResult Actualizar(int id)
+        public ActionResult Test(int id)
         {
-            return View(BuscarUsuarios().Where(e => e.USRID == id).First());
-        }
-
-        [HttpPost]
-        public ActionResult Actualizar(SeguridadModel a)
-        {
-            Seguridad CSV = new Seguridad();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -108,13 +130,54 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                CSV.Actualizar(a.USRID, a.ID_Rol);
+                test = id.ToString();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error al Generar el Usuario", ex);
+                Error.GenerarError(DateTime.Now, "Error al generar el rol a un usuario en la Tabla Seguridad: " + ex);
+                return View();
+            }
+        }
+
+        public ActionResult ActualizarRol(FormCollection item)
+        {
+            Seguridad CSV = new Seguridad();
+            Rol_Usuarios Rol = new Rol_Usuarios();
+            Errores Error = new Errores();
+
+            string userid = test;
+            string administrador = item["Administrador"];
+            string seguridad = item["Seguridad"];
+            string consecutivo = item["Consecutivo"];
+            string mantenimiento = item["Mantenimiento"];
+            string consultas = item["Consultas"];
+            string cliente = item["Cliente"];
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            try
+            {
+                if (administrador == "false")
+                {
+                    CSV.SP_Actualiza_Rol_Administrador(Convert.ToInt32(userid), 0);
+                    Rol.SP_Actualiza_Estado_Administrador(Convert.ToInt32(userid), 1, 0);
+                }
+                else
+                {
+                    CSV.SP_Actualiza_Rol_Administrador(Convert.ToInt32(userid), 1);
+                    Rol.SP_Actualiza_Estado_Administrador(Convert.ToInt32(userid), 1, 1);
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al actualizar el Usuario", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al actualizar el rol en la Tabla Seguridad: " + ex);
                 return View();
             }
 
@@ -129,6 +192,7 @@ namespace ProyectoV_Vuelos.Controllers
         public ActionResult Login(SeguridadModel a)
         {
             Seguridad CSV = new Seguridad();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -151,13 +215,12 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Inicio de Sesion Incorrecto", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al iniciar sesión en el login en la Tabla Seguridad: " + ex);
                 throw;
                 
             }
 
         }
-
 
         public ActionResult Actualizarcontrasena()
         {
@@ -168,6 +231,7 @@ namespace ProyectoV_Vuelos.Controllers
         public ActionResult Actualizarcontrasena(SeguridadModel a)
         {
             Seguridad CSV = new Seguridad();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -189,12 +253,9 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al actualizar el Usuario", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al actualizar la contraseña en la Tabla Seguridad: " + ex);
                 return View();
             }
-
         }
-
     }
-
 }

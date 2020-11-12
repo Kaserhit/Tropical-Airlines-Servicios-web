@@ -14,58 +14,75 @@ namespace ProyectoV_Vuelos.Controllers
     {
         public ActionResult Index()
         {
-            return View(BuscarAerolineas());
-        }
+            Errores Error = new Errores();
 
-        public ActionResult Consulta()
-        {
-            return View(BuscarAerolineas());
-        }
-
-        public ActionResult Detalles(int id)
-        {
-            return View(BuscarAerolineas().Where(e => e.ALNID == id).First());
-        }
-
-        public ActionResult Busqueda(FormCollection item)
-        {
-            Pais pais = new Pais();
-            Aerolineas Aerolinea = new Aerolineas();
-            string Nombre = item["id"];
-            var PAISID = pais.SP_Solicitar_Filtro_Pais(Nombre).PAISID;
-            var datos = BuscarAerolineas().Where(x => x.Aerol_Pais == PAISID).Select(x => x).ToList();
-
-            return View("~/Views/AerolineaCRUD/Consulta.cshtml", datos);
-        }
-
-        public List<AerolineasModel> BuscarAerolineas()
-        {
             try
             {
-                Aerolineas Aerolineas = new Aerolineas();
-                List<AerolineasModel> lista =
-                Aerolineas.SP_Solicitar_Info_Aerolineas().Tables[0].AsEnumerable().Select(e => new AerolineasModel
+                if (BuscarAerolineas() != null)
                 {
-                    ALNID = e.Field<int>("ALNID"),
-                    Aerol_Pais = e.Field<int>("Aerol_Pais"),
-                    Consec_Aerol = e.Field<int>("Consec_Aerol"),
-                    Codigo = e.Field<string>("Codigo"),
-                    Nombre = e.Field<string>("Nombre"),
-                    Imagen = e.Field<string>("Imagen"),
+                    return View(BuscarAerolineas());
+                }
+                else
+                {
+                    throw new Exception();
+                }
 
-                }).ToList();
-
-                return lista;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Valor Null detectado");
+                Error.GenerarError(DateTime.Now, "Error al mostrar el Index en la Tabla Aerolínea: " + ex);
                 throw;
             }
         }
 
-        public List<AerolineasModel> BuscarAerolinea()
+        public ActionResult Consulta()
         {
+            Errores Error = new Errores();
+
+            try
+            {
+                if (BuscarAerolineas() != null)
+                {
+                    return View(BuscarAerolineas());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al mostrar las Consultas en la Tabla Aerolínea: " + ex);
+                throw;
+            }
+        }
+
+        public ActionResult Busqueda(FormCollection item)
+        {
+            Errores Error = new Errores();
+
+            try
+            {
+                Pais pais = new Pais();
+                Aerolineas Aerolinea = new Aerolineas();
+                string Nombre = item["nombre"];
+                var PAISID = pais.SP_Solicitar_Filtro_Pais(Nombre).PAISID;
+                var datos = BuscarAerolineas().Where(x => x.Aerol_Pais == PAISID).Select(x => x).ToList();
+
+                return View("~/Views/AerolineaCRUD/Consulta.cshtml", datos);
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al realizar la busqueda en la Tabla Aerolínea: " + ex);
+                throw;
+            }
+        }
+
+        public List<AerolineasModel> BuscarAerolineas()
+        {
+            Errores Error = new Errores();
+
             try
             {
                 Aerolineas Aerolineas = new Aerolineas();
@@ -86,6 +103,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine("Valor Null detectado");
+                Error.GenerarError(DateTime.Now, "Error al buscar las aerolíneas en la Tabla Aerolínea: " + ex);
                 throw;
             }
         }
@@ -100,6 +118,7 @@ namespace ProyectoV_Vuelos.Controllers
         {
             Aerolineas ALN = new Aerolineas();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -116,7 +135,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al Generar Aerolinea", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al generar una nueva aerolínea en la Tabla Aerolínea: " + ex);
                 return View();
             }
 
@@ -124,7 +143,25 @@ namespace ProyectoV_Vuelos.Controllers
 
         public ActionResult Actualizar(int id)
         {
-            return View(BuscarAerolineas().Where(e => e.ALNID == id).First());
+            Errores Error = new Errores();
+
+            try
+            {
+                if (BuscarAerolineas().Where(e => e.ALNID == id).First() != null)
+                {
+                    return View(BuscarAerolineas().Where(e => e.ALNID == id).First());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al buscar una aerolínea en la Tabla Aerolínea: " + ex);
+                throw;
+            }
         }
 
         [HttpPost]
@@ -132,6 +169,7 @@ namespace ProyectoV_Vuelos.Controllers
         {
             Aerolineas ALN = new Aerolineas();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -148,7 +186,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al Actualizar Aerolinea", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al actualizar una aerolínea en la Tabla Aerolínea: " + ex);
                 return View();
             }
 
@@ -159,12 +197,20 @@ namespace ProyectoV_Vuelos.Controllers
 
             Aerolineas ALN = new Aerolineas();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
-            BTC.GenerarBitacora(ALN.SP_Solicitar_Consec_Aerolinea(id).Consec_Aerol, 1, 3, DateTime.Now, "Eliminar", "Eliminación de una Aerolínea",
+            try
+            {
+                BTC.GenerarBitacora(ALN.SP_Solicitar_Consec_Aerolinea(id).Consec_Aerol, 1, 3, DateTime.Now, "Eliminar", "Eliminación de una Aerolínea",
                 "", "", "", "", 0, "", 0, "", "");
-            ALN.EliminarAerolinea(id);
-
-            return RedirectToAction("Index");
+                ALN.EliminarAerolinea(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al eliminar una aerolínea en la Tabla Aerolínea: " + ex);
+                throw;
+            }
         }
     }
 }

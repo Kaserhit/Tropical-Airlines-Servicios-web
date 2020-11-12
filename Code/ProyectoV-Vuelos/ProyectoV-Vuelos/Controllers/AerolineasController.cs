@@ -1,4 +1,5 @@
 ﻿using System;
+using ProyectoV_Vuelos.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,16 +10,18 @@ namespace ProyectoV_Vuelos.Controllers
 {
     public class AerolineasController : ApiController
     {
+        AerolineaCRUDController CRUD = new AerolineaCRUDController();
+
         // GET: api/Aerolineas
-        public IEnumerable<string> Get()
+        public IEnumerable<AerolineasModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            return CRUD.BuscarAerolineas();
         }
 
         // GET: api/Aerolineas/5
-        public string Get(int id)
+        public AerolineasModel Get(int id)
         {
-            return "value";
+            return CRUD.BuscarAerolineas().Where(e => e.ALNID == id).First();
         }
 
         // POST: api/Aerolineas

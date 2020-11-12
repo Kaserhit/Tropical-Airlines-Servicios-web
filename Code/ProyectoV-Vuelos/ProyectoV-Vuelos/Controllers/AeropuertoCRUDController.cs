@@ -13,21 +13,54 @@ namespace ProyectoV_Vuelos.Controllers
     {
         public ActionResult Index()
         {
-            return View(BuscarAeropuertos());
+            Errores Error = new Errores();
+
+            try
+            {
+                if (BuscarAeropuertos() != null)
+                {
+                    return View(BuscarAeropuertos());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al mostrar el Index en la Tabla Aeropuerto: " + ex);
+                throw;
+            }
         }
 
         public ActionResult Consulta()
         {
-            return View(BuscarAeropuertos());
-        }
+            Errores Error = new Errores();
 
-        public ActionResult Detalles(int id)
-        {
-            return View(BuscarAeropuertos().Where(e => e.APTID == id).First());
+            try
+            {
+                if (BuscarAeropuertos() != null)
+                {
+                    return View(BuscarAeropuertos());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al mostrar las Consultas en la Tabla Aeropuerto: " + ex);
+                throw;
+            }
         }
 
         public List<AeropuertosModel> BuscarAeropuertos()
         {
+            Errores Error = new Errores();
+
             try
             {
                 Aeropuertos Aeropuertos = new Aeropuertos();
@@ -47,31 +80,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine("Valor Null detectado");
-                throw;
-            }
-        }
-
-        public List<AeropuertosModel> BuscarAeropuerto()
-        {
-            try
-            {
-                Aeropuertos Aeropuertos = new Aeropuertos();
-                List<AeropuertosModel> lista =
-                Aeropuertos.SP_Solicitar_Info_Aeropuerto().Tables[0].AsEnumerable().Select(e => new AeropuertosModel
-                {
-                    APTID = e.Field<int>("APTID"),
-                    Consec_Aerop = e.Field<int>("Consec_Aerop"),
-                    Cod_Puerta = e.Field<string>("Cod_Puerta"),
-                    Num_Puerta = e.Field<int>("Num_Puerta"),
-                    Detalle = e.Field<string>("Detalle"),
-
-                }).ToList();
-
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Valor Null detectado");
+                Error.GenerarError(DateTime.Now, "Error al buscar los aeropuertos en la Tabla Aeropuerto: " + ex);
                 throw;
             }
         }
@@ -86,6 +95,7 @@ namespace ProyectoV_Vuelos.Controllers
         {
             Aeropuertos APT = new Aeropuertos();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -102,7 +112,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al Generar Aeropuerto", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al generar un nuevo aeropuerto en la Tabla Aeropuerto: " + ex);
                 return View();
             }
 
@@ -110,7 +120,25 @@ namespace ProyectoV_Vuelos.Controllers
 
         public ActionResult Actualizar(int id)
         {
-            return View(BuscarAeropuertos().Where(e => e.APTID == id).First());
+            Errores Error = new Errores();
+
+            try
+            {
+                if (BuscarAeropuertos().Where(e => e.APTID == id).First() != null)
+                {
+                    return View(BuscarAeropuertos().Where(e => e.APTID == id).First());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al buscar un aeropuerto en la Tabla Aeropuerto: " + ex);
+                throw;
+            }
         }
 
         [HttpPost]
@@ -118,6 +146,7 @@ namespace ProyectoV_Vuelos.Controllers
         {
             Aeropuertos APT = new Aeropuertos();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
             if (!ModelState.IsValid)
             {
@@ -134,7 +163,7 @@ namespace ProyectoV_Vuelos.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("Error al Actualizar Aeropuerto", ex);
-
+                Error.GenerarError(DateTime.Now, "Error al actualizar un aeropuerto en la Tabla Aeropuerto: " + ex);
                 return View();
             }
 
@@ -145,12 +174,20 @@ namespace ProyectoV_Vuelos.Controllers
 
             Aeropuertos APT = new Aeropuertos();
             Bitacoras BTC = new Bitacoras();
+            Errores Error = new Errores();
 
-            BTC.GenerarBitacora(APT.SP_Solicitar_Consec_Aeropuerto(id).Consec_Aerop, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Aeropuerto",
-                "", "", "", "", 0, "", 0, "", "");
-            APT.EliminarAeropuerto(id);
-
-            return RedirectToAction("Index");
+            try
+            {
+                BTC.GenerarBitacora(APT.SP_Solicitar_Consec_Aeropuerto(id).Consec_Aerop, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Aeropuerto",
+                                "", "", "", "", 0, "", 0, "", "");
+                APT.EliminarAeropuerto(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al eliminar un aeropuerto en la Tabla Aeropuerto: " + ex);
+                throw;
+            }
         }
     }
 }

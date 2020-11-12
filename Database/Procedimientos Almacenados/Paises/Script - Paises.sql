@@ -41,14 +41,6 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Solicitar_Info_Pais(@PAISID int)  
-AS  
-select * from dbo.Pais where PAISID = @PAISID
-Go
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Use WebDB
-Go
 CREATE PROCEDURE SP_Eliminar_Pais
 ( @PAISID int)
 

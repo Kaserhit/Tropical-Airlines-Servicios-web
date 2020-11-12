@@ -37,49 +37,42 @@ namespace BLL
         #region metodos
         public DataSet SP_Solicitar_Info_Paises()
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-            if (conexion == null)
-            {
-                return null;
-            }
-            else {
-                sql = "dbo.SP_Solicitar_Info_Paises";
-                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
-                if (numero_error != 0)
-                {
-                    return null;
-                }
-                else {
-                    return ds;
-                }
-            }                        
-        }
 
-        public DataSet SP_Solicitar_Info_Pais()
-        {
-            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-            if (conexion == null)
+            try
             {
-                return null;
-            }
-            else
-            {
-                sql = "dbo.SP_Solicitar_Info_Pais";
-                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
-                if (numero_error != 0)
+                if (conexion == null)
                 {
+                    Error.GenerarError(DateTime.Now, "Error con la conexión con la base de datos");
                     return null;
                 }
                 else
                 {
-                    return ds;
+                    sql = "dbo.SP_Solicitar_Info_Paises";
+                    ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                    if (numero_error != 0)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        return ds;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Info_Paises en la Tabla País: " + ex);
+                throw;
             }
         }
 
         public Pais SP_Solicitar_Filtro_Pais(string Nombre)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
             try
             {
                 conexion.Open();
@@ -94,11 +87,12 @@ namespace BLL
                     return pais;
                 }
                 else
-                    return null;
+                    throw new Exception();
             }
             catch (Exception ex)
             {
-                return null;
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Filtro_Pais en la Tabla País: " + ex);
+                throw;
             }
             finally
             {
@@ -108,7 +102,9 @@ namespace BLL
 
         public Pais SP_Solicitar_Consec_Pais(int PAISID)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
             try
             {
                 conexion.Open();
@@ -123,11 +119,12 @@ namespace BLL
                     return pais;
                 }
                 else
-                    return null;
+                    throw new Exception();
             }
             catch (Exception ex)
             {
-                return null;
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Consec_Pais en la Tabla País: " + ex);
+                throw;
             }
             finally
             {
@@ -137,8 +134,9 @@ namespace BLL
 
         public DataSet Generar(int Consec_Pais, string CodPais, string Nombre, string Imagen)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-     
+
             try
             {
                 conexion.Open();
@@ -153,6 +151,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Inserta_Pais en la Tabla País: " + ex);
                 return ds;
             }
             finally
@@ -163,7 +162,9 @@ namespace BLL
 
         public DataSet Actualizar(int PAISID, int Consec_Pais, string CodPais, string Nombre, string Imagen)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
             try
             {
                 conexion.Open();
@@ -180,7 +181,8 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                return ds; 
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Actualiza_Pais en la Tabla País: " + ex);
+                return ds;
             }
             finally
             {
@@ -190,6 +192,7 @@ namespace BLL
 
         public DataSet Eliminar(int PAISID)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
 
             try
@@ -203,6 +206,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Eliminar_Pais en la Tabla País: " + ex);
                 return ds;
             }
             finally
@@ -212,13 +216,6 @@ namespace BLL
         }
 
     }
-}  
+}
 
-      #endregion
-
-    
-
-
-
-    
-
+#endregion

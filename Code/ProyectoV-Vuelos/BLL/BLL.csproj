@@ -45,6 +45,7 @@
     <Compile Include="Aeropuertos.cs" />
     <Compile Include="Bitacoras.cs" />
     <Compile Include="Errores.cs" />
+    <Compile Include="Rol_Usuarios.cs" />
     <Compile Include="Seguridad.cs" />
     <Compile Include="Pais.cs" />
     <Compile Include="Consecutivos.cs" />

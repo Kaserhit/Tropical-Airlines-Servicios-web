@@ -38,49 +38,42 @@ namespace BLL
         #region Metodos
         public DataSet SP_Solicitar_Info_Consecutivos()
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-            if (conexion == null)
-            {
-                return null;
-            }
-            else {
-                sql = "dbo.SP_Solicitar_Info_Consecutivos";
-                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
-                if (numero_error != 0)
-                {
-                    return null;
-                }
-                else {
-                    return ds;
-                }
-            }                        
-        }
 
-        public DataSet SP_Solicitar_Info_Consecutivo()
-        {
-            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-            if (conexion == null)
+            try
             {
-                return null;
-            }
-            else
-            {
-                sql = "dbo.SP_Solicitar_Info_Consecutivo";
-                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
-                if (numero_error != 0)
+                if (conexion == null)
                 {
+                    Error.GenerarError(DateTime.Now, "Error con la conexión con la base de datos");
                     return null;
                 }
                 else
                 {
-                    return ds;
+                    sql = "dbo.SP_Solicitar_Info_Consecutivos";
+                    ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                    if (numero_error != 0)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        return ds;
+                    }
                 }
+            }
+            catch (Exception ex) 
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Info_Consecutivos en la Tabla Consecutivo: " + ex);
+                throw;
             }
         }
 
         public Consecutivos SP_Solicitar_Consec_ID(int CSVID)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
             try
             {
                 conexion.Open();
@@ -91,15 +84,16 @@ namespace BLL
                 if (dr.Read())
                 {
                     Consecutivos consecutivos = new Consecutivos();
-                    consecutivos.CSVID= Convert.ToInt32(dr["csvid"]);
+                    consecutivos.CSVID = Convert.ToInt32(dr["csvid"]);
                     return consecutivos;
                 }
                 else
-                    return null;
+                    throw new Exception();
             }
             catch (Exception ex)
             {
-                return null;
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Consec_ID en la Tabla Consecutivo: " + ex);
+                throw;
             }
             finally
             {
@@ -109,8 +103,9 @@ namespace BLL
 
         public DataSet GenerarConsecutivo(string Descripcion, string Consecutivo, string Prefijo, int RangoInicial, int RangoFinal)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
-     
+
             try
             {
                 conexion.Open();
@@ -126,6 +121,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Inserta_Consecutivo en la Tabla Consecutivo: " + ex);
                 return ds;
             }
             finally
@@ -136,7 +132,9 @@ namespace BLL
 
         public DataSet ActualizarConsecutivo(int CSVID, string Descripcion, string Consecutivo, string Prefijo, int RangoInicial, int RangoFinal)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
             try
             {
                 conexion.Open();
@@ -153,7 +151,8 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                return ds; 
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Actualiza_Consecutivo en la Tabla Consecutivo: " + ex);
+                return ds;
             }
             finally
             {
@@ -163,6 +162,7 @@ namespace BLL
 
         public DataSet EliminarConsecutivo(int CSVID)
         {
+            Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
 
             try
@@ -176,6 +176,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Eliminar_Consecutivo en la Tabla Consecutivo: " + ex);
                 return ds;
             }
             finally
@@ -186,9 +187,4 @@ namespace BLL
 
         #endregion
     }
-}  
-
-      
-
-    
-
+}

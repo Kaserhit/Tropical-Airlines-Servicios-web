@@ -39,16 +39,6 @@ Go
 
 USE WebDB
 Go
-CREATE PROCEDURE SP_Solicitar_Info_Aeropuerto(@APTID int)  
-
-AS 
-
-SELECT * FROM dbo.Aeropuerto WHERE APTID = @APTID
-Go
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-USE WebDB
-Go
 CREATE PROCEDURE SP_Eliminar_Aeropuerto
 ( @APTID int)
 

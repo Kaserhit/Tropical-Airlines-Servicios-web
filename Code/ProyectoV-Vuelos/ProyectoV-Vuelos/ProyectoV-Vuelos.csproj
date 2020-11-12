@@ -162,7 +162,11 @@
     <Compile Include="Controllers\AeropuertoCRUDController.cs" />
     <Compile Include="Controllers\AeropuertosController.cs" />
     <Compile Include="Controllers\BitacoraCRUDController.cs" />
+    <Compile Include="Controllers\BitacorasController.cs" />
     <Compile Include="Controllers\ErrorCRUDController.cs" />
+    <Compile Include="Controllers\ErroresController.cs" />
+    <Compile Include="Controllers\Rol_UsuarioController.cs" />
+    <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\SeguridadCRUDController.cs" />
     <Compile Include="Controllers\PaisCRUDController.cs" />
     <Compile Include="Controllers\ConsecutivoCRUDController.cs" />
@@ -177,6 +181,7 @@
     <Compile Include="Models\AeropuertosModel.cs" />
     <Compile Include="Models\BitacorasModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\Rol_UsuariosModel.cs" />
     <Compile Include="Models\SeguridadModel.cs" />
     <Compile Include="Models\PaisModel.cs" />
     <Compile Include="Models\ConsecutivosModel.cs" />
@@ -1947,22 +1952,16 @@
     <Content Include="Views\ConsecutivoCRUD\Index.cshtml" />
     <Content Include="Views\ConsecutivoCRUD\Generar.cshtml" />
     <Content Include="Views\ConsecutivoCRUD\Actualizar.cshtml" />
-    <Content Include="Views\ConsecutivoCRUD\Detalles.cshtml" />
     <Content Include="Views\AeropuertoCRUD\Index.cshtml" />
-    <Content Include="Views\AeropuertoCRUD\Detalles.cshtml" />
     <Content Include="Views\AeropuertoCRUD\Generar.cshtml" />
     <Content Include="Views\AeropuertoCRUD\Actualizar.cshtml" />
     <Content Include="Views\AerolineaCRUD\Index.cshtml" />
-    <Content Include="Views\AerolineaCRUD\Detalles.cshtml" />
     <Content Include="Views\AerolineaCRUD\Actualizar.cshtml" />
     <Content Include="Views\AerolineaCRUD\Generar.cshtml" />
     <Content Include="Views\PaisCRUD\Index.cshtml" />
-    <Content Include="Views\PaisCRUD\Detalles.cshtml" />
     <Content Include="Views\PaisCRUD\Generar.cshtml" />
     <Content Include="Views\PaisCRUD\Actualizar.cshtml" />
     <Content Include="Views\SeguridadCRUD\Index.cshtml" />
-    <Content Include="Views\SeguridadCRUD\Detalles.cshtml" />
-    <Content Include="Views\SeguridadCRUD\Actualizar.cshtml" />
     <Content Include="Views\SeguridadCRUD\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutNL.cshtml" />
     <Content Include="Views\SeguridadCRUD\Actualizarcontrasena.cshtml" />
@@ -1988,6 +1987,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Rol_Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

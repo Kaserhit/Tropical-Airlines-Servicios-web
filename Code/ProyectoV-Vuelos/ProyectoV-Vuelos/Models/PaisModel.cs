@@ -24,11 +24,6 @@ namespace ProyectoV_Vuelos.Models
         [DataMember]
         public string Imagen { get; set; }
 
-        //Variables Internas
-
-        [DataMember]
-        public string DetalleID { get; set; }
-
         #endregion
 
         #region constructores

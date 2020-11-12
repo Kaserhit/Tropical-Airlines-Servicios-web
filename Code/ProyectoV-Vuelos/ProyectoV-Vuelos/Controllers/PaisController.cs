@@ -10,7 +10,6 @@ namespace ProyectoV_Vuelos.Controllers
 {
     public class PaisController : ApiController
     {
-
         PaisCRUDController CRUD = new PaisCRUDController();
 
         // GET: api/Consecutivos
