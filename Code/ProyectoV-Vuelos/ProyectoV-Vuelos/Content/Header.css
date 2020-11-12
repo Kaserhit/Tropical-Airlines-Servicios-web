@@ -1,0 +1,29 @@
+.view {
+    background: url("Img/nenad-radojcic-RF5U8BkaQHU-unsplash.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.top-nav-collapse {
+    background-color: #4285f4;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #4285f4;
+    }
+}
+
+
+
+
+
+html,
+body,
+header,
+.view {
+    height: 100%;
+}

@@ -1,56 +1,77 @@
-﻿<div class="jumbotron">
-    <h1>Proyecto Servicios Web</h1>
-    <p class="lead">Versiones 1.0 Avance I (En Desarrollo CRUD y REST API)</p>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Consecutivos</h2>
-        <br></br>
-        <p>Consecutivos</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "ConsecutivoCRUD", new { area = "" }, null)</a></p>
-        <br></br>
-        <p>Aerolinea</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "AerolineaCRUD", new { area = "" }, null)</a></p>
-        <br></br>
-        <p>Aeropuerto</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "AeropuertoCRUD", new { area = "" }, null)</a></p>
-        <br></br>
-        <p>Paises</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "PaisCRUD", new { area = "" }, null)</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Seguridad</h2>
-        <br></br>
-        <p>Crear Usuarios</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "SeguridadCRUD/Generar", new { area = "" }, null)</a></p>
-        <br></br>
-        <p>Asignar Roles</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "SeguridadCRUD", new { area = "" }, null)</a></p>
-        <br></br>
-        <p>Cambiar Contraseña</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "SeguridadCRUD/Actualizarcontrasena", new { area = "" }, null)</a></p>
-        <br></br>
-    </div>
-    <div class="col-md-4">
-        <h2>Consultas</h2>
-        <br></br>
-        <p>Bitacora</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "BitacoraCRUD/Consulta", new { area = "" }, null)</a></p>
-        <br></br>
-        <p>Errores</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "ErrorCRUD/Consulta", new { area = "" }, null)</a></p>
-        <br></br>
-        <p>Descargas</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Ir &raquo;</a></p>
-        <br></br>
-        <p>Aerolineas</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "AerolineaCRUD/Consulta", new { area = "" }, null)</a></p>
-        <br></br>
-        <p>Puertas</p>
-        <p><a class="btn btn-default" @Html.ActionLink("Ir »", "Index", "AeropuertoCRUD/Consulta", new { area = "" }, null)</a></p>
+﻿@{
+    ViewBag.Title = "Tropical Airlines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2 class="bg-info p-4 text-center text-white"><strong><b>Visite distintos Paises Tropicales</b></strong></h2>
+
+
+
+
+<br></br>
+
+<br></br>
+
+<br></br>
+
+
+
+
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-5">
+            <img src="~/Content/icons/330422-international-flags/svg/156-costa-rica.svg" width="150" height="150" alt="Costa Rica" />
+            <h2>Costa Rica</h2>
+            <br></br>
+        </div>
+        <div class="col col-lg-5">
+            <img src="~/Content/icons/330422-international-flags/svg/255-brazil.svg" width="150" height="150" alt="Brazil" />
+            <h2>Brazil</h2>
+            <br></br>
+        </div>
+        <div class="col-md-auto">
+            <img src="~/Content/icons/330422-international-flags/svg/252-mexico.svg" width="150" height="150" alt="Mexico" />
+            <h2>Mexico</h2>
+            <br></br>
+        </div>
     </div>
 </div>
 
+
+
+
 <br></br>
+
 <br></br>
+
 <br></br>
+
+
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-5">
+            <img src="~/Content/Img/puerto-viejo-4048875_960_720.jpg" width="170" height="150" alt="Puerto Viejo" />
+            <h2>Puerto Viejo</h2>
+            <br></br>
+        </div>
+        <div class="col col-lg-5">
+            <img src="~/Content/Img/rio-de-janeiro-1963744__340.jpg" width="150" height="150" alt="Rio de Janeiro" />
+
+            <h2 class="col col-md-5">Rio de Janeiro</h2>
+            <br></br>
+        </div>
+        <div class="col-md-auto">
+            <img src="~/Content/Img/cancun-1235489_1920.jpg" width="150" height="150" alt="Cancun" />
+            <h2>Cancun</h2>
+            <br></br>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,114 +1,147 @@
 ﻿@model ProyectoV_Vuelos.Models.SeguridadModel
 
 @{
-    ViewBag.Title = "Generar";
+    ViewBag.Title = "Tropical Airlines";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Usuarios</h2>
+<hr>
+
+
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>Crear Nueva Cuenta</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h3 class="text-center">Crear Nueva Cuenta</h3>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Usuario</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
-        </div>
+
+
+        <br />
+        <center>
+            <div class="form-group">
+                <h5 class="control-label col-md-3 ">Usuario</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <br />
+            <div class="form-group">
+                <h5 class="control-label col-md-3"><img src="~/Content/icons/181501-interface/181501-interface/svg/user-3.svg" width="25" height="25" /> Nombre</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+
+
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col col-lg-3">
+                        <h5 class="control-label">Primer Apellido</h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Primer_Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Primer_Apellido, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col col-lg-3">
+                        <h5 class="control-label">Segundo Apellido</h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Segundo_Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Segundo_Apellido, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <br />
+            <div class="form-group">
+                <h5 class="control-label col-md-3"><img src="~/Content/icons/181501-interface/181501-interface/svg/padlock.svg" width="25" height="25" /> Contraseña</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                    @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <h5 class="control-label col-md-3">Confirmar Contraseña</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.newcontrasena2, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                    @Html.ValidationMessageFor(model => model.newcontrasena2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <h5 class="control-label col-md-3">Pregunta de Seguridad</h5>
+                <div class="col-md-12">
+                    <select class="form-control" id="Pregunta" name="Pregunta">
+                        <option value="¿Cuál es el primer nombre de tu maestro favorito?">¿Cuál es el primer nombre de tu maestro favorito?</option>
+                        <option value="¿Cuál es tu comida favorita?">¿Cuál es tu comida favorita?</option>
+                        <option value="¿Cuál es el nombre de tu mascota favorita?">¿Cuál es el nombre de tu mascota favorita?</option>
+                        <option value="¿Cuál es el segundo nombre de tu padre?">¿Cuál es el segundo nombre de tu padre?</option>
+                        <option value="¿Cuál es tu ciudad natal?">¿Cuál es tu ciudad natal?</option>
+                        <option value="¿Cuál es el nombre de la escuela a la cual asistió?">¿Cuál es el nombre de la escuela a la cual asistió?</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Pregunta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <br />
+            <div class="form-group">
+                <h5 class="control-label col-md-3">Respuesta de Seguridad</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Respuesta, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Respuesta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group">
+
+                <h5 class="control-label col-md-3"><img src="~/Content/icons/181501-interface/181501-interface/svg/email.svg" width="25" height="25" /> Correo Electronico</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+
+            <br />
+
+
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col col-lg-3">
+                        <img src="~/Content/icons/181501-interface/181501-interface/svg/user-1.svg" width="25" height="25" />
+                        <input type="submit" value="Crear Usuario" class="btn btn-default border" />
+                    </div>
+                    <div class="col col-lg-3">
+                        <a class="btn btn-default border" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)
+                    </div>
+                </div>
+            </div>
+
+
+        </center>
     </div>
 
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Contraseña</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-            @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Confirmar Contraseña</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.newcontrasena2, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-            @Html.ValidationMessageFor(model => model.newcontrasena2, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Nombre</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Primer Apellido</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Primer_Apellido, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Primer_Apellido, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Segundo Apellido</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Segundo_Apellido, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Segundo_Apellido, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Pregunta de Seguridad</h5>
-        <div class="col-md-10">
-            <select class="form-control" id="Pregunta" name="Pregunta">
-                <option value="¿Cuál es el primer nombre de tu maestro favorito?">¿Cuál es el primer nombre de tu maestro favorito?</option>
-                <option value="¿Cuál es tu comida favorita?">¿Cuál es tu comida favorita?</option>
-                <option value="¿Cuál es el nombre de tu mascota favorita?">¿Cuál es el nombre de tu mascota favorita?</option>
-                <option value="¿Cuál es el segundo nombre de tu padre?">¿Cuál es el segundo nombre de tu padre?</option>
-                <option value="¿Cuál es tu ciudad natal?">¿Cuál es tu ciudad natal?</option>
-                <option value="¿Cuál es el nombre de la escuela a la cual asistió?">¿Cuál es el nombre de la escuela a la cual asistió?</option>
-            </select>
-            @Html.ValidationMessageFor(model => model.Pregunta, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Respuesta de Seguridad</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Respuesta, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Respuesta, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <h5 class="control-label col-md-2">Correo Electronico</h5>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Crear" class="btn btn-default" />
-            <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)
-        </div>
-    </div>
-</div>
 }
 
 

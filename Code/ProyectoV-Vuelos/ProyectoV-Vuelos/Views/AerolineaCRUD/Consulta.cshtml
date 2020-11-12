@@ -1,72 +1,87 @@
 ﻿@model IEnumerable<ProyectoV_Vuelos.Models.AerolineasModel>
 
 @{
-    ViewBag.Title = "Consulta";
+    ViewBag.Title = "Tropical Airlines";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Consultas de Aerolineas</h2>
+<center><h2>Consulta de Aereolineas</h2></center>
+
+<hr>
+
+<br />
+
 
 @using (Html.BeginForm("Busqueda", "AerolineaCRUD", FormMethod.Post))
 {
     <form class="form-group">
-
-        <div>
+        <center>
             <div>
                 <div>
-                    <div class="form-group mb-1">
-                        <label class="font-weight-bold">Nombre del País</label>
+                    <div>
+                        <div class="form-group mb-1">
+                            <label class="font-weight-bold">Nombre del País</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBox("nombre", "", new { @class = "form-control" })
                     </div>
                 </div>
-                <div class="form-group">
-                    @Html.TextBox("nombre", "", new { @class = "form-control" })
-                </div>
             </div>
-        </div>
-        <button type="submit" class="btn btn-dark mb-3">Buscar</button>
+            <button type="submit" class="btn btn-default border">Buscar</button>
 
+        </center>
     </form>
 }
 
+<br />
+
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Codigo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </th>
-        <th></th>
-    </tr>
+    <center>
+        <tr>
+            <th>
+            Codigo
+            </th>
+            <th>
+             Nombre
+            </th>
+            <th>
+            Logo
+            </th>
+            <th></th>
+        </tr>
 
-    @if (Model != null)
-    {
-        foreach (var item in Model)
+
+        <br />
+
+        @if (Model != null)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Codigo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Imagen)
-                </td>
-            </tr>
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.Imagen)" width="70px" height="50px" alt="Aereolinea" />
+                    </td>
+                </tr>
+            }
         }
-    }
-
+    </center>
 </table>
+
+
 
 <br></br>
 
 <center>
 
-    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
-    <a class="btn btn-default" @Html.ActionLink("Mostrar Todos", "Consulta", "AerolineaCRUD", new { area = "" }, null)</a>
+    <a class="btn btn-default border" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-default border" @Html.ActionLink("Mostrar Todos", "Consulta", "AerolineaCRUD", new { area = "" }, null)</a>
 
 </center>

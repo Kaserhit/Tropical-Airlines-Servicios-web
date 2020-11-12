@@ -1,74 +1,87 @@
 ﻿@model ProyectoV_Vuelos.Models.AeropuertosModel
 
 @{
-    ViewBag.Title = "Actualizar";
+    ViewBag.Title = "Tropical Airlines";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Actualizar</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
-    <h4>AeropuertosModel</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <center>
+        <h3 class="text-center">Aereopuertos</h3>
+        <hr />
+
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+     
+        @Html.HiddenFor(model => model.APTID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+
 
     <div class="form-group">
-        @Html.LabelFor(model => model.APTID, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.APTID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-            @*@Html.EditorFor(model => model.APTID, new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.ValidationMessageFor(model => model.APTID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Consec_Aerop, htmlAttributes: new { @class = "control-label col-md-2" })
+        <h5 class="text-center">Consecutivo de Aeropuerto</h5>
         <div class="col-md-10">
             @Html.EditorFor(model => model.Consec_Aerop, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Consec_Aerop, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cod_Puerta, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Cod_Puerta, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Cod_Puerta, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        <br />
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Num_Puerta, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Num_Puerta, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Num_Puerta, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <h5 class="text-center">Codigo de puerta</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cod_Puerta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cod_Puerta, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Detalle, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        <br />
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+        <div class="form-group">
+            <h5 class="text-center">Numero de Puerta</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Num_Puerta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Num_Puerta, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
+
+        <br />
+
+        <div class="form-group">
+            <h5 class="text-center">Estado</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Guardar" class="btn btn-default border" />
+                </div>
+
+                <br />
+
+                <div class="col-md-offset-2 col-md-10">
+                    <a class="btn btn-default border"
+                       @Html.ActionLink("Cancelar", "Index")
+                </div>
+            </div>
+
+    </center>
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

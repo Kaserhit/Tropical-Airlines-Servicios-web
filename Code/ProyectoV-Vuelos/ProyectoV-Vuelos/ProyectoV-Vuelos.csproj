@@ -195,6 +195,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Header.css" />
     <Content Include="Content\icons\174834-social-media-logos\license\license.html" />
     <Content Include="Content\icons\174834-social-media-logos\png\001-youtube.png" />
     <Content Include="Content\icons\174834-social-media-logos\png\002-yelp.png" />
@@ -988,10 +989,13 @@
     <Content Include="Content\icons\circle-cropped.png" />
     <Content Include="Content\icons\mail.png" />
     <Content Include="Content\icons\índice.png" />
+    <Content Include="Content\img\cancun-1235489_1920.jpg" />
     <Content Include="Content\img\IMG5.jpg" />
+    <Content Include="Content\img\nenad-radojcic-RF5U8BkaQHU-unsplash.jpg" />
     <Content Include="Content\img\puerto-viejo-4048875_960_720.jpg" />
     <Content Include="Content\img\rio-de-janeiro-1963744__340.jpg" />
     <Content Include="Content\Logo\ICN1.png" />
+    <Content Include="Content\Logo\linea aeria blanco-04.ico" />
     <Content Include="Content\Logo\linea aeria blanco-04.png" />
     <Content Include="Content\Logo\linea aeria-03.png" />
     <Content Include="Content\Logo\Logo 2.png" />
@@ -1987,7 +1991,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Rol_Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

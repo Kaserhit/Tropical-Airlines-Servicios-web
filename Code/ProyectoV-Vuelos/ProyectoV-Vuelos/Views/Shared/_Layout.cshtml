@@ -6,31 +6,41 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Logo/linea aeria blanco-04.ico" rel="shortcut icon" type="image/x-icon" />
     @RenderSection("Css", required: false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Header.css" rel="stylesheet" />
 </head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<header id="header">
+<header id="header" >
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark  scrolling-navbar bg-info">
-        <a class="navbar-brand" href="#"><strong>Tropical Airlines</strong></a>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark  scrolling-navbar" style="background-color: #8C7811">
+        <img src="~/Content/Logo/linea aeria blanco-04.png" alt="Icono" / width="100px" height="50px">
+        <a class="navbar-brand" href="@Url.Action("Index","Home")"><strong>Tropical Airlines</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+
+
+
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
+
                     <div class="dropdown">
                         <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Seguridad
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">1</a>
-                            <a class="dropdown-item" href="#">2</a>
-                            <a class="dropdown-item" href="#">3</a>
+                            <a class="dropdown-item" href="@Url.Action("Generar","SeguridadCRUD")">Crear Usuarios</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","SeguridadCRUD")">Asignar Roles</a>
+                            <a class="dropdown-item" href="@Url.Action("Actualizarcontrasena","SeguridadCRUD")">Cambiar Contraseña</a>
                         </div>
                     </div>
                 </li>
@@ -40,9 +50,10 @@
                             Administracion
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">@Html.ActionLink("Consecutivos »", "Index", "ConsecutivoCRUD", new { area = "" }, null)</a>
-                            <a class="dropdown-item" href="#">@Html.ActionLink("Aereolineas »", "Index", "AerolineaCRUD", new { area = "" }, null)</a>
-                            <a class="dropdown-item" href="#">@Html.ActionLink("Aereopuerto »", "Index", "AeropuertoCRUD", new { area = "" }, null)</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","ConsecutivoCRUD")">Consecutivos »</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","AerolineaCRUD")">Aereolineas »</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","AeropuertoCRUD")">Aereopuerto »</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","PaisCRUD")">Pais »</a>
                         </div>
                     </div>
                 </li>
@@ -52,9 +63,10 @@
                             Consultas
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">1</a>
-                            <a class="dropdown-item" href="#">2</a>
-                            <a class="dropdown-item" href="#">3</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","BitacoraCRUD/Consulta")">Bitacora »</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","ErrorCRUD/Consulta")">Errores »</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","AerolineaCRUD/Consulta")">Aerolinea »</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","AeropuertoCRUD/Consulta")">Aeropuerto »</a>
                         </div>
                     </div>
                 </li>
@@ -64,26 +76,25 @@
                             Opciones
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">1</a>
-                            <a class="dropdown-item" href="#">2</a>
-                            <a class="dropdown-item" href="#">3</a>
+                            <a class="dropdown-item" href="@Url.Action("Actualizarcontrasena","SeguridadCRUD")">Cambiar Contraseña »</a>
+                            <a class="dropdown-item" href="@Url.Action("Login","SeguridadCRUD")">Cerrar Sesion »</a>
                         </div>
                     </div>
                 </li>
             </ul>
-            <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item">
-                    <a class="nav-link"><i class="fab fa-facebook-f"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"><i class="fab fa-instagram"></i></a>
-                </li>
-            </ul>
         </div>
     </nav>
+
+
+    <div class="view intro-2" style="">
+        <div class="full-bg-img">
+            <div class="mask rgba-purple-light flex-center">
+                <div class="container text-center white-text wow fadeInUp">
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </header>
 
@@ -93,73 +104,77 @@
 <br />
 
 
+
 <body>
-
-
     <div class="container body-content">
         @RenderBody()
     </div>
+
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+
+
+    <footer class="text-white" style="background-color: #8C7811">
+        <div class="container">
+            <br />
+            <br />
+            <div class="row ">
+                <div class="col-md-5">
+                    <br></br>
+                    <p></p>
+                    <br></br>
+                    <center>
+                        <h4><img src="~/Content/Logo/linea aeria blanco-04.png" alt="Icono" / width="150px" height="100px"> <a></a> <b> Tropical Airlines </b></h4>
+                    </center>
+                    <br></br>
+                    <p></p>
+                    <br></br>
+                </div>
+
+                <div class="col-md-2">
+                    <h4><b>Compañia</b></h4>
+                    <br></br>
+                    <p><a href="#" class="text-white">Acerca de nosotros</a></p>
+                    <p><a href="#" class="text-white">Novedades</a></p>
+                    <p><a href="#" class="text-white">Asociaciones</a></p>
+                    <br></br>
+                </div>
+
+                <div class="col-md-2">
+                    <h4><b>Soporte</b></h4>
+                    <br></br>
+                    <p><a href="#" class="text-white">Ayuda</a></p>
+                    <p><a href="#" class="text-white">Contactenos</a></p>
+                </div>
+
+                <div class="col-md-3">
+                    <br></br>
+                    <p></p>
+                    <br></br>
+                    <center>
+                        <h4><img src="~/Content/icons/circle-cropped.png" alt="Icono" / width="100px" height="100px"></h4>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 
 
 </body>
 
 
 
-<br />
-<br />
-<br />s
-<br />
-<br />
 
 
-
-
-<footer class="bg-info text-white">
-    <div class="row">
-        <div class="col-md-4">
-            <br></br>
-            <p></p>
-            <br></br>
-            <center>
-                <h4><img src="~/Content/Logo/linea aeria blanco-04.png" alt="Icono" / width="150px" height="100px"> <a></a> <b> Tropical Airlines </b></h4>
-            </center>
-            <br></br>
-            <p></p>
-            <br></br>
-        </div>
-
-        <div class="col-md-3">
-            <h4><b>Compañia</b></h4>
-            <br></br>
-            <p><a href="#" class="text-white">Acerca de nosotros</a></p>
-            <br></br>
-            <p><a href="#" class="text-white">Novedades</a></p>
-            <br></br>
-            <p><a href="#" class="text-white">Asociaciones</a></p>
-            <br></br>
-        </div>
-
-        <div class="col-md-2">
-            <h4><b>Soporte</b></h4>
-            <br></br>
-            <p><a href="#" class="text-white">Ayuda</a></p>
-            <br></br>
-            <p><a href="#" class="text-white">Contactenos</a></p>
-        </div>
-
-        <div class="col-md-3">
-            <br></br>
-            <p></p>
-            <br></br>
-            <center>
-                <h4><img src="~/Content/icons/circle-cropped.png" alt="Icono" / width="100px" height="100px"></h4>
-            </center>
-            <br></br>
-            <p></p>
-            <br></br>
-        </div>
-    </div>
-</footer>
 
 <script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
 <script src="~/Scripts/popper.min.js"></script>

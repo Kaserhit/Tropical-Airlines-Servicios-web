@@ -2,97 +2,97 @@
 @model IEnumerable<ProyectoV_Vuelos.Models.SeguridadModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tropical Airlines";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Ver Usuarios</h2>
 
 
-    <table class="table">
-        <tr>
-            <th>
-                Lista de Usuarios
-            </th>
+<table class="table">
+    <tr>
+        <th>
+            Lista de Usuarios
+        </th>
 
-            <th>
-                Lista de Roles
-            </th>
+        <th>
+            Lista de Roles
+        </th>
 
-        </tr>
+    </tr>
 
-        <tr>
-@using (Html.BeginForm("Test", "SeguridadCRUD", FormMethod.Post))
-{
-    foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                <a class="btn-dark" value="Seleccionar" id="Seleccionar">@Html.ActionLink("user", "Test", new { id = item.USRID }, null)</a>
-            </td>
-        </tr>
+    <tr>
+        @using (Html.BeginForm("Test", "SeguridadCRUD", FormMethod.Post))
+        {
+            foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    <a class="btn-dark" value="Seleccionar" id="Seleccionar">@Html.ActionLink("user", "Test", new { id = item.USRID }, null)</a>
+                </td>
+            </tr>
+        }
     }
-}
 
-@using (Html.BeginForm("ActualizarRol", "SeguridadCRUD", FormMethod.Post))
-{
-                <table class="table">
-                    <tr>
-                        <th>
+        @using (Html.BeginForm("ActualizarRol", "SeguridadCRUD", FormMethod.Post))
+        {
+            <table class="table">
+                <tr>
+                    <th>
 
-                            <h5>Administrador</h5>
-                            @Html.CheckBox("Administrador", false)
+                        <h5>Administrador</h5>
+                        @Html.CheckBox("Administrador", false)
 
-                        </th>
-                        <th>
+                    </th>
+                    <th>
 
-                            <h5>Seguridad</h5>
-                            @Html.CheckBox("Seguridad", false)
-                        </th>
-                        <th>
-                            <h5>Consecutivo</h5>
-                            @Html.CheckBox("Consecutivo", false)
-                        </th>
-                    </tr>
+                        <h5>Seguridad</h5>
+                        @Html.CheckBox("Seguridad", false)
+                    </th>
+                    <th>
+                        <h5>Consecutivo</h5>
+                        @Html.CheckBox("Consecutivo", false)
+                    </th>
+                </tr>
 
-                    <tr>
-                        <th>
-                            <h5>Mantenimiento</h5>
-                            @Html.CheckBox("Mantenimiento", false)
-                        </th>
-                        <th>
-                            <h5>Consultas</h5>
-                            @Html.CheckBox("Consultas", false)
-                        </th>
-                        <th>
-                            <h5>Cliente</h5>
-                            @Html.CheckBox("Cliente", false)
-                        </th>
-                    </tr>
-                    </table>
-        
-   
-    <button type="submit" class="btn btn-dark mb-3">Actualizar Roles</button>
-}
+                <tr>
+                    <th>
+                        <h5>Mantenimiento</h5>
+                        @Html.CheckBox("Mantenimiento", false)
+                    </th>
+                    <th>
+                        <h5>Consultas</h5>
+                        @Html.CheckBox("Consultas", false)
+                    </th>
+                    <th>
+                        <h5>Cliente</h5>
+                        @Html.CheckBox("Cliente", false)
+                    </th>
+                </tr>
+            </table>
 
-<center>
-    <a class="btn btn-default" @Html.ActionLink("Actualizar Roles", "Detalles", new { area = "" }, null) </a>
-    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
 
-</center>
+            <button type="submit" class="btn btn-dark mb-3">Actualizar Roles</button>
+        }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+        <center>
+            <a class="btn btn-default" @Html.ActionLink("Actualizar Roles", "Detalles", new { area = "" }, null) </a>
+            <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
 
-    <script type="text/javascript">
+        </center>
 
-        $('button#Seleccionar').click(function () {
-            var text = $(this).html()
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
 
-            alert(text)
+            <script type="text/javascript">
 
-            Usuario.value = text;
-        })
-        
-    </script>
-}
+                $('button#Seleccionar').click(function () {
+                    var text = $(this).html()
+
+                    alert(text)
+
+                    Usuario.value = text;
+                })
+
+            </script>
+        }

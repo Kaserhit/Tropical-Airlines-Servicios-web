@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProyectoV_Vuelos.Models.ConsecutivosModel>
 
 @{
-    ViewBag.Title = "Tropical Airlines - Consecutivos";
+    ViewBag.Title = "Tropical Airlines";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,22 +11,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CSVID)
+            Codigo
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Descripcion)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Consecutivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prefijo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RangoInicial)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RangoFinal)
         </th>
         <th></th>
     </tr>
@@ -35,32 +26,24 @@
     {
         foreach (var item in Model)
         {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.CSVID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Descripcion)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Consecutivo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Prefijo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.RangoInicial)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.RangoFinal)
-    </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CSVID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Consecutivo)
+                </td>
 
-    <td>
-        @Html.ActionLink("Editar", "Actualizar", new { id = item.CSVID }, null) |
-        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.CSVID }, new { @Class = "MEliminar" })
-    </td>
 
-</tr>
+                <td>
+                    @Html.ActionLink("Editar", "Actualizar", new { id = item.CSVID }, null) |
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.CSVID }, new { @Class = "MEliminar" })
+                </td>
+
+            </tr>
         }
     }
 
@@ -70,19 +53,19 @@
 
 <center>
 
-    <a class="btn btn-default" @Html.ActionLink("Generar ", "Generar")</a>
+    <a class="btn btn-default border" @Html.ActionLink("Generar ", "Generar")</a>
 
-    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-default border" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
 
 </center>
 
 @section scripts{
 
-<script>
-    $(".MEliminar").click(function (event) {
-        if (!confirm('¿Esta seguro de eliminar el Consecutivo?')) {
-            event.preventDefault();
-        }
-    });
-</script>
+    <script>
+        $(".MEliminar").click(function (event) {
+            if (!confirm('¿Esta seguro de eliminar el Consecutivo?')) {
+                event.preventDefault();
+            }
+        });
+    </script>
 }

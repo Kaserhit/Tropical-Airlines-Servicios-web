@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProyectoV_Vuelos.Models.AeropuertosModel>
 
 @{
-    ViewBag.Title = "Tropical Airlines - Aeropuertos";
+    ViewBag.Title = "Tropical Airlines";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,20 +10,15 @@
 
 <table class="table">
     <tr>
+
         <th>
-            @Html.DisplayNameFor(model => model.APTID)
+            Codigo de Puerta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Consec_Aerop)
+            Numero de Puerta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cod_Puerta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Num_Puerta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Detalle)
+            Estado
         </th>
         <th></th>
     </tr>
@@ -33,12 +28,7 @@
         foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.APTID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Consec_Aerop)
-                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Cod_Puerta)
                 </td>
@@ -54,7 +44,7 @@
                 </td>
             </tr>
         }
-     } 
+    }
 
 </table>
 
@@ -62,9 +52,9 @@
 
 <center>
 
-    <a class="btn btn-default" @Html.ActionLink("Generar ", "Generar")</a>
+    <a class="btn btn-default border" @Html.ActionLink("Generar ", "Generar")</a>
 
-    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-default border" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
 
 </center>
 

@@ -1,17 +1,21 @@
 ﻿@model ProyectoV_Vuelos.Models.ConsecutivosModel
 
-@{ ViewBag.Title = "Generar";
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
-
-<h2>Generar</h2>
+@{
+    ViewBag.Title = "Tropical Airlines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>ConsecutivosModel</h4>
+<div class="form-horizontal">
+
+    <center>
+        <h3 class="text-center">Consecutivos</h3>
         <hr />
+
+        <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
@@ -27,6 +31,8 @@
             </div>
         </div>
 
+        <br />
+
         <div class="form-group">
             <h5 class=" col-md-2">Consecutivo</h5>
             <div class="col-md-10">
@@ -35,56 +41,91 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <h5 class=" col-md-2">Posee Prefijo:</h5>
-            <div class="col-md-10">
-                <input type="checkbox" id="CheckPrefijo"> Si
+        <br />
+        <hr />
+
+
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-3">
+                    <h5 class=" control-label">Posee Prefijo:</h5>
+                    <div class="col-md-10">
+                        <input type="checkbox" id="CheckPrefijo"> Si
+                    </div>
+                </div>
+                <div class="col col-lg-3">
+                    <h5 class="control-label">Prefijo</h5>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Prefijo, new { htmlAttributes = new { @id = "Prefijo", @class = "form-control", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <h5 class=" col-md-2">Prefijo</h5>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Prefijo, new { htmlAttributes = new { @id = "Prefijo", @class = "form-control", @disabled = "disabled" } })
-                @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
+
+
+        <br />
+
+
+
+        <hr />
+
+
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-3">
+                    <h5 class=" control-label">Posee Rango:</h5>
+                    <div class="col-md-10">
+                        <input type="checkbox" id="CheckRango"> Si
+                        @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col col-lg-3">
+                    <h5 class="control-label">Rango Inicial</h5>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RangoInicial, new { htmlAttributes = new { @id = "rangoI", @class = "form-control", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.RangoInicial, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col col-lg-3">
+                    <h5 class="control-label">Rango Final</h5>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RangoFinal, new { htmlAttributes = new { @id = "rangoF", @class = "form-control", disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.RangoFinal, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <h5 class="col-md-2">Posee Rango:</h5>
-            <div class="col-md-10">
-                <input type="checkbox" id="CheckRango"> Si
-                @Html.ValidationMessageFor(model => model.Prefijo, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            <h5 class="col-md-2">Rango Inicial</h5>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RangoInicial, new { htmlAttributes = new { @id = "rangoI", @class = "form-control", @disabled = "disabled" } })
-                @Html.ValidationMessageFor(model => model.RangoInicial, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <br />
 
-        <div class="form-group">
-            <h5 class="col-md-2">Rango Final</h5>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RangoFinal, new { htmlAttributes = new { @id = "rangoF", @class = "form-control", disabled = "disabled" } })
-                @Html.ValidationMessageFor(model => model.RangoFinal, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <br />
+
+
+
 
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Generar" class="btn btn-default" onclick="verificar()" />
+                <input type="submit" value="Generar" onclick="verificar()" class="btn btn-default border" />
+            </div>
+
+            <br />
+
+            <div class="col-md-offset-2 col-md-10">
+                <a class="btn btn-default border"
+                   @Html.ActionLink("Cancelar", "Index")
             </div>
         </div>
-    </div>}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    </center>
+
+</div>}
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

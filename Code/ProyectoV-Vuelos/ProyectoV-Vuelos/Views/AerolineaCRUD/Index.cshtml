@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProyectoV_Vuelos.Models.AerolineasModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tropical Airlines";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,15 +10,6 @@
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ALNID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aerol_Pais)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Consec_Aerol)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Codigo)
         </th>
@@ -36,15 +27,7 @@
         foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ALNID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Aerol_Pais)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Consec_Aerol)
-                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Codigo)
                 </td>
@@ -52,7 +35,7 @@
                     @Html.DisplayFor(modelItem => item.Nombre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Imagen)
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen)" width="70px" height="50px" alt="Logo">
                 </td>
                 <td>
                     @Html.ActionLink("Editar", "Actualizar", new { id = item.ALNID }, null) |
@@ -68,19 +51,19 @@
 
 <center>
 
-    <a class="btn btn-default" @Html.ActionLink("Generar ", "Generar")</a>
+    <a class="btn btn-default border" @Html.ActionLink("Generar ", "Generar")</a>
 
-    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-default border" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
 
 </center>
 
 @section scripts{
 
     <script>
-    $(".MEliminar").click(function (event) {
-        if (!confirm('¿Esta seguro de eliminar la Aerolinea?')) {
-            event.preventDefault();
-        }
-    });
+        $(".MEliminar").click(function (event) {
+            if (!confirm('¿Esta seguro de eliminar la Aerolinea?')) {
+                event.preventDefault();
+            }
+        });
     </script>
 }

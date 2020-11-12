@@ -1,22 +1,27 @@
 ﻿@model IEnumerable<ProyectoV_Vuelos.Models.AeropuertosModel>
 
 @{
-    ViewBag.Title = "Consulta";
+    ViewBag.Title = "Tropical Airlines";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Consultas de Puertas de Aeropuerto</h2>
+
+<center><h2>Consultas de Puertas de Aeropuertos</h2></center>
+
+<hr>
+
+<br />
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Cod_Puerta)
+            Codigo de Puerta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Num_Puerta)
+            Numero de Puerta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Detalle)
+           Estado
         </th>
         <th></th>
     </tr>
