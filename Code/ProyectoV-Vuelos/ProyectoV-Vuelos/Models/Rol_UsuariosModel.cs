@@ -16,12 +16,12 @@ namespace ProyectoV_Vuelos.Models
         public int ROLID { get; set; }
 
         [DataMember]
-        public int Estado { get; set; }
+        public bool Estado { get; set; }
 
         #endregion
 
         #region constructores
-        public Rol_UsuariosModel(int USRID, int ROLID, int Estado)
+        public Rol_UsuariosModel(int USRID, int ROLID, bool Estado)
         {
             this.USRID = USRID;
             this.ROLID = ROLID;

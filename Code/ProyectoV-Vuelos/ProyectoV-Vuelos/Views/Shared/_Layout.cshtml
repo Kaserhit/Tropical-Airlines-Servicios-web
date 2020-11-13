@@ -76,14 +76,28 @@
                             Opciones
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="@Url.Action("Index","Help")">API  »</a>
                             <a class="dropdown-item" href="@Url.Action("Actualizarcontrasena","SeguridadCRUD")">Cambiar Contraseña »</a>
                             <a class="dropdown-item" href="@Url.Action("Login","SeguridadCRUD")">Cerrar Sesion »</a>
                         </div>
                     </div>
                 </li>
-            </ul>
+
+                <right>
+                    <li class="nav-item">
+                        <div class="container">
+                            <button class="btn text-white disabled" type="button" id="User" ia-haspopup="true" aria-expanded="false">
+                                Bienvenido Usuario
+                            </button>
+                        </div>
+                    </li>
+                    </right>
+
+</ul>
         </div>
     </nav>
+
+
 
 
     <div class="view intro-2" style="">

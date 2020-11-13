@@ -12,16 +12,31 @@ namespace ProyectoV_Vuelos.Controllers
 {
     public class SeguridadCRUDController : Controller
     {
-        public static string test;
+        public static int ID = 0;
 
         public ActionResult Index()
         {
+            SeguridadModel seguridad = new SeguridadModel();
             Errores Error = new Errores();
 
             try
             {
                 if (BuscarUsuarios() != null)
                 {
+                    //seguridad.allUsers = BuscarUsuarios();
+
+                    //seguridad.Admin = (seguridad.Admin == null) ? seguridad.Administrador : false;
+
+                    //seguridad.Seg = (seguridad.Seg == null) ? seguridad.Seguridad : false;
+
+                    //seguridad.Consec = (seguridad.Consec == null) ? seguridad.Consecutivo : false;
+
+                    //seguridad.Mant = (seguridad.Mant == null) ? seguridad.Mantenimiento : false;
+
+                    //seguridad.Consult = (seguridad.Consult == null) ? seguridad.Consulta : false;
+
+                    //seguridad.Client = (seguridad.Client == null) ? seguridad.Cliente : false;
+
                     return View(BuscarUsuarios());
                 }
                 else
@@ -35,6 +50,40 @@ namespace ProyectoV_Vuelos.Controllers
                 throw;
             }
         }
+
+        //public ActionResult IndexOld()
+        //{
+        //    SeguridadModel seguridad = new SeguridadModel();
+        //    Errores Error = new Errores();
+        //    SeguridadModel Seguridad = new SeguridadModel();
+
+        //    try
+        //    {
+        //        if (BuscarUsuarios() != null)
+        //        {
+        //            seguridad.allUsers = BuscarUsuarios();
+        //            return View(seguridad);
+        //        }
+        //        else
+        //        {
+        //            throw new Exception();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Error.GenerarError(DateTime.Now, "Error al mostrar el Index en la Tabla Seguridad: " + ex);
+        //        throw;
+        //    }
+        //}
+
+        //public ActionResult GetID(int id)
+        //{
+        //    ID = id;
+
+        //    //var datos = BuscarUsuarios().Where(x => x.USRID == id).Select(x => x).ToList();
+        //    //return View("~/Views/SeguridadCRUD/IndexOld.cshtml", datos);
+        //    return RedirectToAction("Index");
+        //}
 
         public List<SeguridadModel> BuscarUsuarios()
         {
@@ -53,12 +102,12 @@ namespace ProyectoV_Vuelos.Controllers
                     Primer_Apellido = e.Field<string>("Primer_Apellido"),
                     Segundo_Apellido = e.Field<string>("Segundo_Apellido"),
                     Correo = e.Field<string>("Correo"),
-                    Administrador = e.Field<int>("Administrador"),
-                    Seguridad = e.Field<int>("Seguridad"),
-                    Consecutivo = e.Field<int>("Consecutivo"),
-                    Mantenimiento = e.Field<int>("Mantenimiento"),
-                    Consulta = e.Field<int>("Consulta"),
-                    Cliente = e.Field<int>("Cliente"),
+                    Administrador = e.Field<bool>("Administrador"),
+                    Seguridad = e.Field<bool>("Seguridad"),
+                    Consecutivo = e.Field<bool>("Consecutivo"),
+                    Mantenimiento = e.Field<bool>("Mantenimiento"),
+                    Consulta = e.Field<bool>("Consulta"),
+                    Cliente = e.Field<bool>("Cliente"),
 
                 }).ToList();
 
@@ -94,13 +143,13 @@ namespace ProyectoV_Vuelos.Controllers
 
                 if (a.Contrasena == a.newcontrasena2)
                 {
-                    CSV.Generar(a.Usuario, a.Contrasena, a.Nombre, a.Primer_Apellido, a.Segundo_Apellido, a.Pregunta, a.Respuesta, a.Correo, 0, 0, 0, 0, 0, 0);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 1, 0);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 2, 0);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 3, 0);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 4, 0);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 5, 0);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 6, 0);
+                    CSV.Generar(a.Usuario, a.Contrasena, a.Nombre, a.Primer_Apellido, a.Segundo_Apellido, a.Pregunta, a.Respuesta, a.Correo, false, false, false, false, false, false);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 1, false);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 2, false);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 3, false);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 4, false);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 5, false);
+                    Roles.Generar_Rol_Usuarios(a.USRID, 6, false);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -119,42 +168,37 @@ namespace ProyectoV_Vuelos.Controllers
 
         }
 
-        public ActionResult Test(int id)
+        public ActionResult ActualizarRol(int id)
         {
             Errores Error = new Errores();
-
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+            SeguridadModel Seguridad = new SeguridadModel();
 
             try
             {
-                test = id.ToString();
-                return RedirectToAction("Index");
+                if (BuscarUsuarios().Where(e => e.USRID == id).First() != null)
+                {
+                    ID = id;
+                    return View(BuscarUsuarios().Where(e => e.USRID == id).First());
+                }
+                else
+                {
+                    throw new Exception();
+                }
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Error al Generar el Usuario", ex);
-                Error.GenerarError(DateTime.Now, "Error al generar el rol a un usuario en la Tabla Seguridad: " + ex);
-                return View();
+                Error.GenerarError(DateTime.Now, "Error al mostrar la vista para actualizar el rol en la Tabla Seguridad: " + ex);
+                throw;
             }
         }
 
-        public ActionResult ActualizarRol(FormCollection item)
+        [HttpPost]
+        public ActionResult ActualizarRol(string Administrador, string Seguridad, string Consecutivo, string Mantenimiento, string Consulta, string Cliente)
         {
             Seguridad CSV = new Seguridad();
             Rol_Usuarios Rol = new Rol_Usuarios();
             Errores Error = new Errores();
 
-            string userid = test;
-            string administrador = item["Administrador"];
-            string seguridad = item["Seguridad"];
-            string consecutivo = item["Consecutivo"];
-            string mantenimiento = item["Mantenimiento"];
-            string consultas = item["Consultas"];
-            string cliente = item["Cliente"];
-
             if (!ModelState.IsValid)
             {
                 return View();
@@ -162,25 +206,38 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                if (administrador == "false")
-                {
-                    CSV.SP_Actualiza_Rol_Administrador(Convert.ToInt32(userid), 0);
-                    Rol.SP_Actualiza_Estado_Administrador(Convert.ToInt32(userid), 1, 0);
-                }
-                else
-                {
-                    CSV.SP_Actualiza_Rol_Administrador(Convert.ToInt32(userid), 1);
-                    Rol.SP_Actualiza_Estado_Administrador(Convert.ToInt32(userid), 1, 1);
-                }
+                bool admin = (Administrador == "true") ? true : false;
+                CSV.SP_Actualiza_Rol_Administrador(ID, admin);
+                Rol.SP_Actualiza_Estado_Administrador(ID, 1, admin);
+
+                bool seg = (Seguridad == "true") ? true : false;
+                CSV.SP_Actualiza_Rol_Seguridad(ID, seg);
+                Rol.SP_Actualiza_Estado_Seguridad(ID, 2, seg);
+
+                bool consec = (Consecutivo == "true") ? true : false;
+                CSV.SP_Actualiza_Rol_Consecutivo(ID, consec);
+                Rol.SP_Actualiza_Estado_Consecutivo(ID, 3, consec);
+
+                bool mant = (Mantenimiento == "true") ? true : false;
+                CSV.SP_Actualiza_Rol_Mantenimiento(ID, mant);
+                Rol.SP_Actualiza_Estado_Mantenimiento(ID, 4, mant);
+
+                bool consult = (Consulta == "true") ? true : false;
+                CSV.SP_Actualiza_Rol_Consulta(ID, consult);
+                Rol.SP_Actualiza_Estado_Consultas(ID, 5, consult);
+
+                bool client = (Cliente == "true") ? true : false;
+                CSV.SP_Actualiza_Rol_Cliente(ID, client);
+                Rol.SP_Actualiza_Estado_Clientes(ID, 6, client);
+
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Error al actualizar el Usuario", ex);
-                Error.GenerarError(DateTime.Now, "Error al actualizar el rol en la Tabla Seguridad: " + ex);
+                ModelState.AddModelError("Error al actualizar el Rol", ex);
+                Error.GenerarError(DateTime.Now, "Error al actualizar un rol en la Tabla Seguridad: " + ex);
                 return View();
             }
-
         }
 
         public ActionResult Login()
@@ -210,14 +267,14 @@ namespace ProyectoV_Vuelos.Controllers
                     return RedirectToAction("Login", "SeguridadCRUD");
 
                 }
-              
+
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("Inicio de Sesion Incorrecto", ex);
                 Error.GenerarError(DateTime.Now, "Error al iniciar sesión en el login en la Tabla Seguridad: " + ex);
                 throw;
-                
+
             }
 
         }

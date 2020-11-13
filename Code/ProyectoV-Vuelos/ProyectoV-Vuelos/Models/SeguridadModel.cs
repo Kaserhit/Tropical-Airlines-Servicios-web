@@ -14,9 +14,6 @@ namespace ProyectoV_Vuelos.Models
         public int USRID { get; set; }
 
         [DataMember]
-        public int ID_Rol { get; set; }
-
-        [DataMember]
         public string Usuario { get; set; }
 
         [DataMember]
@@ -41,24 +38,27 @@ namespace ProyectoV_Vuelos.Models
         public string Correo { get; set; }
 
         [DataMember]
-        public int Administrador { get; set; }
+        public bool? Administrador { get; set; }
 
         [DataMember]
-        public int Seguridad { get; set; }
+        public bool? Seguridad { get; set; }
 
         [DataMember]
-        public int Consecutivo { get; set; }
+        public bool? Consecutivo { get; set; }
 
         [DataMember]
-        public int Mantenimiento { get; set; }
+        public bool? Mantenimiento { get; set; }
 
         [DataMember]
-        public int Consulta { get; set; }
+        public bool? Consulta { get; set; }
 
         [DataMember]
-        public int Cliente { get; set; }
+        public bool? Cliente { get; set; }
 
         //Variables Internas
+
+        [DataMember]
+        public List<SeguridadModel> allUsers { get; set; }
 
         [DataMember]
         public string newcontrasena { get; set; }
@@ -70,11 +70,10 @@ namespace ProyectoV_Vuelos.Models
 
         #region Constructores
 
-        public SeguridadModel(int USRID, int ID_Rol, string Usuario, string Contrasena, string Nombre, string Primer_Apellido, string Segundo_Apellido, string Correo,
-            int Administrador, int Seguridad, int Consecutivo, int Mantenimiento, int Consulta, int Cliente)
+        public SeguridadModel(int USRID, string Usuario, string Contrasena, string Nombre, string Primer_Apellido, string Segundo_Apellido, string Correo,
+            bool Administrador, bool Seguridad, bool Consecutivo, bool Mantenimiento, bool Consulta, bool Cliente)
         {
             this.USRID = USRID;
-            this.ID_Rol = ID_Rol;
             this.Usuario = Usuario;
             this.Contrasena = Contrasena;
             this.Nombre = Nombre;

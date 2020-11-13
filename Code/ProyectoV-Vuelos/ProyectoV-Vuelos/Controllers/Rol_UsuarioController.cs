@@ -23,7 +23,7 @@ namespace ProyectoV_Vuelos.Controllers
                 {
                     USRID = e.Field<int>("USRID"),
                     ROLID = e.Field<int>("ROLID"),
-                    Estado = e.Field<int>("Estado"),
+                    Estado = e.Field<bool>("Estado"),
 
                 }).ToList();
 

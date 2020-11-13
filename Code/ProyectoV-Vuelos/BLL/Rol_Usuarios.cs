@@ -17,7 +17,7 @@ namespace BLL
 
         public int ROLID { get; set; }
 
-        public int Estado { get; set; }
+        public bool Estado { get; set; }
 
         #endregion
 
@@ -64,7 +64,7 @@ namespace BLL
             }
         }
 
-        public DataSet Generar_Rol_Usuarios(int USRID, int ROLID, int Estado)
+        public DataSet Generar_Rol_Usuarios(int USRID, int ROLID, bool Estado)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -91,7 +91,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Estado_Administrador(int USRID, int ROLID, int Estado)
+        public DataSet SP_Actualiza_Estado_Administrador(int USRID, int ROLID, bool Estado)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -119,7 +119,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Estado_Seguridad(int USRID, int ROLID, int Estado)
+        public DataSet SP_Actualiza_Estado_Seguridad(int USRID, int ROLID, bool Estado)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -147,7 +147,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Estado_Consecutivo(int USRID, int ROLID, int Estado)
+        public DataSet SP_Actualiza_Estado_Consecutivo(int USRID, int ROLID, bool Estado)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -175,7 +175,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Estado_Mantenimiento(int USRID, int ROLID, int Estado)
+        public DataSet SP_Actualiza_Estado_Mantenimiento(int USRID, int ROLID, bool Estado)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -203,7 +203,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Estado_Consultas(int USRID, int ROLID, int Estado)
+        public DataSet SP_Actualiza_Estado_Consultas(int USRID, int ROLID, bool Estado)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -231,7 +231,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Estado_Clientes(int USRID, int ROLID, int Estado)
+        public DataSet SP_Actualiza_Estado_Clientes(int USRID, int ROLID, bool Estado)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);

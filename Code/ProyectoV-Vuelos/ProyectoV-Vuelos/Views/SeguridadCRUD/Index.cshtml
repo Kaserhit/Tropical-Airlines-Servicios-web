@@ -1,98 +1,106 @@
-﻿
-@model IEnumerable<ProyectoV_Vuelos.Models.SeguridadModel>
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.SeguridadModel>
+@@model ProyectoV_Vuelos.Models.SeguridadModel@
 
-@{
-    ViewBag.Title = "Tropical Airlines";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h2>Ver Usuarios</h2>
-
+<h2>Index</h2>
 
 <table class="table">
     <tr>
         <th>
-            Lista de Usuarios
+            @Html.DisplayNameFor(model => model.Usuario)
         </th>
-
         <th>
-            Lista de Roles
+            @Html.DisplayNameFor(model => model.Administrador)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.Seguridad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consecutivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mantenimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consulta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </th>
+        <th></th>
     </tr>
 
-    <tr>
-        @using (Html.BeginForm("Test", "SeguridadCRUD", FormMethod.Post))
+    @foreach (var item in Model)
+    {
+        //string user = item.Usuario;
+<tr>
+    <td>
+        @@Html.ActionLink(user, "GetID", new { id = item.USRID }, null)@
+        @Html.DisplayFor(modelItem => item.Usuario)
+    </td>
+    <td>
+        @if (item.Administrador == true)
         {
-            foreach (var item in Model)
-            {
-            <tr>
-                <td>
-                    <a class="btn-dark" value="Seleccionar" id="Seleccionar">@Html.ActionLink("user", "Test", new { id = item.USRID }, null)</a>
-                </td>
-            </tr>
-        }
-    }
-
-        @using (Html.BeginForm("ActualizarRol", "SeguridadCRUD", FormMethod.Post))
+@Html.CheckBox("Administrador", true) }
+                else
+                {
+@Html.CheckBox("Administrador", false)}
+    </td>
+    <td>
+        @if (item.Seguridad == true)
         {
-            <table class="table">
-                <tr>
-                    <th>
+@Html.CheckBox("Seguridad", true) }
+                else
+                {
+@Html.CheckBox("Seguridad", false)}
+    </td>
+    <td>
+        @if (item.Consecutivo == true)
+        {
+@Html.CheckBox("Consecutivo", true) }
+                else
+                {
+@Html.CheckBox("Consecutivo", false)}
+    </td>
+    <td>
+        @if (item.Mantenimiento == true)
+        {
+@Html.CheckBox("Mantenimiento", true) }
+                else
+                {
+@Html.CheckBox("Mantenimiento", false)}
+    </td>
+    <td>
+        @if (item.Consulta == true)
+        {
+@Html.CheckBox("Consulta", true) }
+                else
+                {
+@Html.CheckBox("Consulta", false)}
+    </td>
+    <td>
+        @if (item.Cliente == true)
+        {
+@Html.CheckBox("Cliente", true) }
+                else
+                {
+@Html.CheckBox("Cliente", false)}
+    </td>
+    <td>
+        @Html.ActionLink("Actualizar Roles", "ActualizarRol", new { id = item.USRID }, null)
+        @<button type="submit" class="btn btn-dark mb-3">Actualizar Roles</button>@
+    </td>
+</tr>}
 
-                        <h5>Administrador</h5>
-                        @Html.CheckBox("Administrador", false)
 
-                    </th>
-                    <th>
+</table>
 
-                        <h5>Seguridad</h5>
-                        @Html.CheckBox("Seguridad", false)
-                    </th>
-                    <th>
-                        <h5>Consecutivo</h5>
-                        @Html.CheckBox("Consecutivo", false)
-                    </th>
-                </tr>
+<br />
 
-                <tr>
-                    <th>
-                        <h5>Mantenimiento</h5>
-                        @Html.CheckBox("Mantenimiento", false)
-                    </th>
-                    <th>
-                        <h5>Consultas</h5>
-                        @Html.CheckBox("Consultas", false)
-                    </th>
-                    <th>
-                        <h5>Cliente</h5>
-                        @Html.CheckBox("Cliente", false)
-                    </th>
-                </tr>
-            </table>
+<center>
 
+    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
 
-            <button type="submit" class="btn btn-dark mb-3">Actualizar Roles</button>
-        }
-
-        <center>
-            <a class="btn btn-default" @Html.ActionLink("Actualizar Roles", "Detalles", new { area = "" }, null) </a>
-            <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
-
-        </center>
-
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-
-            <script type="text/javascript">
-
-                $('button#Seleccionar').click(function () {
-                    var text = $(this).html()
-
-                    alert(text)
-
-                    Usuario.value = text;
-                })
-
-            </script>
-        }
+</center>

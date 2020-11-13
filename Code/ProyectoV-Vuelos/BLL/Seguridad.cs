@@ -31,17 +31,17 @@ namespace BLL
 
         public string Correo { get; set; }
 
-        public int Administrador { get; set; }
+        public bool Administrador { get; set; }
 
-        public int Rol_Seguridad { get; set; }
+        public bool Rol_Seguridad { get; set; }
 
-        public int Consecutivo { get; set; }
+        public bool Consecutivo { get; set; }
 
-        public int Mantenimiento { get; set; }
+        public bool Mantenimiento { get; set; }
 
-        public int Consulta { get; set; }
+        public bool Consulta { get; set; }
 
-        public int Cliente { get; set; }
+        public bool Cliente { get; set; }
 
         #endregion
 
@@ -88,7 +88,7 @@ namespace BLL
         }
 
         public DataSet Generar(string Usuario, string Contrasena, string Nombre, string Primer_Apellido, string Segundo_Apellido, string Pregunta, string Respuesta, string Correo,
-            int Administrador, int Rol_Seguridad, int Consecutivo, int Mantenimiento, int Consulta, int Cliente)
+            bool Administrador, bool Rol_Seguridad, bool Consecutivo, bool Mantenimiento, bool Consulta, bool Cliente)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -197,7 +197,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Rol_Administrador(int USRID, int Administrador)
+        public DataSet SP_Actualiza_Rol_Administrador(int USRID, bool Administrador)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -224,7 +224,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Rol_Seguridad(int USRID, int Seguridad)
+        public DataSet SP_Actualiza_Rol_Seguridad(int USRID, bool Seguridad)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -251,7 +251,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Rol_Consecutivo(int USRID, int Consecutivo)
+        public DataSet SP_Actualiza_Rol_Consecutivo(int USRID, bool Consecutivo)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -278,7 +278,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Rol_Mantenimiento(int USRID, int Mantenimiento)
+        public DataSet SP_Actualiza_Rol_Mantenimiento(int USRID, bool Mantenimiento)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -305,7 +305,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Rol_Consulta(int USRID, int Consulta)
+        public DataSet SP_Actualiza_Rol_Consulta(int USRID, bool Consulta)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -332,7 +332,7 @@ namespace BLL
             }
         }
 
-        public DataSet SP_Actualiza_Rol_Cliente(int USRID, int Cliente)
+        public DataSet SP_Actualiza_Rol_Cliente(int USRID, bool Cliente)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
