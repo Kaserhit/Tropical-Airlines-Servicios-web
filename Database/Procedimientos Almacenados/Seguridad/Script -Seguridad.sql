@@ -21,12 +21,12 @@ CREATE PROCEDURE SP_Inserta_Usuario
   @Pregunta nvarchar(150),
   @Respuesta nvarchar(150),
   @Correo nvarchar(150),
-  @Administrador int,
-  @Seguridad int,
-  @Consecutivo int,
-  @Mantenimiento int,
-  @Consulta int,
-  @Cliente int)
+  @Administrador bit,
+  @Seguridad bit,
+  @Consecutivo bit,
+  @Mantenimiento bit,
+  @Consulta bit,
+  @Cliente bit)
 
  AS
 
@@ -78,11 +78,13 @@ return @return;
 
 End
 
+Go
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Rol_Administrador(@USRID int, @Administrador int)  
+CREATE PROCEDURE SP_Actualiza_Rol_Administrador(@USRID int, @Administrador bit)  
 
 AS  
 
@@ -97,7 +99,7 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Rol_Seguridad(@USRID int, @Seguridad int)  
+CREATE PROCEDURE SP_Actualiza_Rol_Seguridad(@USRID int, @Seguridad bit)  
 
 AS  
 
@@ -112,7 +114,7 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Rol_Consecutivo(@USRID int, @Consecutivo int)  
+CREATE PROCEDURE SP_Actualiza_Rol_Consecutivo(@USRID int, @Consecutivo bit)  
 
 AS  
 
@@ -127,7 +129,7 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Rol_Mantenimiento(@USRID int, @Mantenimiento int)  
+CREATE PROCEDURE SP_Actualiza_Rol_Mantenimiento(@USRID int, @Mantenimiento bit)  
 
 AS  
 
@@ -142,7 +144,7 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Rol_Consulta(@USRID int, @Consulta int)  
+CREATE PROCEDURE SP_Actualiza_Rol_Consulta(@USRID int, @Consulta bit)  
 
 AS  
 
@@ -157,7 +159,7 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Rol_Cliente(@USRID int, @Cliente int)  
+CREATE PROCEDURE SP_Actualiza_Rol_Cliente(@USRID int, @Cliente bit)  
 
 AS  
 

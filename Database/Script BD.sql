@@ -68,12 +68,12 @@ CREATE TABLE [dbo].[Usuario](
 	[Pregunta] [NVARCHAR] (150) NOT NULL,
     [Respuesta] [NVARCHAR] (150) NOT NULL,
 	[Correo] [NVARCHAR] (150) NOT NULL,
-	[Administrador][INT],
-	[Seguridad][INT],
-	[Consecutivo][INT],
-	[Mantenimiento][INT],
-	[Consulta][INT],
-	[Cliente][INT]
+	[Administrador][bit],
+	[Seguridad][bit],
+	[Consecutivo][bit],
+	[Mantenimiento][bit],
+	[Consulta][bit],
+	[Cliente][bit]
 
 	CONSTRAINT [PK_USER_USRID] PRIMARY KEY([USRID])
 )
@@ -86,7 +86,7 @@ CREATE TABLE [dbo].[Rol_Usuario](
 
 	[USRID] [INT] NOT NULL,
 	[ROLID] [INT] NOT NULL,
-	[Estado] [INT]
+	[Estado] [bit]
 
 	CONSTRAINT [PK_ROL_USER_ID] PRIMARY KEY([USRID],[ROLID])
 	CONSTRAINT [FK1_ROL_USER_USER] FOREIGN KEY ([USRID]) REFERENCES Usuario([USRID]),

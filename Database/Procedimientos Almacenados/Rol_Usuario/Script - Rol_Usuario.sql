@@ -14,17 +14,18 @@ GO
 CREATE PROCEDURE SP_Inserta_Rol_Usuarios
 ( @USRID int,
   @ROLID int,
-  @Estado int)
+  @Estado bit)
 
 AS
 
 INSERT INTO dbo.Rol_Usuario(USRID, ROLID, Estado) VALUES(@USRID, @ROLID,@Estado)
+Go
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Estado_Administrador(@USRID int, @ROLID int, @Estado int)  
+CREATE PROCEDURE SP_Actualiza_Estado_Administrador(@USRID int, @ROLID int, @Estado bit)  
 
 AS  
 
@@ -39,7 +40,7 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Estado_Seguridad(@USRID int, @ROLID int, @Estado int)  
+CREATE PROCEDURE SP_Actualiza_Estado_Seguridad(@USRID int, @ROLID int, @Estado bit)  
 
 AS  
 
@@ -54,7 +55,7 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Estado_Consecutivo(@USRID int, @ROLID int, @Estado int)  
+CREATE PROCEDURE SP_Actualiza_Estado_Consecutivo(@USRID int, @ROLID int, @Estado bit)  
 
 AS  
 
@@ -69,7 +70,7 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Estado_Mantenimiento(@USRID int, @ROLID int, @Estado int)  
+CREATE PROCEDURE SP_Actualiza_Estado_Mantenimiento(@USRID int, @ROLID int, @Estado bit)  
 
 AS  
 
@@ -84,7 +85,7 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Estado_Consultas(@USRID int, @ROLID int, @Estado int)  
+CREATE PROCEDURE SP_Actualiza_Estado_Consultas(@USRID int, @ROLID int, @Estado bit)  
 
 AS  
 
@@ -99,13 +100,11 @@ Go
 
 Use WebDB
 Go
-CREATE PROCEDURE SP_Actualiza_Estado_Clientes(@USRID int, @ROLID int, @Estado int)  
+CREATE PROCEDURE SP_Actualiza_Estado_Clientes(@USRID int, @ROLID int, @Estado bit)  
 
 AS  
 
 update dbo.Rol_Usuario set Estado = @Estado
 where USRID = @USRID AND ROLID = @ROLID;  
 if @@rowcount <> 1   
-raiserror('ID Usuario Invalido',16,1) 
-
-Go
+raiserror('ID Usuario Invalido',16,1)
