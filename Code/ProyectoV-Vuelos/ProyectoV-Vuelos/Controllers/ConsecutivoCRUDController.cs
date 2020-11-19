@@ -64,6 +64,25 @@ namespace ProyectoV_Vuelos.Controllers
             }
         }
 
+        public string BuscarConsecutivoCSVID()
+        {
+            Errores Error = new Errores();
+
+            try
+            {
+                Consecutivos Consecutivos = new Consecutivos();
+                string CSVID = Consecutivos.SP_Solicitar_CSVID_Consecutivos().Tables[0].Rows[0]["CSVID"].ToString();
+
+                return CSVID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Valor Null detectado");
+                Error.GenerarError(DateTime.Now, "Error al buscar el CSVID en la Tabla Consecutivo: " + ex);
+                throw;
+            }
+        }
+
         public ActionResult Generar()
         {
             return View();
@@ -93,10 +112,10 @@ namespace ProyectoV_Vuelos.Controllers
                 {
                     return View("");
                 }
-
+                
                 CSV.GenerarConsecutivo(a.Descripcion, a.Consecutivo, a.Prefijo, a.RangoInicial, a.RangoFinal);
-                BTC.GenerarBitacora(a.CSVID, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Consecutivo",
-                "", "", "", "", 0, "", a.CSVID, a.Descripcion, a.Consecutivo);
+                BTC.GenerarBitacora(Convert.ToInt32(BuscarConsecutivoCSVID()), 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Consecutivo",
+                "", "", "", "", 0, "", Convert.ToInt32(BuscarConsecutivoCSVID()), a.Descripcion, a.Consecutivo);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

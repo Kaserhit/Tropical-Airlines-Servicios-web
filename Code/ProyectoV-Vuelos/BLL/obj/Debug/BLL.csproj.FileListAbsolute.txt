@@ -51,3 +51,12 @@ C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debu
 C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.dll
 C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.pdb
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\bin\Debug\BLL.dll
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\bin\Debug\BLL.pdb
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\bin\Debug\DAL.dll
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\bin\Debug\DAL.pdb
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.dll
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.pdb

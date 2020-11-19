@@ -144,12 +144,12 @@ namespace ProyectoV_Vuelos.Controllers
                 if (a.Contrasena == a.newcontrasena2)
                 {
                     CSV.Generar(a.Usuario, a.Contrasena, a.Nombre, a.Primer_Apellido, a.Segundo_Apellido, a.Pregunta, a.Respuesta, a.Correo, false, false, false, false, false, false);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 1, false);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 2, false);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 3, false);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 4, false);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 5, false);
-                    Roles.Generar_Rol_Usuarios(a.USRID, 6, false);
+                    //Roles.Generar_Rol_Usuarios(a.USRID, 1, false);
+                    //Roles.Generar_Rol_Usuarios(a.USRID, 2, false);
+                    //Roles.Generar_Rol_Usuarios(a.USRID, 3, false);
+                    //Roles.Generar_Rol_Usuarios(a.USRID, 4, false);
+                    //Roles.Generar_Rol_Usuarios(a.USRID, 5, false);
+                    //Roles.Generar_Rol_Usuarios(a.USRID, 6, false);
 
                     return RedirectToAction("Index", "Home");
                 }

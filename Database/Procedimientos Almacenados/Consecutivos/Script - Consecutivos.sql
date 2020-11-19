@@ -12,6 +12,18 @@ Go
 
 USE WebDB
 Go
+CREATE PROCEDURE SP_Solicitar_CSVID_Consecutivos
+
+AS
+
+SELECT TOP 1 CSVID FROM dbo.Consecutivo ORDER BY CSVID DESC
+
+Go
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+USE WebDB
+Go
 CREATE PROCEDURE SP_Inserta_Consecutivo
 ( @Descripcion nvarchar(150),
   @Consecutivo nvarchar(150),

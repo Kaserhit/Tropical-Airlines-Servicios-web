@@ -68,12 +68,12 @@ CREATE TABLE [dbo].[Usuario](
 	[Pregunta] [NVARCHAR] (150) NOT NULL,
     [Respuesta] [NVARCHAR] (150) NOT NULL,
 	[Correo] [NVARCHAR] (150) NOT NULL,
-	[Administrador][bit],
-	[Seguridad][bit],
-	[Consecutivo][bit],
-	[Mantenimiento][bit],
-	[Consulta][bit],
-	[Cliente][bit]
+	[Administrador][INT],
+	[Seguridad][INT],
+	[Consecutivo][INT],
+	[Mantenimiento][INT],
+	[Consulta][INT],
+	[Cliente][INT]
 
 	CONSTRAINT [PK_USER_USRID] PRIMARY KEY([USRID])
 )
@@ -86,7 +86,7 @@ CREATE TABLE [dbo].[Rol_Usuario](
 
 	[USRID] [INT] NOT NULL,
 	[ROLID] [INT] NOT NULL,
-	[Estado] [bit]
+	[Estado] [INT]
 
 	CONSTRAINT [PK_ROL_USER_ID] PRIMARY KEY([USRID],[ROLID])
 	CONSTRAINT [FK1_ROL_USER_USER] FOREIGN KEY ([USRID]) REFERENCES Usuario([USRID]),
@@ -163,9 +163,7 @@ CREATE TABLE [dbo].[Bitacora](
 
 
 	CONSTRAINT [PK_BITAC_BTCID] PRIMARY KEY([BTCID]),
-	CONSTRAINT [FK1_BITAC_USER] FOREIGN KEY ([Usuario_Bitac]) REFERENCES Usuario([USRID]),
-	CONSTRAINT [FK2_BITAC_CONSEC] FOREIGN KEY ([Consec_Bitacora]) REFERENCES Consecutivo([CSVID])
-	
+	CONSTRAINT [FK_BITAC_USER] FOREIGN KEY ([Usuario_Bitac]) REFERENCES Usuario([USRID])	
 )
 GO
 

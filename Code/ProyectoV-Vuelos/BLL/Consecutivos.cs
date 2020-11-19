@@ -28,11 +28,13 @@ namespace BLL
         #endregion
 
         #region Variables Privadas
+
         SqlConnection conexion;
         string mensaje_error;
         int numero_error;
         string sql;
         DataSet ds;
+
         #endregion
 
         #region Metodos
@@ -65,6 +67,39 @@ namespace BLL
             catch (Exception ex) 
             {
                 Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Info_Consecutivos en la Tabla Consecutivo: " + ex);
+                throw;
+            }
+        }
+
+        public DataSet SP_Solicitar_CSVID_Consecutivos()
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                if (conexion == null)
+                {
+                    Error.GenerarError(DateTime.Now, "Error con la conexión con la base de datos");
+                    return null;
+                }
+                else
+                {
+                    sql = "dbo.SP_Solicitar_CSVID_Consecutivos";
+                    ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                    if (numero_error != 0)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        return ds;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_CSVID_Consecutivos en la Tabla Consecutivo: " + ex);
                 throw;
             }
         }

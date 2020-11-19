@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<ProyectoV_Vuelos.Models.SeguridadModel>
-@@model ProyectoV_Vuelos.Models.SeguridadModel@
+@*@@model ProyectoV_Vuelos.Models.SeguridadModel@*@
 
 @{ ViewBag.Title = "Index";
                 Layout = "~/Views/Shared/_Layout.cshtml"; }
@@ -37,7 +37,7 @@
         //string user = item.Usuario;
 <tr>
     <td>
-        @@Html.ActionLink(user, "GetID", new { id = item.USRID }, null)@
+        @*@@Html.ActionLink(user, "GetID", new { id = item.USRID }, null)@*@
         @Html.DisplayFor(modelItem => item.Usuario)
     </td>
     <td>
@@ -90,7 +90,7 @@
     </td>
     <td>
         @Html.ActionLink("Actualizar Roles", "ActualizarRol", new { id = item.USRID }, null)
-        @<button type="submit" class="btn btn-dark mb-3">Actualizar Roles</button>@
+        @*@<button type="submit" class="btn btn-dark mb-3">Actualizar Roles</button>@*@
     </td>
 </tr>}
 
