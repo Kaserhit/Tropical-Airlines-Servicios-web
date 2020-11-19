@@ -33,4 +33,3 @@ C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debu
 C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.dll
 C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.pdb
-C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
