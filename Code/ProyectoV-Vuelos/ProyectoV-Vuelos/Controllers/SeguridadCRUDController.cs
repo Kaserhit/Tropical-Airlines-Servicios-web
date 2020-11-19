@@ -24,19 +24,6 @@ namespace ProyectoV_Vuelos.Controllers
             {
                 if (BuscarUsuarios() != null)
                 {
-                    //seguridad.allUsers = BuscarUsuarios();
-
-                    //seguridad.Admin = (seguridad.Admin == null) ? seguridad.Administrador : false;
-
-                    //seguridad.Seg = (seguridad.Seg == null) ? seguridad.Seguridad : false;
-
-                    //seguridad.Consec = (seguridad.Consec == null) ? seguridad.Consecutivo : false;
-
-                    //seguridad.Mant = (seguridad.Mant == null) ? seguridad.Mantenimiento : false;
-
-                    //seguridad.Consult = (seguridad.Consult == null) ? seguridad.Consulta : false;
-
-                    //seguridad.Client = (seguridad.Client == null) ? seguridad.Cliente : false;
 
                     return View(BuscarUsuarios());
                 }
@@ -52,39 +39,6 @@ namespace ProyectoV_Vuelos.Controllers
             }
         }
 
-        //public ActionResult IndexOld()
-        //{
-        //    SeguridadModel seguridad = new SeguridadModel();
-        //    Errores Error = new Errores();
-        //    SeguridadModel Seguridad = new SeguridadModel();
-
-        //    try
-        //    {
-        //        if (BuscarUsuarios() != null)
-        //        {
-        //            seguridad.allUsers = BuscarUsuarios();
-        //            return View(seguridad);
-        //        }
-        //        else
-        //        {
-        //            throw new Exception();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Error.GenerarError(DateTime.Now, "Error al mostrar el Index en la Tabla Seguridad: " + ex);
-        //        throw;
-        //    }
-        //}
-
-        //public ActionResult GetID(int id)
-        //{
-        //    ID = id;
-
-        //    //var datos = BuscarUsuarios().Where(x => x.USRID == id).Select(x => x).ToList();
-        //    //return View("~/Views/SeguridadCRUD/IndexOld.cshtml", datos);
-        //    return RedirectToAction("Index");
-        //}
 
         public List<SeguridadModel> BuscarUsuarios()
         {
@@ -108,7 +62,7 @@ namespace ProyectoV_Vuelos.Controllers
                     Consecutivo = e.Field<bool>("Consecutivo"),
                     Mantenimiento = e.Field<bool>("Mantenimiento"),
                     Consulta = e.Field<bool>("Consulta"),
-                    Cliente = e.Field<bool>("Cliente"),
+                    Cliente = e.Field<bool>("Cliente")
 
                 }).ToList();
 
@@ -144,13 +98,7 @@ namespace ProyectoV_Vuelos.Controllers
 
                 if (a.Contrasena == a.newcontrasena2)
                 {
-                    CSV.Generar(a.Usuario, a.Contrasena, a.Nombre, a.Primer_Apellido, a.Segundo_Apellido, a.Pregunta, a.Respuesta, a.Correo, false, false, false, false, false, false);
-                    //Roles.Generar_Rol_Usuarios(a.USRID, 1, false);
-                    //Roles.Generar_Rol_Usuarios(a.USRID, 2, false);
-                    //Roles.Generar_Rol_Usuarios(a.USRID, 3, false);
-                    //Roles.Generar_Rol_Usuarios(a.USRID, 4, false);
-                    //Roles.Generar_Rol_Usuarios(a.USRID, 5, false);
-                    //Roles.Generar_Rol_Usuarios(a.USRID, 6, false);
+                    CSV.Generar(a.Usuario, a.Contrasena, a.Nombre, a.Primer_Apellido, a.Segundo_Apellido, a.Pregunta, a.Respuesta, a.Correo);
 
                     return RedirectToAction("Index", "Home");
                 }

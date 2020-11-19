@@ -1,10 +1,12 @@
 ﻿@model IEnumerable<ProyectoV_Vuelos.Models.SeguridadModel>
-@*@@model ProyectoV_Vuelos.Models.SeguridadModel@*@
 
 @{ ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h2>Index</h2>
+
+<center><h2>Roles</h2></center>
+<br></br>
+
 
 <table class="table">
     <tr>
@@ -34,65 +36,63 @@
 
     @foreach (var item in Model)
     {
-        //string user = item.Usuario;
-<tr>
-    <td>
-        @*@@Html.ActionLink(user, "GetID", new { id = item.USRID }, null)@*@
-        @Html.DisplayFor(modelItem => item.Usuario)
-    </td>
-    <td>
-        @if (item.Administrador == true)
-        {
-@Html.CheckBox("Administrador", true) }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @if (item.Administrador == true)
+                {
+                    @Html.CheckBox("Administrador", true) }
                 else
                 {
-@Html.CheckBox("Administrador", false)}
-    </td>
-    <td>
-        @if (item.Seguridad == true)
-        {
-@Html.CheckBox("Seguridad", true) }
+                    @Html.CheckBox("Administrador", false)}
+            </td>
+            <td>
+                @if (item.Seguridad == true)
+                {
+                    @Html.CheckBox("Seguridad", true) }
                 else
                 {
-@Html.CheckBox("Seguridad", false)}
-    </td>
-    <td>
-        @if (item.Consecutivo == true)
-        {
-@Html.CheckBox("Consecutivo", true) }
+                    @Html.CheckBox("Seguridad", false)}
+            </td>
+            <td>
+                @if (item.Consecutivo == true)
+                {
+                    @Html.CheckBox("Consecutivo", true) }
                 else
                 {
-@Html.CheckBox("Consecutivo", false)}
-    </td>
-    <td>
-        @if (item.Mantenimiento == true)
-        {
-@Html.CheckBox("Mantenimiento", true) }
+                    @Html.CheckBox("Consecutivo", false)}
+            </td>
+            <td>
+                @if (item.Mantenimiento == true)
+                {
+                    @Html.CheckBox("Mantenimiento", true) }
                 else
                 {
-@Html.CheckBox("Mantenimiento", false)}
-    </td>
-    <td>
-        @if (item.Consulta == true)
-        {
-@Html.CheckBox("Consulta", true) }
+                    @Html.CheckBox("Mantenimiento", false)}
+            </td>
+            <td>
+                @if (item.Consulta == true)
+                {
+                    @Html.CheckBox("Consulta", true) }
                 else
                 {
-@Html.CheckBox("Consulta", false)}
-    </td>
-    <td>
-        @if (item.Cliente == true)
-        {
-@Html.CheckBox("Cliente", true) }
+                    @Html.CheckBox("Consulta", false)}
+            </td>
+            <td>
+                @if (item.Cliente == true)
+                {
+                    @Html.CheckBox("Cliente", true) }
                 else
                 {
-@Html.CheckBox("Cliente", false)}
-    </td>
-    <td>
-        @Html.ActionLink("Actualizar Roles", "ActualizarRol", new { id = item.USRID }, null)
-        @*@<button type="submit" class="btn btn-dark mb-3">Actualizar Roles</button>@*@
-    </td>
-</tr>}
+                    @Html.CheckBox("Cliente", false)}
+            </td>
+            <td>
+                @Html.ActionLink("Actualizar Roles", "ActualizarRol", new { id = item.USRID }, null)
+            </td>
+        </tr>
+}
 
 
 </table>

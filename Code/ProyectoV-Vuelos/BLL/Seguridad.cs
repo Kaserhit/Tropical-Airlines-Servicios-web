@@ -87,8 +87,7 @@ namespace BLL
             }
         }
 
-        public DataSet Generar(string Usuario, string Contrasena, string Nombre, string Primer_Apellido, string Segundo_Apellido, string Pregunta, string Respuesta, string Correo,
-            bool Administrador, bool Rol_Seguridad, bool Consecutivo, bool Mantenimiento, bool Consulta, bool Cliente)
+        public DataSet Generar(string Usuario, string Contrasena, string Nombre, string Primer_Apellido, string Segundo_Apellido, string Pregunta, string Respuesta, string Correo)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -106,12 +105,12 @@ namespace BLL
                 cmd.Parameters.AddWithValue("@Pregunta", Pregunta);
                 cmd.Parameters.AddWithValue("@Respuesta", Respuesta);
                 cmd.Parameters.AddWithValue("@Correo", Correo);
-                cmd.Parameters.AddWithValue("@Administrador", Administrador);
-                cmd.Parameters.AddWithValue("@Rol_Seguridad", Rol_Seguridad);
-                cmd.Parameters.AddWithValue("@Consecutivo", Consecutivo);
-                cmd.Parameters.AddWithValue("@Mantenimiento", Mantenimiento);
-                cmd.Parameters.AddWithValue("@Consulta", Consulta);
-                cmd.Parameters.AddWithValue("@Cliente", Cliente);
+                cmd.Parameters.AddWithValue("@Administrador", 0);
+                cmd.Parameters.AddWithValue("@Seguridad", 0);
+                cmd.Parameters.AddWithValue("@Consecutivo", 0);
+                cmd.Parameters.AddWithValue("@Mantenimiento", 0);
+                cmd.Parameters.AddWithValue("@Consulta", 0);
+                cmd.Parameters.AddWithValue("@Cliente", 1);
                 cmd.ExecuteNonQuery();
                 return null; // success   
             }
