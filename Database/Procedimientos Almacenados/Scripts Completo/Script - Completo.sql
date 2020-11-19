@@ -447,6 +447,8 @@ raiserror('ID Usuario Invalido',16,1)
 
 GO
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 USE WebDB
 Go
 CREATE PROCEDURE SP_Solicitar_Info_Usuarios
@@ -454,6 +456,18 @@ CREATE PROCEDURE SP_Solicitar_Info_Usuarios
 AS
 
 SELECT * FROM dbo.Usuario
+
+Go
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+USE WebDB
+Go
+CREATE PROCEDURE SP_Solicitar_USRID_Usuarios
+
+AS
+
+SELECT TOP 1 USRID FROM dbo.Usuario ORDER BY USRID DESC
 
 Go
 

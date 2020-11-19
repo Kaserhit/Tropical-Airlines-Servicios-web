@@ -12,6 +12,18 @@ Go
 
 USE WebDB
 Go
+CREATE PROCEDURE SP_Solicitar_USRID_Usuarios
+
+AS
+
+SELECT TOP 1 USRID FROM dbo.Usuario ORDER BY USRID DESC
+
+Go
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+USE WebDB
+Go
 CREATE PROCEDURE SP_Inserta_Usuario
 ( @Usuario nvarchar(150),
   @Contrasena nvarchar(150),

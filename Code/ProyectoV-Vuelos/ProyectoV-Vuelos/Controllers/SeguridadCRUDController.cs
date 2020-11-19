@@ -13,7 +13,6 @@ namespace ProyectoV_Vuelos.Controllers
     public class SeguridadCRUDController : Controller
     {
         public static int ID = 0;
-        //Ah Caray!
 
         public ActionResult Index()
         {
@@ -76,6 +75,25 @@ namespace ProyectoV_Vuelos.Controllers
             }
         }
 
+        public string BuscarUsuariosUSRID()
+        {
+            Errores Error = new Errores();
+
+            try
+            {
+                Seguridad usuarios = new Seguridad();
+                string USRID = usuarios.SP_Solicitar_USRID_Usuarios().Tables[0].Rows[0]["USRID"].ToString();
+
+                return USRID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Valor Null detectado");
+                Error.GenerarError(DateTime.Now, "Error al buscar el USRID en la Tabla Usuarios: " + ex);
+                throw;
+            }
+        }
+
         public ActionResult Generar()
         {
             return View();
@@ -99,6 +117,12 @@ namespace ProyectoV_Vuelos.Controllers
                 if (a.Contrasena == a.newcontrasena2)
                 {
                     CSV.Generar(a.Usuario, a.Contrasena, a.Nombre, a.Primer_Apellido, a.Segundo_Apellido, a.Pregunta, a.Respuesta, a.Correo);
+                    Roles.Generar_Rol_Usuarios(Convert.ToInt32(BuscarUsuariosUSRID()), 1, false);
+                    Roles.Generar_Rol_Usuarios(Convert.ToInt32(BuscarUsuariosUSRID()), 2, false);
+                    Roles.Generar_Rol_Usuarios(Convert.ToInt32(BuscarUsuariosUSRID()), 3, false);
+                    Roles.Generar_Rol_Usuarios(Convert.ToInt32(BuscarUsuariosUSRID()), 4, false);
+                    Roles.Generar_Rol_Usuarios(Convert.ToInt32(BuscarUsuariosUSRID()), 5, false);
+                    Roles.Generar_Rol_Usuarios(Convert.ToInt32(BuscarUsuariosUSRID()), 6, true);
 
                     return RedirectToAction("Index", "Home");
                 }
