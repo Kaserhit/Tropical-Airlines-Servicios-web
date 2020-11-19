@@ -13,6 +13,7 @@ namespace ProyectoV_Vuelos.Controllers
     public class SeguridadCRUDController : Controller
     {
         public static int ID = 0;
+        //Ah Caray!
 
         public ActionResult Index()
         {
