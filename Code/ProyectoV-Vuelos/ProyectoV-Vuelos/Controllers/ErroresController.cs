@@ -19,9 +19,16 @@ namespace ProyectoV_Vuelos.Controllers
         }
 
         // GET: api/Errores/5
-        public ErrorModel Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return CRUD.BuscarErrores().Where(e => e.ERRID == id).First();
+            ErrorModel err = CRUD.BuscarErrores().Where(e => e.ERRID == id).First();
+
+            if (err == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(err);
         }
 
         // POST: api/Errores

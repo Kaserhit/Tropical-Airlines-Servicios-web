@@ -84,7 +84,5 @@ namespace ProyectoV_Vuelos.Controllers
         {
             return CRUD.BuscarAeropuertos().Count(e => e.APTID == id) > 0;
         }
-
-
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BLL;
 
 namespace ProyectoV_Vuelos.Controllers
 {
@@ -19,9 +20,16 @@ namespace ProyectoV_Vuelos.Controllers
         }
 
         // GET: api/Bitacoras/5
-        public BitacorasModel Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return CRUD.BuscarBitacoras().Where(e => e.BTCID == id).First();
+            BitacorasModel b = CRUD.BuscarBitacoras().Where(e => e.BTCID == id).First();
+
+            if (b == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(b);
         }
 
         // POST: api/Bitacoras

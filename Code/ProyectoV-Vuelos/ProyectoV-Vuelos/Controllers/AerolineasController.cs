@@ -81,7 +81,5 @@ namespace ProyectoV_Vuelos.Controllers
         {
             return CRUD.BuscarAerolineas().Count(e => e.ALNID == id) > 0;
         }
-
-
     }
 }

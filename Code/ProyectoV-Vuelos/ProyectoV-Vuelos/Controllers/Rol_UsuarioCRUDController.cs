@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace ProyectoV_Vuelos.Controllers
 {
-    public class Rol_UsuarioController : Controller
+    public class Rol_UsuarioCRUDController : Controller
     {
         public List<Rol_UsuariosModel> Buscar_Rol_Usuarios()
         {
