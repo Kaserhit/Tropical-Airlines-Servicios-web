@@ -1992,10 +1992,13 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\SeguridadCRUD\ActualizarRol.cshtml" />
+    <Content Include="Views\BitacoraCRUD\Detalle_Vuelo.cshtml" />
+    <Content Include="Views\VueloCRUD\Generar.cshtml" />
+    <Content Include="Views\VueloCRUD\Index.cshtml" />
+    <Content Include="Views\VueloCRUD\Actualizar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\VueloCRUD\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

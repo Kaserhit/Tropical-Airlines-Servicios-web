@@ -5,14 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <center>
-
-
         <div class="form-horizontal">
             <h3 class="text-center">Aerolineas</h3>
             <hr />
@@ -21,7 +17,7 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group">
-                <h5 class="text-center">Pais de Aereolinea</h5>
+                <h5 class="text-center">Pais de Aerolinea</h5>
 
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Aerol_Pais, new { htmlAttributes = new { @class = "form-control" } })
@@ -32,7 +28,7 @@
             <br />
 
             <div class="form-group">
-                <h5 class="text-center">Consecutivo de Aereolinea</h5>
+                <h5 class="text-center">Consecutivo de Aerolinea</h5>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Consec_Aerol, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Consec_Aerol, "", new { @class = "text-danger" })
@@ -86,7 +82,6 @@
         </div>
     </center>
 }
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

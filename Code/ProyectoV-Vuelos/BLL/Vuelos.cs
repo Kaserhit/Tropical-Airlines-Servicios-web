@@ -30,11 +30,9 @@ namespace BLL
 
         public DateTime Fecha { get; set; }
 
-        public string Estado_Dest { get; set; }
+        public string Estado { get; set; }
 
-        public string Estado_Proced { get; set; }
-
-        public decimal Monto { get; set; }
+        public double Monto { get; set; }
 
         #endregion
 
@@ -83,8 +81,40 @@ namespace BLL
             }
         }
 
+        public Vuelos SP_Solicitar_Consec_Vuelo(int VLOID)
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Solicitar_Consec_Vuelo", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@VLOID", VLOID);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    Vuelos vuelos = new Vuelos();
+                    vuelos.Consec_Vuelo = Convert.ToInt32(dr["consec_vuelo"]);
+                    return vuelos;
+                }
+                else
+                    throw new Exception();
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Consec_Vuelo en la Tabla Vuelo: " + ex);
+                throw;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
         public DataSet GenerarVuelo(int Consec_Vuelo, int Vuelo_Aerol, int Vuelo_Aerop, string CodVuelo, string Destino, string Procedencia,
-            DateTime Fecha, string Estado_Dest, string Estado_Proced, decimal Monto)
+            DateTime Fecha, string Estado, double Monto)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -101,8 +131,7 @@ namespace BLL
                 cmd.Parameters.AddWithValue("@Destino", Destino);
                 cmd.Parameters.AddWithValue("@Procedencia", Procedencia);
                 cmd.Parameters.AddWithValue("@Fecha", Fecha);
-                cmd.Parameters.AddWithValue("@Estado_Dest", Estado_Dest);
-                cmd.Parameters.AddWithValue("@Estado_Proced", Estado_Proced);
+                cmd.Parameters.AddWithValue("@Estado", Estado);
                 cmd.Parameters.AddWithValue("@Monto", Monto);
                 cmd.ExecuteNonQuery();
                 return null; // success   
@@ -119,7 +148,7 @@ namespace BLL
         }
 
         public DataSet ActualizarVuelo(int VLOID, int Consec_Vuelo, int Vuelo_Aerol, int Vuelo_Aerop, string CodVuelo, string Destino, string Procedencia,
-            DateTime Fecha, string Estado_Dest, string Estado_Proced, decimal Monto)
+            DateTime Fecha, string Estado, double Monto)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -137,8 +166,7 @@ namespace BLL
                 cmd.Parameters.AddWithValue("@Destino", Destino);
                 cmd.Parameters.AddWithValue("@Procedencia", Procedencia);
                 cmd.Parameters.AddWithValue("@Fecha", Fecha);
-                cmd.Parameters.AddWithValue("@Estado_Dest", Estado_Dest);
-                cmd.Parameters.AddWithValue("@Estado_Proced", Estado_Proced);
+                cmd.Parameters.AddWithValue("@Estado", Estado);
                 cmd.Parameters.AddWithValue("@Monto", Monto);
                 cmd.ExecuteNonQuery();
                 return null; // success   

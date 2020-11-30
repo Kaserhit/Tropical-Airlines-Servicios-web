@@ -52,9 +52,8 @@ namespace ProyectoV_Vuelos.Controllers
                     Destino = e.Field<string>("Destino"),
                     Procedencia = e.Field<string>("Procedencia"),
                     Fecha = e.Field<DateTime>("Fecha"),
-                    Estado_Dest = e.Field<string>("Estado_Dest"),
-                    Estado_Proced = e.Field<string>("Estado_Proced"),
-                    Monto = e.Field<decimal>("Monto")
+                    Estado = e.Field<string>("Estado"),
+                    Monto = e.Field<double>("Monto")
 
                 }).ToList();
 
@@ -87,10 +86,20 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                VLO.GenerarVuelo(v.Consec_Vuelo, v.Vuelo_Aerol, v.Vuelo_Aerop, v.CodVuelo, v.Destino, v.Procedencia, DateTime.Now, v.Estado_Dest, v.Estado_Proced,
-                    v.Monto);
-                //BTC.GenerarBitacora(a.Consec_Aerop, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Vuelo",
-                //"", "", "", a.Cod_Puerta, a.Num_Puerta, a.Detalle, 0, "", "");
+                string destino = v.Destino;
+                string procedencia = v.Procedencia;
+
+                if (destino == null)
+                    destino = "";
+
+                if (procedencia == null)
+                    procedencia = "";
+
+                VLO.GenerarVuelo(v.Consec_Vuelo, v.Vuelo_Aerol, v.Vuelo_Aerop, v.CodVuelo, destino, procedencia, DateTime.Now, v.Estado, v.Monto);
+
+                BTC.GenerarBitacora(v.Consec_Vuelo, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Vuelo",
+                    v.CodVuelo, "", "", 0, "", "", "", destino, procedencia, v.Fecha, v.Estado, v.Monto);
+
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -126,9 +135,9 @@ namespace ProyectoV_Vuelos.Controllers
         }
 
         [HttpPost]
-        public ActionResult Actualizar(AeropuertosModel a)
+        public ActionResult Actualizar(VuelosModel v)
         {
-            Aeropuertos APT = new Aeropuertos();
+            Vuelos VLO = new Vuelos();
             Bitacoras BTC = new Bitacoras();
             Errores Error = new Errores();
 
@@ -139,15 +148,26 @@ namespace ProyectoV_Vuelos.Controllers
 
             try
             {
-                APT.ActualizarAeropuerto(a.APTID, a.Consec_Aerop, a.Cod_Puerta, a.Num_Puerta, a.Detalle);
-                BTC.GenerarBitacora(a.Consec_Aerop, 1, 2, DateTime.Now, "Modificar", "Modificación de un Aeropuerto",
-                "", "", "", a.Cod_Puerta, a.Num_Puerta, a.Detalle, 0, "", "");
+                string destino = v.Destino;
+                string procedencia = v.Procedencia;
+
+                if (destino == null)
+                    destino = "";
+
+                if (procedencia == null)
+                    procedencia = "";
+
+                VLO.ActualizarVuelo(v.VLOID, v.Consec_Vuelo, v.Vuelo_Aerol, v.Vuelo_Aerop, v.CodVuelo, destino, procedencia, v.Fecha, v.Estado, v.Monto);
+
+                BTC.GenerarBitacora(v.Consec_Vuelo, 1, 2, DateTime.Now, "Modificar", "Modificación de un Vuelo",
+                    v.CodVuelo, "", "", 0, "", "", "", destino, procedencia, v.Fecha, v.Estado, v.Monto);
+
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Error al Actualizar Aeropuerto", ex);
-                Error.GenerarError(DateTime.Now, "Error al actualizar un aeropuerto en la Tabla Aeropuerto: " + ex);
+                ModelState.AddModelError("Error al Actualizar Vuelo", ex);
+                Error.GenerarError(DateTime.Now, "Error al actualizar un vuelo en la Tabla Vuelo: " + ex);
                 return View();
             }
 
@@ -156,20 +176,20 @@ namespace ProyectoV_Vuelos.Controllers
         public ActionResult Eliminar(int id)
         {
 
-            Aeropuertos APT = new Aeropuertos();
+            Vuelos VLO = new Vuelos();
             Bitacoras BTC = new Bitacoras();
             Errores Error = new Errores();
 
             try
             {
-                BTC.GenerarBitacora(APT.SP_Solicitar_Consec_Aeropuerto(id).Consec_Aerop, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Aeropuerto",
-                                "", "", "", "", 0, "", 0, "", "");
-                APT.EliminarAeropuerto(id);
+                BTC.GenerarBitacora(VLO.SP_Solicitar_Consec_Vuelo(id).Consec_Vuelo, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Vuelo",
+                "", "", "", 0, "", "", "", "", "", DateTime.Now, "", 0);
+                VLO.EliminarVuelo(id);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                Error.GenerarError(DateTime.Now, "Error al eliminar un aeropuerto en la Tabla Aeropuerto: " + ex);
+                Error.GenerarError(DateTime.Now, "Error al eliminar un vuelo en la Tabla Vuelo: " + ex);
                 throw;
             }
         }

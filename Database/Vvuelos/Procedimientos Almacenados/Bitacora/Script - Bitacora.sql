@@ -22,14 +22,17 @@ CREATE PROCEDURE SP_Inserta_Bitacora
   @Codigo nvarchar(150),
   @Nombre nvarchar(150),
   @Imagen nvarchar(MAX),
-  @Cod_Puerta nvarchar(150),
   @Num_Puerta int,
   @Detalle nvarchar(150),
-  @CSVID int,
   @Consec_Descripcion nvarchar(150),
-  @Consecutivo nvarchar(150))
+  @Consecutivo nvarchar(150),
+  @Destino nvarchar(150),
+  @Procedencia nvarchar(150),
+  @Fecha_Vuelo datetime,
+  @Estado nvarchar(150),
+  @Monto float)
 
  AS
 
-INSERT INTO dbo.Bitacora(Consec_Bitacora, Usuario_Bitac, Cod_Registro, Fecha, Tipo, Descripcion, Codigo, Nombre, Imagen, Cod_Puerta, Num_Puerta, Detalle, CSVID, Consec_Descripcion, Consecutivo) 
-VALUES (@Consec_Bitacora,@Usuario_Bitac, @Cod_Registro, @Fecha,@Tipo,@Descripcion,@Codigo,@Nombre,@Imagen,@Cod_Puerta,@Num_Puerta,@Detalle,@CSVID,@Consec_Descripcion,@Consecutivo)
+INSERT INTO dbo.Bitacora(Consec_Bitacora, Usuario_Bitac, Cod_Registro, Fecha, Tipo, Descripcion, Codigo, Nombre, Imagen, Num_Puerta, Detalle, Consec_Descripcion, Consecutivo, Destino, Procedencia, Fecha_Vuelo, Estado, Monto) 
+VALUES (@Consec_Bitacora,@Usuario_Bitac, @Cod_Registro, @Fecha,@Tipo,@Descripcion,@Codigo,@Nombre,@Imagen,@Num_Puerta,@Detalle,@Consec_Descripcion,@Consecutivo,@Destino, @Procedencia,@Fecha_Vuelo,@Estado,@Monto)

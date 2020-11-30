@@ -154,12 +154,15 @@ CREATE TABLE [dbo].[Bitacora](
 	[Codigo] [NVARCHAR] (150),
 	[Nombre] [NVARCHAR] (150),
 	[Imagen] [NVARCHAR] (MAX),
-	[Cod_Puerta] [NVARCHAR] (150),
 	[Num_Puerta] [INT],
 	[Detalle] [NVARCHAR] (150),
-	[CSVID] [INT],
 	[Consec_Descripcion] [NVARCHAR] (150),
 	[Consecutivo] [NVARCHAR] (150),
+	[Destino] [NVARCHAR] (150),
+	[Procedencia] [NVARCHAR] (150),
+	[Fecha_Vuelo] [DATETIME],
+	[Estado] [NVARCHAR] (150),
+	[Monto] [FLOAT]
 
 
 	CONSTRAINT [PK_BITAC_BTCID] PRIMARY KEY([BTCID]),
@@ -257,11 +260,10 @@ CREATE TABLE [dbo].[Vuelo](
 	[Vuelo_Aerol] [INT] NOT NULL,
 	[Vuelo_Aerop] [INT] NOT NULL,
 	[CodVuelo] [NVARCHAR] (150) NOT NULL,
-	[Destino] [NVARCHAR] (150) NOT NULL,
-	[Procedencia] [NVARCHAR] (150) NOT NULL,
+	[Destino] [NVARCHAR] (150),
+	[Procedencia] [NVARCHAR] (150),
 	[Fecha] [DATETIME] NOT NULL,
-	[Estado_Dest] [NVARCHAR] (150) NOT NULL,
-	[Estado_Proced] [NVARCHAR] (150) NOT NULL,
+	[Estado] [NVARCHAR] (150) NOT NULL,
 	[Monto] [FLOAT] NOT NULL
 
 	CONSTRAINT [PK_VUELO_VLOID] PRIMARY KEY([VLOID]),
@@ -271,7 +273,7 @@ CREATE TABLE [dbo].[Vuelo](
 )
 GO
 
-INSERT INTO [dbo].[Vuelo] values (1, 1, 1, 'CM 796', 'Costa Rica', 'Francia', 07/02/2020, 'A Tiempo', 'Confirmado', 25000)
+INSERT INTO [dbo].[Vuelo] values (1, 1, 1, 'CM 796', 'Costa Rica', '', 07/02/2020, 'Confirmado', 25000)
 GO
 
 

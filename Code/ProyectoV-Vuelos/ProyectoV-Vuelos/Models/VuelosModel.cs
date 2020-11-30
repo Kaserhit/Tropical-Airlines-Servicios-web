@@ -35,20 +35,17 @@ namespace ProyectoV_Vuelos.Models
         public DateTime Fecha { get; set; }
 
         [DataMember]
-        public string Estado_Dest { get; set; }
+        public string Estado { get; set; }
 
         [DataMember]
-        public string Estado_Proced { get; set; }
-
-        [DataMember]
-        public decimal Monto { get; set; }
+        public double Monto { get; set; }
 
         #endregion
 
         #region Constructores
 
         public VuelosModel(int VLOID, int Consec_Vuelo, int Vuelo_Aerol, int Vuelo_Aerop, string CodVuelo, string Destino, string Procedencia,
-            DateTime Fecha, string Estado_Dest, string Estado_Proced, decimal Monto)
+            DateTime Fecha, string Estado, double Monto)
         {
             this.VLOID = VLOID;
             this.Consec_Vuelo = Consec_Vuelo;
@@ -58,8 +55,7 @@ namespace ProyectoV_Vuelos.Models
             this.Destino = Destino;
             this.Procedencia = Procedencia;
             this.Fecha = Fecha;
-            this.Estado_Dest = Estado_Dest;
-            this.Estado_Proced = Estado_Proced;
+            this.Estado = Estado;
             this.Monto = Monto;
         }
 

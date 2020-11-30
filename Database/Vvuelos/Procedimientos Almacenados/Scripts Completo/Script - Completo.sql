@@ -23,6 +23,7 @@ CREATE PROCEDURE SP_Inserta_Aerolinea
 
 INSERT INTO dbo.Aerolinea(Aerol_Pais, Consec_Aerol, Codigo, Nombre, Imagen) VALUES (@Aerol_Pais, @Consec_Aerol, @Codigo, @Nombre, @Imagen)
 Go
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE WebDB
@@ -61,6 +62,7 @@ Select Consec_Aerol from dbo.Aerolinea where ALNID = @ALNID
 
 GO
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE WebDB
 Go
@@ -123,6 +125,8 @@ Select Consec_Aerop from dbo.Aeropuerto where APTID = @APTID
 
 Go
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 USE WebDB
 Go
 CREATE PROCEDURE SP_Solicitar_Info_Bitacoras
@@ -147,19 +151,24 @@ CREATE PROCEDURE SP_Inserta_Bitacora
   @Codigo nvarchar(150),
   @Nombre nvarchar(150),
   @Imagen nvarchar(MAX),
-  @Cod_Puerta nvarchar(150),
   @Num_Puerta int,
   @Detalle nvarchar(150),
-  @CSVID int,
   @Consec_Descripcion nvarchar(150),
-  @Consecutivo nvarchar(150))
+  @Consecutivo nvarchar(150),
+  @Destino nvarchar(150),
+  @Procedencia nvarchar(150),
+  @Fecha_Vuelo datetime,
+  @Estado nvarchar(150),
+  @Monto float)
 
  AS
 
-INSERT INTO dbo.Bitacora(Consec_Bitacora, Usuario_Bitac, Cod_Registro, Fecha, Tipo, Descripcion, Codigo, Nombre, Imagen, Cod_Puerta, Num_Puerta, Detalle, CSVID, Consec_Descripcion, Consecutivo) 
-VALUES (@Consec_Bitacora,@Usuario_Bitac, @Cod_Registro, @Fecha,@Tipo,@Descripcion,@Codigo,@Nombre,@Imagen,@Cod_Puerta,@Num_Puerta,@Detalle,@CSVID,@Consec_Descripcion,@Consecutivo)
+INSERT INTO dbo.Bitacora(Consec_Bitacora, Usuario_Bitac, Cod_Registro, Fecha, Tipo, Descripcion, Codigo, Nombre, Imagen, Num_Puerta, Detalle, Consec_Descripcion, Consecutivo, Destino, Procedencia, Fecha_Vuelo, Estado, Monto) 
+VALUES (@Consec_Bitacora,@Usuario_Bitac, @Cod_Registro, @Fecha,@Tipo,@Descripcion,@Codigo,@Nombre,@Imagen,@Num_Puerta,@Detalle,@Consec_Descripcion,@Consecutivo,@Destino, @Procedencia,@Fecha_Vuelo,@Estado,@Monto)
 
 Go
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE WebDB
 Go
@@ -237,6 +246,8 @@ Select CSVID from dbo.Consecutivo where CSVID = @CSVID
 
 GO
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 USE WebDB
 GO
 CREATE PROCEDURE SP_Solicitar_Info_Errores
@@ -260,8 +271,7 @@ INSERT INTO dbo.Error(Fecha, Mensaje_Error) VALUES(@Fecha, @Mensaje_Error)
 
 Go
 
-
--- Stored Procedures Pais
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Use WebDB
 Go
@@ -285,6 +295,7 @@ CREATE PROCEDURE SP_Inserta_Pais
 
 Insert into dbo.Pais(Consec_Pais, CodPais, Nombre,Imagen) values(@Consec_Pais, @CodPais, @Nombre,@Imagen)
 Go
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Use WebDB
@@ -299,6 +310,7 @@ if @@rowcount <> 1
 raiserror('ID Pais Invalido',16,1) 
 
 Go
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Use WebDB
@@ -333,6 +345,8 @@ AS
 Select Consec_Pais from dbo.Pais where PAISID = @PAISID   
 
 GO
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 USE WebDB
 Go
@@ -656,14 +670,13 @@ CREATE PROCEDURE SP_Inserta_Vuelo
   @Destino nvarchar(150),
   @Procedencia nvarchar(150),
   @Fecha datetime,
-  @Estado_Dest nvarchar(150),
-  @Estado_Proced nvarchar(150),
+  @Estado nvarchar(150),
   @Monto float)
 
  AS
 
-INSERT INTO dbo.Vuelo(Consec_Vuelo, Vuelo_Aerol, Vuelo_Aerop, CodVuelo, Destino, Procedencia, Fecha, Estado_Dest, Estado_Proced, Monto)
-VALUES (@Consec_Vuelo,@Vuelo_Aerol, @Vuelo_Aerop, @CodVuelo,@Destino,@Procedencia,@Fecha,@Estado_Dest,@Estado_Proced,@Monto)
+INSERT INTO dbo.Vuelo(Consec_Vuelo, Vuelo_Aerol, Vuelo_Aerop, CodVuelo, Destino, Procedencia, Fecha, Estado, Monto)
+VALUES (@Consec_Vuelo,@Vuelo_Aerol, @Vuelo_Aerop, @CodVuelo,@Destino,@Procedencia,@Fecha,@Estado,@Monto)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -672,12 +685,12 @@ Go
 USE WebDB
 Go
 CREATE PROCEDURE SP_Actualiza_Vuelo(@VLOID int, @Consec_Vuelo int, @Vuelo_Aerol int, @Vuelo_Aerop int, @CodVuelo nvarchar(150), @Destino nvarchar(150), 
-@Procedencia nvarchar(150), @Fecha datetime, @Estado_Dest nvarchar(150), @Estado_Proced nvarchar(150), @Monto float)
+@Procedencia nvarchar(150), @Fecha datetime, @Estado nvarchar(150), @Monto float)
 
 AS  
 
 UPDATE dbo.Vuelo SET Consec_Vuelo = @Consec_Vuelo, Vuelo_Aerol = @Vuelo_Aerol, Vuelo_Aerop = @Vuelo_Aerop, CodVuelo = @CodVuelo, Destino = @Destino, 
-Procedencia = @Procedencia, Fecha = @Fecha, Estado_Dest = @Estado_Dest, Estado_Proced = @Estado_Proced, Monto = @Monto
+Procedencia = @Procedencia, Fecha = @Fecha, Estado = @Estado, Monto = @Monto
 WHERE VLOID = @VLOID;  
 IF @@rowcount <> 1   
 RAISERROR('ID Vuelo Invalido',16,1) 
@@ -693,4 +706,15 @@ CREATE PROCEDURE SP_Eliminar_Vuelo
 AS
 
 DELETE FROM dbo.Vuelo WHERE VLOID = @VLOID
+GO
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use WebDB
+Go
+CREATE PROCEDURE SP_Solicitar_Consec_Vuelo(@VLOID int)
+
+AS
+
+Select Consec_Vuelo from dbo.Vuelo where VLOID = @VLOID
 GO

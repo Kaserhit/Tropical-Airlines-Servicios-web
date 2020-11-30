@@ -33,17 +33,23 @@ namespace BLL
 
         public string Imagen { get; set; }
 
-        public string Cod_Puerta { get; set; }
-
         public int Num_Puerta { get; set; }
 
         public string Detalle { get; set; }
 
-        public int CSVID { get; set; }
-
         public string Consec_Descripcion { get; set; }
 
         public string Consecutivo { get; set; }
+
+        public string Destino { get; set; }
+
+        public string Procedencia { get; set; }
+
+        public DateTime Fecha_Vuelo { get; set; }
+
+        public string Estado { get; set; }
+
+        public decimal Monto { get; set; }
 
         #endregion
 
@@ -90,8 +96,8 @@ namespace BLL
         }
 
         public DataSet GenerarBitacora(int Consec_Bitacora, int Usuario_Bitac, int Cod_Registro, DateTime Fecha, string Tipo, string Descripcion,
-            string Codigo, string Nombre, string Imagen, string Cod_Puerta, int Num_Puerta, string Detalle, int CSVID, string Consec_Descripcion,
-            string Consecutivo)
+            string Codigo, string Nombre, string Imagen, int Num_Puerta, string Detalle, string Consec_Descripcion,
+            string Consecutivo, string Destino, string Procedencia, DateTime Fecha_Vuelo, string Estado, double Monto)
         {
             Errores Error = new Errores();
             conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
@@ -110,12 +116,15 @@ namespace BLL
                 cmd.Parameters.AddWithValue("@Codigo", Codigo);
                 cmd.Parameters.AddWithValue("@Nombre", Nombre);
                 cmd.Parameters.AddWithValue("@Imagen", Imagen);
-                cmd.Parameters.AddWithValue("@Cod_Puerta", Cod_Puerta);
                 cmd.Parameters.AddWithValue("@Num_Puerta", Num_Puerta);
                 cmd.Parameters.AddWithValue("@Detalle", Detalle);
-                cmd.Parameters.AddWithValue("@CSVID", CSVID);
                 cmd.Parameters.AddWithValue("@Consec_Descripcion", Consec_Descripcion);
                 cmd.Parameters.AddWithValue("@Consecutivo", Consecutivo);
+                cmd.Parameters.AddWithValue("@Destino", Destino);
+                cmd.Parameters.AddWithValue("@Procedencia", Procedencia);
+                cmd.Parameters.AddWithValue("@Fecha_Vuelo", Fecha_Vuelo);
+                cmd.Parameters.AddWithValue("@Estado", Estado);
+                cmd.Parameters.AddWithValue("@Monto", Monto);
                 cmd.ExecuteNonQuery();
                 return null; // success   
             }

@@ -115,7 +115,7 @@ namespace ProyectoV_Vuelos.Controllers
                 
                 CSV.GenerarConsecutivo(a.Descripcion, a.Consecutivo, a.Prefijo, a.RangoInicial, a.RangoFinal);
                 BTC.GenerarBitacora(Convert.ToInt32(BuscarConsecutivoCSVID()), 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo Consecutivo",
-                "", "", "", "", 0, "", Convert.ToInt32(BuscarConsecutivoCSVID()), a.Descripcion, a.Consecutivo);
+                "", "", "", 0, "", a.Descripcion, a.Consecutivo, "", "", DateTime.Now, "", 0);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -177,7 +177,7 @@ namespace ProyectoV_Vuelos.Controllers
 
                 CSV.ActualizarConsecutivo(a.CSVID, a.Descripcion, a.Consecutivo, a.Prefijo, a.RangoInicial, a.RangoFinal);
                 BTC.GenerarBitacora(a.CSVID, 1, 2, DateTime.Now, "Modificar", "Modificación de un Consecutivo",
-                "", "", "", "", 0, "", a.CSVID, a.Descripcion, a.Consecutivo);
+                "", "", "", 0, "", a.Descripcion, a.Consecutivo, "", "", DateTime.Now, "", 0);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -198,7 +198,7 @@ namespace ProyectoV_Vuelos.Controllers
             try
             {
                 BTC.GenerarBitacora(CSV.SP_Solicitar_Consec_ID(id).CSVID, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un Consecutivo",
-                                "", "", "", "", 0, "", 0, "", "");
+                "", "", "", 0, "", "", "", "", "", DateTime.Now, "", 0);
                 CSV.EliminarConsecutivo(id);
                 return RedirectToAction("Index");
             }

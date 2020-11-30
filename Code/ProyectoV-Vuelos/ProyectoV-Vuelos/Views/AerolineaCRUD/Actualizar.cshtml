@@ -5,8 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -21,7 +19,6 @@
 
         @Html.HiddenFor(model => model.ALNID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
 
-
         <div class="form-group">
             <h5 class="text-center">Pais de Aereolinea</h5>
             <div class="col-md-10">
@@ -31,7 +28,6 @@
         </div>
 
         <br />
-
 
         <div class="form-group">
             <h5 class="text-center">Consecutivo de Aereolinea</h5>
@@ -50,7 +46,6 @@
                 @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
             </div>
         </div>
-
 
         <br />
 
@@ -76,7 +71,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Generar" class="btn btn-default border" />
+                <input type="submit" value="Actualizar" class="btn btn-default border" />
             </div>
 
             <br />
@@ -89,8 +84,6 @@
         </center>
 </div>
 }
-
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

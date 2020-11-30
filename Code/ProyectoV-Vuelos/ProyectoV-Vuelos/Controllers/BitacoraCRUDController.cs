@@ -69,6 +69,10 @@ namespace ProyectoV_Vuelos.Controllers
                         var Datos_Aerop = BuscarBitacoras().Where(x => x.BTCID == id).Select(x => x).ToList();
                         return View("~/Views/BitacoraCRUD/Detalle_Aeropuerto.cshtml", Datos_Aerop);
 
+                    case "Vuelo":
+                        var Datos_Vuelo = BuscarBitacoras().Where(x => x.BTCID == id).Select(x => x).ToList();
+                        return View("~/Views/BitacoraCRUD/Detalle_Vuelo.cshtml", Datos_Vuelo);
+
                     default:
                         Console.WriteLine("La descripción es nula o tiene otro valor");
                         break;
@@ -235,12 +239,15 @@ namespace ProyectoV_Vuelos.Controllers
                     Codigo = e.Field<string>("Codigo"),
                     Nombre = e.Field<string>("Nombre"),
                     Imagen = e.Field<string>("Imagen"),
-                    Cod_Puerta = e.Field<string>("Cod_Puerta"),
                     Num_Puerta = e.Field<int>("Num_Puerta"),
                     Detalle = e.Field<string>("Detalle"),
-                    CSVID = e.Field<int>("CSVID"),
                     Consec_Descripcion = e.Field<string>("Consec_Descripcion"),
                     Consecutivo = e.Field<string>("Consecutivo"),
+                    Destino = e.Field<string>("Destino"),
+                    Procedencia = e.Field<string>("Procedencia"),
+                    Fecha_Vuelo = e.Field<DateTime>("Fecha_Vuelo"),
+                    Estado = e.Field<string>("Estado"),
+                    Monto = e.Field<double>("Monto")
 
                 }).ToList();
 

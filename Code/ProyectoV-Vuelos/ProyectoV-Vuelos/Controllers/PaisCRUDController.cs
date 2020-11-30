@@ -86,7 +86,7 @@ namespace ProyectoV_Vuelos.Controllers
             {
                 PAIS.Generar(a.Consec_Pais, a.CodPais, a.Nombre, a.Imagen);
                 BTC.GenerarBitacora(a.Consec_Pais, 1, 1, DateTime.Now, "Agregar", "Inserción de un nuevo País", 
-                    a.CodPais, a.Nombre, a.Imagen, "", 0, "", 0, "", "");
+                    a.CodPais, a.Nombre, a.Imagen, 0, "", "", "", "", "", DateTime.Now, "", 0);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -137,7 +137,7 @@ namespace ProyectoV_Vuelos.Controllers
             {
                 PAIS.Actualizar(a.PAISID, a.Consec_Pais, a.CodPais, a.Nombre, a.Imagen);
                 BTC.GenerarBitacora(a.Consec_Pais, 1, 2, DateTime.Now, "Modificar", "Modificación de un País",
-                    a.CodPais, a.Nombre, a.Imagen, "", 0, "", 0, "", "");
+                    a.CodPais, a.Nombre, a.Imagen, 0, "", "", "", "", "", DateTime.Now, "", 0);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -159,7 +159,7 @@ namespace ProyectoV_Vuelos.Controllers
             try
             {
                 BTC.GenerarBitacora(PAIS.SP_Solicitar_Consec_Pais(id).Consec_Pais, 1, 3, DateTime.Now, "Eliminar", "Eliminación de un País",
-                "", "", "", "", 0, "", 0, "", "");
+                "", "", "", 0, "", "", "", "", "", DateTime.Now, "", 0);
                 PAIS.Eliminar(id);
                 return RedirectToAction("Index");
             }
