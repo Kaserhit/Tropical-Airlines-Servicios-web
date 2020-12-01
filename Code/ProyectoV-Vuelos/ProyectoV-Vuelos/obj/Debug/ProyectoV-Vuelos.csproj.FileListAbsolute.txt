@@ -694,3 +694,6 @@ D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\Pr
 C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\ProyectoV-Vuelos\bin\System.Web.Cors.dll
 C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\ProyectoV-Vuelos\bin\System.Web.Http.Cors.dll
 C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\ProyectoV-Vuelos\bin\System.Web.Http.Cors.xml
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\ProyectoV-Vuelos\bin\System.Web.Cors.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\ProyectoV-Vuelos\bin\System.Web.Http.Cors.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\ProyectoV-Vuelos\bin\System.Web.Http.Cors.xml
