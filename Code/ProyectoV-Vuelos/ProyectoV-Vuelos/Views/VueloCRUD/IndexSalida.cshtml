@@ -5,7 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<center><h2>Vuelos</h2></center>
+<center><h2>Vuelos de Salida</h2></center>
+<br />
+
+<center>
+    <a class="btn btn-default border" @Html.ActionLink("Vuelos de Llegada", "IndexLlegada")</a>
+</center>
+
 <br />
 
 <table class="table">
@@ -18,9 +24,6 @@
         </th>
         <th>
             Destino
-        </th>
-        <th>
-            Procedencia
         </th>
         <th>
             Fecha
@@ -46,13 +49,10 @@
                     @Html.DisplayFor(modelItem => item.CodVuelo)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Vuelo_Aerol)
+                    @Html.DisplayFor(modelItem => item.Aerolinea)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Destino)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Procedencia)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Fecha)
@@ -80,7 +80,7 @@
 
 <center>
 
-    <a class="btn btn-default border" @Html.ActionLink("Generar ", "Generar")</a>
+    <a class="btn btn-default border" @Html.ActionLink("Generar", "Generar")</a>
 
     <a class="btn btn-default border" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
 

@@ -16,7 +16,7 @@ namespace ProyectoV_Vuelos.Controllers
         Pais PAIS = new Pais();
 
         // GET: api/Pais
-        public IEnumerable<PaisModel> GetPais()
+        public IEnumerable<PaisModel> GetPaises()
         {
             return CRUD.BuscarPaises();
         }

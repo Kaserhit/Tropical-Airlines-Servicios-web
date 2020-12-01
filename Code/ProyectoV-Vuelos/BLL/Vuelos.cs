@@ -81,6 +81,105 @@ namespace BLL
             }
         }
 
+        public DataSet SP_Solicitar_VLOID_Vuelos()
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                if (conexion == null)
+                {
+                    Error.GenerarError(DateTime.Now, "Error con la conexión con la base de datos");
+                    return null;
+                }
+                else
+                {
+                    sql = "dbo.SP_Solicitar_VLOID_Vuelos";
+                    ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                    if (numero_error != 0)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        return ds;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_VLOID_Vuelos en la Tabla Vuelo: " + ex);
+                throw;
+            }
+        }
+
+        public DataSet SP_Solicitar_Vuelos_Llegada()
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                if (conexion == null)
+                {
+                    Error.GenerarError(DateTime.Now, "Error con la conexión con la base de datos");
+                    return null;
+                }
+                else
+                {
+                    sql = "dbo.SP_Solicitar_Vuelos_Llegada";
+                    ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                    if (numero_error != 0)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        return ds;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Vuelos_Llegada en la Tabla Vuelo: " + ex);
+                throw;
+            }
+        }
+
+        public DataSet SP_Solicitar_Vuelos_Salida()
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                if (conexion == null)
+                {
+                    Error.GenerarError(DateTime.Now, "Error con la conexión con la base de datos");
+                    return null;
+                }
+                else
+                {
+                    sql = "dbo.SP_Solicitar_Vuelos_Salida";
+                    ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                    if (numero_error != 0)
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {
+                        return ds;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Vuelos_Salida en la Tabla Vuelo: " + ex);
+                throw;
+            }
+        }
+
         public Vuelos SP_Solicitar_Consec_Vuelo(int VLOID)
         {
             Errores Error = new Errores();
@@ -105,6 +204,102 @@ namespace BLL
             catch (Exception ex)
             {
                 Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Consec_Vuelo en la Tabla Vuelo: " + ex);
+                throw;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public Vuelos SP_Solicitar_Destino(int VLOID)
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Solicitar_Destino", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@VLOID", VLOID);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    Vuelos vuelos = new Vuelos();
+                    vuelos.Destino = dr["destino"].ToString();
+                    return vuelos;
+                }
+                else
+                    throw new Exception();
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Destino en la Tabla Vuelo: " + ex);
+                throw;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public Aerolineas SP_Solicitar_Aerolinea_Vuelo(int VLOID)
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Solicitar_Aerolinea_Vuelo", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@VLOID", VLOID);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    Aerolineas aerolineas = new Aerolineas();
+                    aerolineas.Nombre = dr["nombre"].ToString();
+                    return aerolineas;
+                }
+                else
+                    throw new Exception();
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Aerolinea_Vuelo en la Tabla Vuelo: " + ex);
+                throw;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public Aeropuertos SP_Solicitar_Aeropuerto_Vuelo(int VLOID)
+        {
+            Errores Error = new Errores();
+            conexion = cls_DAL.trae_conexion("WebDB", ref mensaje_error, ref numero_error);
+
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Solicitar_Aeropuerto_Vuelo", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@VLOID", VLOID);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    Aeropuertos aeropuertos = new Aeropuertos();
+                    aeropuertos.Num_Puerta = Convert.ToInt32(dr["num_puerta"]);
+                    return aeropuertos;
+                }
+                else
+                    throw new Exception();
+            }
+            catch (Exception ex)
+            {
+                Error.GenerarError(DateTime.Now, "Error al ejecutar el store procedure SP_Solicitar_Aeropuerto_Vuelo en la Tabla Vuelo: " + ex);
                 throw;
             }
             finally

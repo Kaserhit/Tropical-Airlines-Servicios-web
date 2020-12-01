@@ -40,6 +40,17 @@ namespace ProyectoV_Vuelos.Models
         [DataMember]
         public double Monto { get; set; }
 
+        //Variables Internas
+
+        [DataMember]
+        public string Aerolinea { get; set; }
+
+        [DataMember]
+        public string Fecha_Vuelo { get; set; }
+
+        [DataMember]
+        public string Hora { get; set; }
+
         #endregion
 
         #region Constructores

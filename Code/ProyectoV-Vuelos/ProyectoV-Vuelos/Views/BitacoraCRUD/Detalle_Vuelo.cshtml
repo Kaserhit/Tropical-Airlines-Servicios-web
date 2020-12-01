@@ -3,12 +3,9 @@
 @{
     ViewBag.Title = "Detalle_Vuelo";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string valor = "";
 }
 
 <center><h2>Detalle del Vuelo</h2></center>
-
-<hr>
 
 <br />
 
@@ -21,13 +18,16 @@
             Aerolínea
         </th>
         <th>
-            @if (valor != "")
+            @foreach (var item in Model)
             {
-                @Html.DisplayNameFor(model => model.Destino)
-            }
-            else
-            {
-                @Html.DisplayNameFor(model => model.Procedencia)
+                if (item.Destino != "")
+                {
+                    @Html.DisplayNameFor(model => model.Destino)
+                }
+                else
+                {
+                    @Html.DisplayNameFor(model => model.Procedencia)
+                }
             }
         </th>
         <th>
@@ -57,7 +57,6 @@
             <td>
                 @if (item.Destino != "")
                 {
-                    valor = item.Destino;
                     @Html.DisplayFor(modelItem => item.Destino)
                 }
 

@@ -7,9 +7,12 @@ using System.Net.Http;
 using System.Web.Http;
 using BLL;
 using System.Web.Http.Description;
+using System.Web.Http.Cors;
 
 namespace ProyectoV_Vuelos.Controllers
 {
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
+
     public class SeguridadController : ApiController
     {
         SeguridadCRUDController CRUD = new SeguridadCRUDController();
