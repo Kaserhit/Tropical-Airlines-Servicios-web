@@ -56,6 +56,8 @@ namespace ProyectoV_Vuelos.Controllers
                     Primer_Apellido = e.Field<string>("Primer_Apellido"),
                     Segundo_Apellido = e.Field<string>("Segundo_Apellido"),
                     Correo = e.Field<string>("Correo"),
+                    Pregunta = e.Field<string>("Pregunta"),
+                    Respuesta = e.Field<string>("Respuesta"),
                     Administrador = e.Field<bool>("Administrador"),
                     Seguridad = e.Field<bool>("Seguridad"),
                     Consecutivo = e.Field<bool>("Consecutivo"),
