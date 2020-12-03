@@ -171,6 +171,7 @@
     <Compile Include="Controllers\BitacorasController.cs" />
     <Compile Include="Controllers\ErrorCRUDController.cs" />
     <Compile Include="Controllers\ErroresController.cs" />
+    <Compile Include="Controllers\ReservasController.cs" />
     <Compile Include="Controllers\Rol_UsuarioCRUDController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\SeguridadCRUDController.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Models\AeropuertosModel.cs" />
     <Compile Include="Models\BitacorasModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\ReservasModel.cs" />
     <Compile Include="Models\Rol_UsuariosModel.cs" />
     <Compile Include="Models\SeguridadModel.cs" />
     <Compile Include="Models\PaisModel.cs" />

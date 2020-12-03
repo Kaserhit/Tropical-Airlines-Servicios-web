@@ -50,6 +50,7 @@
     <Compile Include="Pais.cs" />
     <Compile Include="Consecutivos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservas.cs" />
     <Compile Include="Vuelos.cs" />
   </ItemGroup>
   <ItemGroup>
