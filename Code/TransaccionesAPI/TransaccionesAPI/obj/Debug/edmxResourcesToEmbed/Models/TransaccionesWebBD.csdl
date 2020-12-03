@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TransaccionesWebBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Easy_Pay">
+    <Key>
+      <PropertyRef Name="EPID" />
+    </Key>
+    <Property Name="EPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USRID" Type="Int32" Nullable="false" />
+    <Property Name="Num_Cuenta" Type="Int32" Nullable="false" />
+    <Property Name="Cod_Seguridad" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fondos" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tarjeta">
+    <Key>
+      <PropertyRef Name="TID" />
+    </Key>
+    <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USRID" Type="Int32" Nullable="false" />
+    <Property Name="Num_Tarjeta" Type="Int32" Nullable="false" />
+    <Property Name="Exp_Month" Type="Int32" Nullable="false" />
+    <Property Name="Exp_Year" Type="Int32" Nullable="false" />
+    <Property Name="CVV" Type="Int32" Nullable="false" />
+    <Property Name="Tipo_Tarjeta" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Limite_Tarjeta" Type="Double" />
+    <Property Name="Fondos" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TransaccionesWebBDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Easy_Pay" EntityType="Self.Easy_Pay" />
+    <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" />
+  </EntityContainer>
+</Schema>

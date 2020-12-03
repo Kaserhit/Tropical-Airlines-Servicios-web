@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -56,7 +58,7 @@ class Usuariospassword extends Component {
   };
 
   render() {
-    const { form } = this.state;
+    //const { form } = this.state;
     return (
       <div className="UsuariosPasswords">
         <Header />

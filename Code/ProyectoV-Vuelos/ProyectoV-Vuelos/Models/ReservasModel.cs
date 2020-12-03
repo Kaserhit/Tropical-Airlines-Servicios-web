@@ -17,22 +17,17 @@ namespace ProyectoV_Vuelos.Models
 
         public int Reserva_Usuario { get; set; }
 
-
         [DataMember]
         public int Consec_Reserva { get; set; }
-
 
         [DataMember]
         public string Destino { get; set; }
 
-
         [DataMember]
         public int Cant_Boletos { get; set; }
 
-
         [DataMember]
         public float TotalCompra { get; set; }
-
 
         [DataMember]
         public int Num_Reserva { get; set; }
@@ -40,10 +35,6 @@ namespace ProyectoV_Vuelos.Models
         [DataMember]
 
         public string BookingID { get; set; }
-
-
-
-
 
         #endregion
 

@@ -787,3 +787,71 @@ AS
 
 SELECT Aeropuerto.Num_Puerta FROM dbo.Vuelo INNER JOIN dbo.Aeropuerto ON Vuelo.Vuelo_Aerop = Aeropuerto.APTID WHERE Vuelo.VLOID = @VLOID
 GO
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+USE WebDB
+Go
+CREATE PROCEDURE SP_Solicitar_Info_Compras
+
+AS
+
+SELECT * FROM dbo.Compra
+
+Go
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+USE WebDB
+Go
+CREATE PROCEDURE SP_Inserta_Compra
+( 
+  @Compra_Usuario int,
+  @Consec_Compra int,
+  @Destino nvarchar(150),
+  @Cant_Boletos int,
+  @TotalCompra float)
+
+
+ AS
+
+INSERT INTO dbo.Compra(Compra_Usuario, Consec_Compra, Destino, Cant_Boletos, TotalCompra)
+VALUES (@Compra_Usuario, @Consec_Compra, @Destino,@Cant_Boletos,@TotalCompra)
+
+GO
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+USE WebDB
+Go
+CREATE PROCEDURE SP_Solicitar_Info_Reservas
+
+AS
+
+SELECT * FROM dbo.Reserva_Boleto
+
+Go
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+USE WebDB
+Go
+CREATE PROCEDURE SP_Inserta_Reservas
+( 
+  @Reserva_Usuario int,
+  @Consec_Reserva int,
+  @Destino nvarchar(150),
+  @Cant_Boletos int,
+  @TotalCompra float,
+  @Num_Reserva int,
+  @BookingID nvarchar(7))
+
+
+ AS
+
+INSERT INTO dbo.Reserva_Boleto(Reserva_Usuario, Consec_Reserva, Destino, Cant_Boletos, TotalCompra, Num_Reserva, BookingID)
+VALUES (@Reserva_Usuario, @Consec_Reserva, @Destino,@Cant_Boletos,@TotalCompra,@Num_Reserva,@BookingID)
+
+GO

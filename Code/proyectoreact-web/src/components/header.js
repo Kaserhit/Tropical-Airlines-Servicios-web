@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import logo from '../assets/Logo/linea aeria blanco-04.png';
 import logo2 from '../assets/Img/nenad-radojcic-RF5U8BkaQHU-unsplash.jpg';
@@ -13,18 +14,18 @@ class Header extends Component {
     return (
       <header id="header">
         <nav
-          class="navbar fixed-top navbar-light"
+          className="navbar fixed-top navbar-light"
           style={{
             background: '#8C7811',
           }}
         >
           <img src={logo} alt="Icono" width="100px" height="50px"></img>
-          <a class="navbar-brand text-white" href="">
+          <a className="navbar-brand text-white" href="">
             <strong>Tropical Airlines</strong>
           </a>
-          <button class="btn">
+          <button className="btn">
             {' '}
-            <a class="text-white" onClick={this.showDishes}>
+            <a className="text-white" onClick={this.showDishes}>
               <strong>Iniciar Sesion</strong>
             </a>
           </button>

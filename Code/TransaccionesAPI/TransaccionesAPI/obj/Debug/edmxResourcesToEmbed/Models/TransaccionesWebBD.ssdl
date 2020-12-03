@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TransaccionesWebBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Easy_Pay">
+    <Key>
+      <PropertyRef Name="EPID" />
+    </Key>
+    <Property Name="EPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USRID" Type="int" Nullable="false" />
+    <Property Name="Num_Cuenta" Type="int" Nullable="false" />
+    <Property Name="Cod_Seguridad" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Fondos" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tarjeta">
+    <Key>
+      <PropertyRef Name="TID" />
+    </Key>
+    <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USRID" Type="int" Nullable="false" />
+    <Property Name="Num_Tarjeta" Type="int" Nullable="false" />
+    <Property Name="Exp_Month" Type="int" Nullable="false" />
+    <Property Name="Exp_Year" Type="int" Nullable="false" />
+    <Property Name="CVV" Type="int" Nullable="false" />
+    <Property Name="Tipo_Tarjeta" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Limite_Tarjeta" Type="float" />
+    <Property Name="Fondos" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TransaccionesWebBDModelStoreContainer">
+    <EntitySet Name="Easy_Pay" EntityType="Self.Easy_Pay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { Redirect } from 'react-router-dom';
+//import Cookies from 'universal-cookie';
+
+import firebase from 'firebase'
+require('firebase/auth')
+
+//const cookies = new Cookies();
 
 firebase.initializeApp({
   apiKey: 'AIzaSyChZW1ES9FwFR9yCzpO77lbyOGbUE-L_AY',
@@ -23,7 +28,21 @@ class LoginSocial extends Component {
 
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged((user) => {
+      
       this.setState({ isSignedIn: !!user });
+
+      // if(this.state.isSignedIn === true) {
+      //   this.setState({ isSignedIn: !!user });
+      //   cookies.set('Usuario', user.displayName, {path: '/'});
+      //   cookies.set('Nombre', user.displayName, {path: '/'});
+      //   alert("Esta logeado");
+      // }
+      // else{
+      //   this.setState({isSignedIn: false});
+      //   cookies.remove('Nombre', { path: '/' });
+      //   cookies.remove('Usuario', { path: '/' });
+      //   alert("No Esta logeado");
+      // }
       console.log('user', user);
     });
   };

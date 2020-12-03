@@ -14,11 +14,8 @@ namespace ProyectoV_Vuelos.Controllers
     [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
 
     public class ReservasController : ApiController
-
     {
-
         Reservas Reserva = new Reservas();
-
 
         // POST: api/Reservas
         [ResponseType(typeof(ReservasModel))]
@@ -33,7 +30,5 @@ namespace ProyectoV_Vuelos.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = p.RSVID }, p);
         }
-
- 
     }
 }

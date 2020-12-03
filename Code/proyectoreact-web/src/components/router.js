@@ -1,19 +1,15 @@
 import React from 'react';
-
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import App from './../App';
 import Menu from './../Menu';
 import Usuarios from './Usuarios';
 import NotFound from './notFound';
-
 import VuelosLLegada from './VuelosLlegada';
-
 import Reservaciones from './Reservaciones';
-
 import VuelosSalida from './VuelosSalida';
-
 import UsuariosPasswords from './UsuariosPassword';
+import GetVLOID from './getVLOID';
 
 const Router = () => (
   <BrowserRouter>
@@ -24,6 +20,7 @@ const Router = () => (
       <Route exact path="/VuelosLLegada" component={VuelosLLegada}></Route>
       <Route exact path="/VuelosSalida" component={VuelosSalida}></Route>
       <Route exact path="/Reservaciones" component={Reservaciones}></Route>
+      <Route exact path="/CompraBoletos/:id" component={GetVLOID}></Route>
       <Route
         exact
         path="/UsuariosPasswords"

@@ -1,20 +1,27 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import logo from '../assets/Logo/linea aeria blanco-04.png';
 import logo2 from '../assets/Img/nenad-radojcic-RF5U8BkaQHU-unsplash.jpg';
-import Dropdown from 'react-bootstrap/Dropdown';
 import '../styles/Header.css';
 
-import { NavLink } from 'react-router-dom';
-
-import Cookies from 'universal-cookie';
-
-import firebase from 'firebase';
+import firebase from 'firebase'
+require('firebase/auth')
 
 const cookies = new Cookies();
 
 class header2 extends Component {
   cerrarSesion = () => {
+    //console.log(cookies.get('Usuario'));
+    if (typeof cookies.get('Primer_Apellido') === "undefined") {
+      alert(`Hasta la próxima ${cookies.get('Nombre')}`);
+    }
+    else{
+      alert(`Hasta la próxima ${cookies.get('Nombre')} ${cookies.get('Primer_Apellido')}`);
+    }
     cookies.remove('USRID', { path: '/' });
     cookies.remove('Primer_Apellido', { path: '/' });
     cookies.remove('Segundo_Apellido', { path: '/' });
@@ -23,36 +30,44 @@ class header2 extends Component {
     firebase.auth().signOut();
 
     window.location.href = './';
-  };
+  }
+
+  // componentDidMount() {
+  //   if(!cookies.get('Usuario')){
+  //       alert("Usuario no loggeado");
+  //       window.location.href="./";
+  //   }
+  // }
 
   render() {
-    console.log('USRID: ' + cookies.get('USRID'));
-    console.log('Primer_Apellido: ' + cookies.get('Primer_Apellido'));
-    console.log('Segundo_Apellido: ' + cookies.get('Segundo_Apellido'));
-    console.log('Nombre: ' + cookies.get('Nombre'));
-    console.log('Usuario: ' + cookies.get('Usuario'));
+    // console.log('USRID: ' + cookies.get('USRID'));
+    // console.log('Primer_Apellido: ' + cookies.get('Primer_Apellido'));
+    // console.log('Segundo_Apellido: ' + cookies.get('Segundo_Apellido'));
+    // console.log('Nombre: ' + cookies.get('Nombre'));
+    // console.log('Usuario: ' + cookies.get('Usuario'));
 
     return (
       <header id="header">
         <nav
-          class="navbar fixed-top navbar-expand-lg navbar-dark  scrolling-navbar"
+          className="navbar fixed-top navbar-expand-lg navbar-dark  scrolling-navbar"
           style={{
             background: '#8C7811',
           }}
         >
           <img src={logo} alt="Icono" width="100px" height="50px"></img>
-          <a class="navbar-brand">
+          <button className="btn">
             <NavLink
               to="/Menu"
               activeStyle={{
-                color: 'white',
+                color: 'White',
+                backgroundColor: 'transparent'
               }}
             >
               <strong>Tropical Airlines</strong>
             </NavLink>
-          </a>
+          </button>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -60,12 +75,12 @@ class header2 extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
                 <Dropdown>
                   <Dropdown.Toggle
                     style={{
@@ -112,7 +127,7 @@ class header2 extends Component {
                   </Dropdown.Menu>
                 </Dropdown>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <Dropdown>
                   <Dropdown.Toggle
                     style={{
@@ -145,11 +160,10 @@ class header2 extends Component {
                 </Dropdown>
               </li>
 
-              <right>
-                <li class="nav-item">
-                  <div class="container">
+              <li className="nav-item">
+                  <div className="container">
                     <button
-                      class="btn text-white disabled"
+                      className="btn text-white disabled"
                       type="button"
                       id="User"
                       ia-haspopup="true"
@@ -159,7 +173,6 @@ class header2 extends Component {
                     </button>
                   </div>
                 </li>
-              </right>
             </ul>
           </div>
         </nav>

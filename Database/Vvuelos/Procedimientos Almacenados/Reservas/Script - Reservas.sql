@@ -29,4 +29,4 @@ CREATE PROCEDURE SP_Inserta_Reservas
 INSERT INTO dbo.Reserva_Boleto(Reserva_Usuario, Consec_Reserva, Destino, Cant_Boletos, TotalCompra, Num_Reserva, BookingID)
 VALUES (@Reserva_Usuario, @Consec_Reserva, @Destino,@Cant_Boletos,@TotalCompra,@Num_Reserva,@BookingID)
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+GO

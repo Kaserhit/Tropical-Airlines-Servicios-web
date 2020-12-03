@@ -44,6 +44,7 @@
     <Compile Include="Aerolineas.cs" />
     <Compile Include="Aeropuertos.cs" />
     <Compile Include="Bitacoras.cs" />
+    <Compile Include="Compras.cs" />
     <Compile Include="Errores.cs" />
     <Compile Include="Rol_Usuarios.cs" />
     <Compile Include="Seguridad.cs" />

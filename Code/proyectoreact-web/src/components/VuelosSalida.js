@@ -49,6 +49,8 @@ class VuelosSalida extends Component {
               <th>HORA</th>
               <th>ESTADO</th>
               <th>PUERTA</th>
+              <th>Comprar Boletos</th>
+              <th>Reservar Boletos</th>
             </tr>
           </thead>
           <tbody>
@@ -62,6 +64,18 @@ class VuelosSalida extends Component {
                   <td>{Vuelos.Hora}</td>
                   <td>{Vuelos.Estado}</td>
                   <td>{Vuelos.Vuelo_Aerop}</td>
+                  {Vuelos.Estado === 'Confirmado'?
+                    <td>
+                    <Link to={`/CompraBoletos/${Vuelos.VLOID}`} className="btn btn-default border-dark">
+                      Compra
+                    </Link>
+                    </td>: <th></th>
+                  }
+                  {Vuelos.Estado === 'Confirmado'?
+                    <td>
+                    <button className="btn btn-default border-dark">Reservar</button>
+                    </td>: <th></th>
+                  }
                 </tr>
               );
             })}

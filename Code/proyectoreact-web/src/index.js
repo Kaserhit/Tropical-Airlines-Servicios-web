@@ -4,7 +4,7 @@ import '././styles/index.css';
 import reportWebVitals from './reportWebVitals';
 import Router from './components/router';
 
-ReactDOM.render(<Router></Router>, document.getElementById('root'));
+ReactDOM.render(<Router />, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
