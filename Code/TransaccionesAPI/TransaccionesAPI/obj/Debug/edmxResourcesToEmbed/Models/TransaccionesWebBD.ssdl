@@ -6,8 +6,11 @@
     </Key>
     <Property Name="EPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="USRID" Type="int" Nullable="false" />
-    <Property Name="Num_Cuenta" Type="int" Nullable="false" />
-    <Property Name="Cod_Seguridad" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Num_Cuenta" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Cod_Seguridad" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="Fondos" Type="float" Nullable="false" />
   </EntityType>
@@ -17,10 +20,13 @@
     </Key>
     <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="USRID" Type="int" Nullable="false" />
-    <Property Name="Num_Tarjeta" Type="int" Nullable="false" />
-    <Property Name="Exp_Month" Type="int" Nullable="false" />
-    <Property Name="Exp_Year" Type="int" Nullable="false" />
-    <Property Name="CVV" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Num_Tarjeta" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Exp_Month" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Exp_Year" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="CVV" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="Tipo_Tarjeta" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="Tipo" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="Limite_Tarjeta" Type="float" />

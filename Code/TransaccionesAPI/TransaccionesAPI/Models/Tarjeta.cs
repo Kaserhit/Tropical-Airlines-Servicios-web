@@ -16,10 +16,13 @@ namespace TransaccionesAPI.Models
     {
         public int TID { get; set; }
         public int USRID { get; set; }
-        public int Num_Tarjeta { get; set; }
-        public int Exp_Month { get; set; }
-        public int Exp_Year { get; set; }
-        public int CVV { get; set; }
+        public string Usuario { get; set; }
+        public string Nombre { get; set; }
+        public string Correo { get; set; }
+        public string Num_Tarjeta { get; set; }
+        public string Exp_Month { get; set; }
+        public string Exp_Year { get; set; }
+        public string CVV { get; set; }
         public string Tipo_Tarjeta { get; set; }
         public string Tipo { get; set; }
         public Nullable<double> Limite_Tarjeta { get; set; }

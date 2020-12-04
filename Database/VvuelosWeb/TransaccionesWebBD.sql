@@ -37,10 +37,13 @@ CREATE TABLE [dbo].[Tarjeta](
 
 	[TID] [INT] NOT NULL IDENTITY,
 	[USRID] [INT] NOT NULL,
-	[Num_Tarjeta] [INT] NOT NULL,
-	[Exp_Month] [INT] NOT NULL,
-	[Exp_Year] [INT] NOT NULL,
-	[CVV] [INT] NOT NULL,
+	[Usuario] [NVARCHAR] (150) NOT NULL,
+	[Nombre] [NVARCHAR] (150) NOT NULL,
+	[Correo] [NVARCHAR] (150) NOT NULL,
+	[Num_Tarjeta] [NVARCHAR] (150) NOT NULL,
+	[Exp_Month] [NVARCHAR] (150) NOT NULL,
+	[Exp_Year] [NVARCHAR] (150) NOT NULL,
+	[CVV] [NVARCHAR] (150) NOT NULL,
 	[Tipo_Tarjeta] [NVARCHAR] (150) NOT NULL,
 	[Tipo] [NVARCHAR] (150) NOT NULL,
 	[Limite_Tarjeta] [FLOAT],
@@ -54,8 +57,11 @@ CREATE TABLE [dbo].[Easy_Pay](
 
 	[EPID] [INT] NOT NULL IDENTITY,
 	[USRID] [INT] NOT NULL,
-	[Num_Cuenta] [INT] NOT NULL,
-	[Cod_Seguridad] [INT] NOT NULL,
+	[Usuario] [NVARCHAR] (150) NOT NULL,
+	[Nombre] [NVARCHAR] (150) NOT NULL,
+	[Correo] [NVARCHAR] (150) NOT NULL,
+	[Num_Cuenta] [NVARCHAR] (150) NOT NULL,
+	[Cod_Seguridad] [NVARCHAR] (150) NOT NULL,
 	[Password] [NVARCHAR] (150) NOT NULL,
 	[Fondos] [FLOAT] NOT NULL
 

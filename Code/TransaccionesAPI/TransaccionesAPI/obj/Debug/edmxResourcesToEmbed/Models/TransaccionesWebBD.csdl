@@ -6,8 +6,11 @@
     </Key>
     <Property Name="EPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="USRID" Type="Int32" Nullable="false" />
-    <Property Name="Num_Cuenta" Type="Int32" Nullable="false" />
-    <Property Name="Cod_Seguridad" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Num_Cuenta" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cod_Seguridad" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Fondos" Type="Double" Nullable="false" />
   </EntityType>
@@ -17,10 +20,13 @@
     </Key>
     <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="USRID" Type="Int32" Nullable="false" />
-    <Property Name="Num_Tarjeta" Type="Int32" Nullable="false" />
-    <Property Name="Exp_Month" Type="Int32" Nullable="false" />
-    <Property Name="Exp_Year" Type="Int32" Nullable="false" />
-    <Property Name="CVV" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Num_Tarjeta" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Exp_Month" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Exp_Year" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CVV" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Tipo_Tarjeta" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Tipo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Limite_Tarjeta" Type="Double" />

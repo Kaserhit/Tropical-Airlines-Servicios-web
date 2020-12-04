@@ -18,7 +18,7 @@ class Menu extends Component {
         <center>
           <Header />
 
-          <h2 className="bg-info p-4 text-center text-white">
+          <h2 class="bg-info p-4 text-center text-white">
             <strong>
               <b>Visite distintos Paises Tropicales</b>
             </strong>
@@ -30,19 +30,19 @@ class Menu extends Component {
 
           <br />
 
-          <div className="container">
-            <div className="row justify-content-md-center">
-              <div className="col col-lg-4">
+          <div class="container">
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-4">
                 <img src={CR} width="150" height="150" alt="Costa Rica" />
                 <h2>Costa Rica</h2>
                 <br />
               </div>
-              <div className="col col-lg-4">
+              <div class="col col-lg-4">
                 <img src={BR} width="150" height="150" alt="Brazil" />
                 <h2>Brazil</h2>
                 <br />
               </div>
-              <div className="col col-lg-4">
+              <div class="col col-lg-4">
                 <img src={MX} width="150" height="150" alt="Mexico" />
                 <h2>Mexico</h2>
                 <br />
@@ -56,20 +56,20 @@ class Menu extends Component {
 
           <br />
 
-          <div className="container">
-            <div className="row justify-content-md-center">
-              <div className="col col-lg-4">
+          <div class="container">
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-4">
                 <img src={PV} width="170" height="150" alt="Puerto Viejo" />
                 <h2>Puerto Viejo</h2>
                 <br />
               </div>
-              <div className="col col-lg-4">
+              <div class="col col-lg-4">
                 <img src={RJ} width="150" height="150" alt="Rio de Janeiro" />
 
                 <h2>Rio de Janeiro</h2>
                 <br />
               </div>
-              <div className="col col-lg-4">
+              <div class="col col-lg-4">
                 <img src={CN} width="150" height="150" alt="Cancun" />
                 <h2>Cancun</h2>
                 <br />

@@ -16,8 +16,11 @@ namespace TransaccionesAPI.Models
     {
         public int EPID { get; set; }
         public int USRID { get; set; }
-        public int Num_Cuenta { get; set; }
-        public int Cod_Seguridad { get; set; }
+        public string Usuario { get; set; }
+        public string Nombre { get; set; }
+        public string Correo { get; set; }
+        public string Num_Cuenta { get; set; }
+        public string Cod_Seguridad { get; set; }
         public string Password { get; set; }
         public double Fondos { get; set; }
     }

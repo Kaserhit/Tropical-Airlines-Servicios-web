@@ -1,16 +1,16 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../components/header2';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 import icn1 from '../assets/icons/181501-interface/181501-interface/svg/padlock.svg';
 import icn2 from '../assets/icons/181501-interface/181501-interface/svg/shield-1.svg';
 import icn3 from '../assets/icons/181501-interface/181501-interface/svg/settings.svg';
 
-const url = 'http://localhost:62299/api/Seguridad';
+const url = 'http://localhost:62299/api/Seguridad/';
 
 class Usuariospassword extends Component {
   state = {
@@ -18,32 +18,15 @@ class Usuariospassword extends Component {
     modalInsertar: false,
     form: {
       USRID: '',
-      Usuario: '',
       Contrasena: '',
-      Nombre: '',
-      Primer_Apellido: '',
-      Segundo_Apellido: '',
-      Pregunta: '',
-      Respuesta: '',
-      Correo: '',
+      newcontrasena: '',
+      newcontrasena2: '',
     },
   };
 
-  peticionPost = async () => {
-    delete this.state.form.USRID;
-    await axios
-      .post(url, this.state.form)
-      .then((response) => {
-        this.modalInsertar();
-        this.peticionGet();
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
-  modalInsertar = () => {
-    this.setState({ modalInsertar: !this.state.modalInsertar });
+  peticionPut = () => {
+    axios.put(url + this.state.form.USRID, this.state.form);
+    this.props.history.push('/Menu');
   };
 
   handleChange = async (e) => {
@@ -58,7 +41,7 @@ class Usuariospassword extends Component {
   };
 
   render() {
-    //const { form } = this.state;
+    const { form } = this.state;
     return (
       <div className="UsuariosPasswords">
         <Header />
@@ -70,6 +53,22 @@ class Usuariospassword extends Component {
           <br />
 
           <div class="form-group">
+            <h5 class="control-label col-md-3">Identificador</h5>
+
+            <div class="col-md-10">
+              <input
+                class="form-control"
+                type="text"
+                id="USRID"
+                name="USRID"
+                value={form.USRID}
+                onChange={this.handleChange}
+              ></input>
+            </div>
+
+            <br />
+            <br />
+
             <h5 class="control-label col-md-3">
               <img src={icn2} width="25" height="25" /> Contraseña Antigua
             </h5>
@@ -80,13 +79,14 @@ class Usuariospassword extends Component {
                 type="password"
                 id="Contrasena"
                 name="Contrasena"
+                onChange={this.handleChange}
+                value={form.Contrasena}
               ></input>
             </div>
-          </div>
 
-          <br />
+            <br />
+            <br />
 
-          <div class="form-group">
             <h5 class="control-label col-md-3">
               <img src={icn1} width="25" height="25" /> Nueva Contraseña
             </h5>
@@ -96,13 +96,14 @@ class Usuariospassword extends Component {
                 type="password"
                 id="newcontrasena"
                 name="newcontrasena"
+                onChange={this.handleChange}
+                value={form.newcontrasena}
               ></input>
             </div>
-          </div>
 
-          <br />
+            <br />
+            <br />
 
-          <div class="form-group">
             <h5 class="control-label col-md-3">
               <img src={icn1} width="25" height="25" /> Confirmar Contraseña
             </h5>
@@ -112,29 +113,32 @@ class Usuariospassword extends Component {
                 type="password"
                 id="newcontrasena2"
                 name="newcontrasena2"
+                onChange={this.handleChange}
+                value={form.newcontrasena2}
               ></input>
             </div>
-          </div>
 
-          <br />
+            <br />
+            <br />
 
-          <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
               <button
-                className="btn text-white mr-auto"
+                className="btn text-white"
+                onClick={() => this.peticionPut()}
                 style={{
                   background: '#8C7811',
                 }}
-                onClick={() => this.peticionPost()}
               >
-                <img src={icn3} width="25" height="25" /> Cambiar Contraseña
+                <img src={icn3} width="25" height="25" /> Actualizar
               </button>
             </div>
 
             <br />
 
             <div class="col-md-offset-2 col-md-10">
-              <a class="btn btn-default border"> Cancelar</a>
+              <Link to="/Menu" className="btn btn-default border-dark">
+                Cancelar
+              </Link>
             </div>
           </div>
         </center>

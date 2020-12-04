@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
+import Cookies from 'universal-cookie';
 
 import Header from '../components/header2';
 import Footer from '../components/Footer';
@@ -10,25 +11,53 @@ import Footer from '../components/Footer';
 const url1 = 'http://localhost:62299/api/VuelosSalida/';
 const url2 = 'http://localhost:49575/api/Tarjetas';
 const url3 = 'http://localhost:49575/api/Easy_Pay';
+const cookies = new Cookies();
 
 class Compra extends Component {
   state = {
     data: [],
+    tarjeta: [],
     tarjetas: [],
     easypay: [],
     Cant_Boletos: '',
     Total: '',
     modalTarjeta: false,
+    modalTarjetas: false,
     modalEasyPay: false,
-    cvc: '',
-    expiry: '',
-    focus: '',
-    name: '',
-    number: '',
-    metodopago: '',
-    accnumber: '',
-    cod_seg: '',
-    password: '',
+    metodopago: 'Seleccionar metodo de pago',
+    form1: {
+      USRID: '',
+      Usuario: '',
+      Nombre: '',
+      Correo: '',
+      Num_Tarjeta: '',
+      Exp_Month: '',
+      Exp_Year: '',
+      CVV: '',
+      Tipo_Tarjeta: '',
+      Tipo: '',
+      Limite_Tarjeta: '',
+      Fondos: ''
+    },
+    form2: {
+      EPID: '',
+      USRID: '',
+      Usuario: '',
+      Nombre: '',
+      Correo: '',
+      Num_Cuenta: '',
+      Cod_Seguridad: '',
+      Password: '',
+      Fondos: '',
+    },
+    form3: {
+      CMPID: '',
+      Compra_Usuario: '',
+      Consec_Compra: '',
+      Destino: '',
+      Cant_Boletos: '',
+      TotalCompra: ''
+    }
   }
   
   peticionGet = async () => {
@@ -55,8 +84,11 @@ class Compra extends Component {
     })
     .then(response => {
       for (var i = 0; i < response.length; i++) {
-        if (response[i].USRID === parseInt(this.props.id)) {
+        if (response[i].Usuario === cookies.get('Usuario')) {
           this.setState({ tarjetas: response[i] });
+          // this.setState({form: {USRID: response[i].USRID, Usuario: response[i].Usuario, Nombre: response[i].Nombre, 
+          //   Correo: response[i].Correo, Num_Tarjeta: response[i].Num_Tarjeta, Exp_Month: response[i].Exp_Month, Exp_Year: response[i].Exp_Year, 
+          //   CVV: response[i].CVV, Tipo_Tarjeta: response[i].Tipo_Tarjeta, Tipo: response[i].Tipo, Limite_Tarjeta: response[i].Limite_Tarjeta, Fondos: response[i].Fondos}})
         }
       }
     })
@@ -64,24 +96,45 @@ class Compra extends Component {
       console.log(error);
     })
   }
-  
-  GetEasy_Pay = async () => {
-    await axios.get(url3)
-    .then(response => {
-      return response.data;
-    })
-    .then(response => {
-      for (var i = 0; i < response.length; i++) {
-        if (response[i].USRID === parseInt(this.props.id)) {
-          this.setState({ easypay: response[i] });
-        }
+
+  seleccionarTarjeta=(Tarjeta)=>{
+    this.setState({
+      tipoModal: 'actualizar',
+      form1: {
+        USRID: Tarjeta.USRID,
+        Usuario: Tarjeta.Usuario,
+        Nombre: Tarjeta.Nombre,
+        Correo: Tarjeta.Correo,
+        Num_Tarjeta: Tarjeta.Num_Tarjeta,
+        Exp_Month: Tarjeta.Exp_Month,
+        Exp_Year: Tarjeta.Exp_Year,
+        CVV: Tarjeta.CVV,
+        Tipo_Tarjeta: Tarjeta.Tipo_Tarjeta,
+        Tipo: Tarjeta.Tipo,
+        Limite_Tarjeta: Tarjeta.Limite_Tarjeta,
+        Fondos: Tarjeta.Fondos
       }
-    })
-    .catch(error => {
-      console.log(error);
     })
   }
   
+  peticionPostTarjeta=async()=>{
+    delete this.state.form1.USRID;
+   await axios.post(url2,this.state.form).then(response=>{
+      this.modalTarjeta();
+    }).catch(error=>{
+      console.log(error.message);
+    })
+  }
+
+  peticionPostEasyPay=async()=>{
+    delete this.state.form.id;
+   await axios.post(url3,this.state.form).then(response=>{
+      this.modalEasyPay();
+    }).catch(error=>{
+      console.log(error.message);
+    })
+  }
+
   handleChange=async e=>{
     e.persist();
     await this.setState({
@@ -94,19 +147,23 @@ class Compra extends Component {
     await this.setState({metodopago: e.target.value});
     console.log(this.state.metodopago);
   }
-  
-  handleInputFocus = (e) => {
-    this.setState({ focus: e.target.name });
-  }
-  
-  handleInputChange = (e) => {
-    const { name, value } = e.target;
-    
-    this.setState({ [name]: value });
-  }
+
+  handleInputChange=async e=>{
+    e.persist();
+    await this.setState({
+      form1:{
+        ...this.state.form1,
+        [e.target.name]: e.target.value
+      }
+    });
+    }
   
   modalTarjeta=()=>{
     this.setState({modalTarjeta: !this.state.modalTarjeta});
+  }
+  
+  modalTarjetas=()=>{
+    this.setState({modalTarjetas: !this.state.modalTarjetas});
   }
   
   modalEasyPay=()=>{
@@ -116,10 +173,10 @@ class Compra extends Component {
   componentDidMount() {
     this.peticionGet();
     this.GetTarjetas();
-    this.GetEasy_Pay();
   }
   
   render(){
+    const {form1}=this.state;
     return (
       <div className="Compra">
       
@@ -144,12 +201,39 @@ class Compra extends Component {
       </select>
       
       <br />
-      
-      {this.state.metodopago==='Tarjeta de Credito/Debito'?
-      <button className="btn btn-default border-dark" onClick={()=>{this.modalTarjeta()}}>Ver Tarjeta Crédito/Débito</button>: this.state.metodopago==='Easy Pay'?
-      <button className="btn btn-default border-dark" onClick={()=>{this.modalEasyPay()}}>Ver Easy Pay</button>: <p></p>
-    }
+
+    {this.state.metodopago==='Seleccionar metodo de pago'?
+    <p></p>: this.state.metodopago==='Easy Pay'?
+    <button className="btn btn-default border-dark" onClick={()=>{this.modalEasyPay()}}>Ver Easy Pay</button>: this.state.form1.Num_Tarjeta===''?
+    <button className="btn btn-default border-dark" onClick={()=>{this.modalTarjeta()}}>Ver Tarjeta Crédito/Débito</button>: 
+    <button className="btn btn-default border-dark" onClick={()=>{this.modalTarjetas()}}>Seleccionar Tarjeta Crédito/Débito</button>}
     
+    <Modal isOpen={this.state.modalTarjetas}>
+    <ModalHeader style={{display: 'block'}}>
+    <span style={{float: 'right'}} onClick={()=>this.modalTarjetas()}>x</span>
+    <h2 className="card-title">Tarjetas de Crédito/Débito</h2>
+    
+    </ModalHeader>
+    <ModalBody>
+
+    <Cards
+    cvc={this.state.form1.CVV}
+    expiry={this.state.form1.Exp_Month + '/' + this.state.form1.Exp_Year}
+    focused={this.state.form1.focus}
+    name={this.state.form1.name}
+    number={this.state.form1.number}
+    />
+    
+    </ModalBody>
+    
+    <ModalFooter>
+    <button className="btn btn-default border-dark" onClick={()=>this.modalTarjetas()}>
+    Seleccionar Tarjeta
+    </button> 
+    
+    <button className="btn btn-default border-dark" onClick={()=>this.modalTarjetas()}>Cancelar</button>
+    </ModalFooter>
+    </Modal>
     
     <Modal isOpen={this.state.modalTarjeta}>
     <ModalHeader style={{display: 'block'}}>
@@ -157,11 +241,11 @@ class Compra extends Component {
     <h2 className="card-title">Tarjeta Crédito/Débito</h2>
     
     <Cards
-    cvc={this.state.cvc}
-    expiry={this.state.expiry}
-    focused={this.state.focus}
-    name={this.state.name}
-    number={this.state.number}
+    cvc={this.state.form1.CVV}
+    expiry={this.state.form1.Exp_Month + '/' + this.state.form1.Exp_Year}
+    focused={this.state.form1.focus}
+    name={this.state.form1.name}
+    number={this.state.form1.number}
     />
     
     </ModalHeader>
@@ -174,9 +258,8 @@ class Compra extends Component {
     className="form-control"
     type="tel"
     name="number"
-    value={this.state.number}
+    value={form1?form1.Num_Tarjeta: ''}
     onChange={this.handleInputChange}
-    onFocus={this.handleInputFocus}
     />
     <br />
     <label htmlFor="Name">Nombre</label>
@@ -184,9 +267,8 @@ class Compra extends Component {
     className="form-control"
     type="text"
     name="name"
-    value={this.state.name}
+    value={form1?form1.Num_Tarjeta: ''}
     onChange={this.handleInputChange}
-    onFocus={this.handleInputFocus}
     />
     <br />
     <label htmlFor="Expiry">Valida hasta:</label>
@@ -196,7 +278,6 @@ class Compra extends Component {
     name="expiry"
     value={this.state.expiry}
     onChange={this.handleInputChange}
-    onFocus={this.handleInputFocus}
     />
     <br />
     <label htmlFor="CVC">CVC</label>
@@ -206,7 +287,6 @@ class Compra extends Component {
     name="cvc"
     value={this.state.cvc}
     onChange={this.handleInputChange}
-    onFocus={this.handleInputFocus}
     />
     </center>    
     </form>
@@ -215,7 +295,7 @@ class Compra extends Component {
     
     <ModalFooter>
     <button className="btn btn-default border-dark" onClick={()=>this.modalTarjeta()}>
-    Aceptar
+    Procesar
     </button> 
     
     <button className="btn btn-default border-dark" onClick={()=>this.modalTarjeta()}>Cancelar</button>

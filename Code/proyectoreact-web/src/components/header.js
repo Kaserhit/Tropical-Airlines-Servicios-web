@@ -14,18 +14,18 @@ class Header extends Component {
     return (
       <header id="header">
         <nav
-          className="navbar fixed-top navbar-light"
+          class="navbar fixed-top navbar-light"
           style={{
             background: '#8C7811',
           }}
         >
           <img src={logo} alt="Icono" width="100px" height="50px"></img>
-          <a className="navbar-brand text-white" href="">
+          <a class="navbar-brand text-white" href="">
             <strong>Tropical Airlines</strong>
           </a>
-          <button className="btn">
+          <button class="btn">
             {' '}
-            <a className="text-white" onClick={this.showDishes}>
+            <a class="text-white" onClick={this.showDishes}>
               <strong>Iniciar Sesion</strong>
             </a>
           </button>

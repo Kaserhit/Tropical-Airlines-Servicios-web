@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,16 +10,16 @@ class Footer extends Component {
   render() {
     return (
       <footer
-      className="text-white"
+        class="text-white"
         style={{
           background: '#8C7811',
         }}
       >
-        <div className="container">
+        <div class="container">
           <br />
           <br />
-          <div className="row ">
-            <div className="col-md-5">
+          <div class="row ">
+            <div class="col-md-5">
               <br />
               <p></p>
               <br />
@@ -32,7 +31,7 @@ class Footer extends Component {
                     width="150px"
                     height="100px"
                   ></img>
-                   <a></a><b> Tropical Airlines </b>
+                  <a></a> <b> Tropical Airlines </b>
                 </h4>
               </center>
               <br />
@@ -40,47 +39,47 @@ class Footer extends Component {
               <br />
             </div>
 
-            <div className="col-md-2">
+            <div class="col-md-2">
               <h4>
                 <b>Compañia</b>
               </h4>
               <br />
               <p>
-                <a href="#" className="text-white">
+                <a href="#" class="text-white">
                   Acerca de nosotros
                 </a>
               </p>
               <p>
-                <a href="#" className="text-white">
+                <a href="#" class="text-white">
                   Novedades
                 </a>
               </p>
               <p>
-                <a href="#" className="text-white">
+                <a href="#" class="text-white">
                   Asociaciones
                 </a>
               </p>
               <br />
             </div>
 
-            <div className="col-md-2">
+            <div class="col-md-2">
               <h4>
                 <b>Soporte</b>
               </h4>
               <br />
               <p>
-                <a href="#" className="text-white">
+                <a href="#" class="text-white">
                   Ayuda
                 </a>
               </p>
               <p>
-                <a href="#" className="text-white">
+                <a href="#" class="text-white">
                   Contactenos
                 </a>
               </p>
             </div>
 
-            <div className="col-md-3">
+            <div class="col-md-3">
               <br />
               <p></p>
               <br />

@@ -1,10 +1,12 @@
 import React from 'react';
+
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import App from './../App';
 import Menu from './../Menu';
 import Usuarios from './Usuarios';
 import NotFound from './notFound';
+
 import VuelosLLegada from './VuelosLlegada';
 import Reservaciones from './Reservaciones';
 import VuelosSalida from './VuelosSalida';
@@ -19,8 +21,13 @@ const Router = () => (
       <Route exact path="/Menu" component={Menu}></Route>
       <Route exact path="/VuelosLLegada" component={VuelosLLegada}></Route>
       <Route exact path="/VuelosSalida" component={VuelosSalida}></Route>
-      <Route exact path="/Reservaciones" component={Reservaciones}></Route>
       <Route exact path="/CompraBoletos/:id" component={GetVLOID}></Route>
+      <Route exact path="/Reservaciones" component={Reservaciones}></Route>
+      <Route
+        exact
+        path="/UsuariosPassword"
+        component={UsuariosPasswords}
+      ></Route>
       <Route
         exact
         path="/UsuariosPasswords"
