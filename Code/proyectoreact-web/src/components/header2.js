@@ -26,12 +26,19 @@ class header2 extends Component {
     window.location.href = './';
   };
 
+   componentDidMount() {
+    if(!cookies.get('Usuario')){
+        alert("Usuario no loggeado");
+        window.location.href="./";
+    }
+  }
+
   render() {
-    console.log('USRID: ' + cookies.get('USRID'));
-    console.log('Primer_Apellido: ' + cookies.get('Primer_Apellido'));
-    console.log('Segundo_Apellido: ' + cookies.get('Segundo_Apellido'));
-    console.log('Nombre: ' + cookies.get('Nombre'));
-    console.log('Usuario: ' + cookies.get('Usuario'));
+    // console.log('USRID: ' + cookies.get('USRID'));
+    // console.log('Primer_Apellido: ' + cookies.get('Primer_Apellido'));
+    // console.log('Segundo_Apellido: ' + cookies.get('Segundo_Apellido'));
+    // console.log('Nombre: ' + cookies.get('Nombre'));
+    // console.log('Usuario: ' + cookies.get('Usuario'));
 
     return (
       <header id="header">

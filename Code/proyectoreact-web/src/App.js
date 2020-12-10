@@ -52,6 +52,7 @@ class App extends Component {
           });
           cookies.set('Nombre', respuesta.Nombre, { path: '/' });
           cookies.set('Usuario', respuesta.Usuario, { path: '/' });
+          cookies.set('Correo', respuesta.Correo, { path: '/' });
           alert(`Bienvenido ${respuesta.Nombre} ${respuesta.Primer_Apellido}`);
           window.location.href = './Menu';
         } else {
@@ -62,6 +63,12 @@ class App extends Component {
         console.log(error);
       });
   };
+
+  componentDidMount() {
+    if(cookies.get('Usuario')){
+        window.location.href="./Menu";
+    }
+  }
 
   Recaptchacargado() {
     console.log('Recaptcha completado exitosamente');
