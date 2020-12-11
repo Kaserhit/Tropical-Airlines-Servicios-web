@@ -18,6 +18,7 @@ var fondos = Math.floor(Math.random() * (10000000 - 0) + 0);
 class Compra extends Component {
   state = {
     data: [],
+    tarjetas: [],
     Cant_Boletos: '',
     Total: '',
     metodopago: 'Seleccionar metodo de pago',
@@ -32,6 +33,21 @@ class Compra extends Component {
     name: '',
     number: '',
 
+    form: {
+      USRID: '',
+      Usuario: '',
+      Nombre: '',
+      Correo: '',
+      Num_Tarjeta: '',
+      Exp_Month: '',
+      Exp_Year: '',
+      CVV: '',
+      Tipo_Tarjeta: '',
+      Tipo: '',
+      Limite_Tarjeta: '',
+      Fondos: '',
+      focus: ''
+    },
     form1: {
       USRID: '',
       Usuario: '',
@@ -62,6 +78,16 @@ class Compra extends Component {
       Destino: '',
       Cant_Boletos: '',
       TotalCompra: ''
+    },
+    form4: {
+      USRID: '',
+      Usuario: '',
+      Nombre: '',
+      Correo: '',
+      Num_Cuenta: '',
+      Cod_Seguridad: '',
+      Password: '',
+      Fondos: ''
     }
   }
   
@@ -90,10 +116,10 @@ class Compra extends Component {
     .then(response => {
       for (var i = 0; i < response.length; i++) {
         if (response[i].Usuario === cookies.get('Usuario')) {
-          this.setState({ tarjetas: response[i] });
-          // this.setState({form: {USRID: response[i].USRID, Usuario: response[i].Usuario, Nombre: response[i].Nombre, 
-          //   Correo: response[i].Correo, Num_Tarjeta: response[i].Num_Tarjeta, Exp_Month: response[i].Exp_Month, Exp_Year: response[i].Exp_Year, 
-          //   CVV: response[i].CVV, Tipo_Tarjeta: response[i].Tipo_Tarjeta, Tipo: response[i].Tipo, Limite_Tarjeta: response[i].Limite_Tarjeta, Fondos: response[i].Fondos}})
+          //this.setState({ tarjetas: response[i] });
+          this.setState({form: {USRID: response[i].USRID, Usuario: response[i].Usuario, Nombre: response[i].Nombre, 
+            Correo: response[i].Correo, Num_Tarjeta: response[i].Num_Tarjeta, Exp_Month: response[i].Exp_Month, Exp_Year: response[i].Exp_Year, 
+            CVV: response[i].CVV, Tipo_Tarjeta: response[i].Tipo_Tarjeta, Tipo: response[i].Tipo, Limite_Tarjeta: response[i].Limite_Tarjeta, Fondos: response[i].Fondos}})
         }
       }
     })
@@ -102,23 +128,22 @@ class Compra extends Component {
     })
   }
 
-  seleccionarTarjeta=(Tarjeta)=>{
-    this.setState({
-      tipoModal: 'actualizar',
-      form1: {
-        USRID: Tarjeta.USRID,
-        Usuario: Tarjeta.Usuario,
-        Nombre: Tarjeta.Nombre,
-        Correo: Tarjeta.Correo,
-        Num_Tarjeta: Tarjeta.Num_Tarjeta,
-        Exp_Month: Tarjeta.Exp_Month,
-        Exp_Year: Tarjeta.Exp_Year,
-        CVV: Tarjeta.CVV,
-        Tipo_Tarjeta: Tarjeta.Tipo_Tarjeta,
-        Tipo: Tarjeta.Tipo,
-        Limite_Tarjeta: Tarjeta.Limite_Tarjeta,
-        Fondos: Tarjeta.Fondos
+  GetEPAcc = async () => {
+    await axios.get(url3)
+    .then(response => {
+      return response.data;
+    })
+    .then(response => {
+      for (var i = 0; i < response.length; i++) {
+        if (response[i].Usuario === cookies.get('Usuario')) {
+          //this.setState({ tarjetas: response[i] });
+          this.setState({form4: {USRID: response[i].USRID, Usuario: response[i].Usuario, Nombre: response[i].Nombre, 
+            Correo: response[i].Correo, Num_Cuenta: response[i].Num_Cuenta, Cod_Seguridad: response[i].Cod_Seguridad, Password: response[i].Password, Fondos: response[i].Fondos}})
+        }
       }
+    })
+    .catch(error => {
+      console.log(error);
     })
   }
   
@@ -203,14 +228,30 @@ class Compra extends Component {
     await this.setState({ form3:
       {Compra_Usuario: cookies.get('USRID'), Consec_Compra: '1', Destino: this.state.data.Destino, Cant_Boletos: this.state.Cant_Boletos, TotalCompra: this.state.Total}});
 
-    console.log(this.state.form3)
-
-   await axios.post(url3,this.state.form3).then(response=>{
+   await axios.post(url1,this.state.form3).then(response=>{
       alert('Compra realizada con exito');
     }).catch(error=>{
       console.log(error.message);
     })
-   }
+  }
+
+  // peticionPutTarjeta=async()=>{
+  //   await this.setState({form1: {
+  //     Fondos: (this.state.form.Fondos - this.state.form3.TotalCompra)
+  //   }});
+
+  //   console.log(this.state.form1.Fondos)
+
+  //   await axios.put(url2+this.state.form.USRID, this.state.form).then(response=>{
+  //     <Redirect to="/VuelosSalida"></Redirect>
+  //   })
+  // }
+
+  // peticionPutEasyPay=()=>{
+  //   axios.put(url2+this.state.form4.USRID, this.state.form2).then(response=>{
+  //     <Redirect to="/VuelosSalida"></Redirect>
+  //   })
+  // }
 
   handleChange=async e=>{
     e.persist();
@@ -228,7 +269,7 @@ class Compra extends Component {
         [e.target.name]: e.target.value
       }
     });
-    }
+  }
   
   handleOption = async e => {
     await this.setState({metodopago: e.target.value});
@@ -290,7 +331,7 @@ class Compra extends Component {
 
     {this.state.metodopago==='Seleccionar metodo de pago'?
     <p></p>: this.state.metodopago==='Easy Pay'?
-    <button className="btn btn-default border-dark" onClick={()=>{this.modalEasyPay()}}>Ver Easy Pay</button>: this.state.form1.Num_Tarjeta===''?
+    <button className="btn btn-default border-dark" onClick={()=>{this.modalEasyPay()}}>Ver Easy Pay</button>: this.state.form.Num_Tarjeta===''?
     <button className="btn btn-default border-dark" onClick={()=>{this.modalTarjeta()}}>Ver Tarjeta Crédito/Débito</button>: 
     <button className="btn btn-default border-dark" onClick={()=>{this.modalTarjetas()}}>Seleccionar Tarjeta Crédito/Débito</button>}
 
@@ -298,6 +339,11 @@ class Compra extends Component {
     <br />
 
     <button className="btn btn-default border-dark" onClick={()=>{this.peticionPostCompra()}}>Comprar Boletos</button>
+
+    {/* {this.state.metodopago==='Seleccionar metodo de pago'?
+    <label htmlFor="metodopago">¡Seleccione un Metodo de Pago!</label>: this.state.metodopago==='Easy Pay'?
+    <button className="btn btn-default border-dark" onClick={()=>{this.peticionPostCompra()}}>Comprar Boletos</button>: 
+    <button className="btn btn-default border-dark" onClick={()=>{this.peticionPostCompra()}}>Comprar Boletos</button>} */}
     
     <Modal isOpen={this.state.modalTarjetas}>
     <ModalHeader style={{display: 'block'}}>
@@ -308,11 +354,11 @@ class Compra extends Component {
     <ModalBody>
 
     <Cards
-    cvc={this.state.form1.CVV}
-    expiry={this.state.form1.Exp_Month + '/' + this.state.form1.Exp_Year}
-    focused={this.state.form1.focus}
-    name={this.state.form1.name}
-    number={this.state.form1.number}
+    cvc={this.state.form.CVV}
+    expiry={this.state.form.Exp_Month + '/' + this.state.form.Exp_Year}
+    focused={this.state.form.focus}
+    name={this.state.form.Nombre}
+    number={this.state.form.Num_Tarjeta}
     />
     
     </ModalBody>

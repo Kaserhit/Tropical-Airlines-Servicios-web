@@ -16,22 +16,29 @@ const cookies = new Cookies();
 
 class header2 extends Component {
   cerrarSesion = () => {
+    if (typeof cookies.get('Primer_Apellido') === "undefined") {
+      alert(`Hasta la próxima Usuario!`);
+    }
+    else{
+      alert(`Hasta la próxima ${cookies.get('Nombre')} ${cookies.get('Primer_Apellido')}`);
+    }
     cookies.remove('USRID', { path: '/' });
     cookies.remove('Primer_Apellido', { path: '/' });
     cookies.remove('Segundo_Apellido', { path: '/' });
     cookies.remove('Nombre', { path: '/' });
     cookies.remove('Usuario', { path: '/' });
+    cookies.remove('FirebaseUser', { path: '/' });
     firebase.auth().signOut();
 
     window.location.href = './';
   };
 
-   componentDidMount() {
-    if(!cookies.get('Usuario')){
-        alert("Usuario no loggeado");
-        window.location.href="./";
-    }
-  }
+  //  componentDidMount() {
+  //   if(!cookies.get('Usuario') || !cookies.get('FirebaseUser')){
+  //       alert("Usuario no loggeado");
+  //       window.location.href="./";
+  //   }
+  // }
 
   render() {
     // console.log('USRID: ' + cookies.get('USRID'));

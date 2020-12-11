@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { Redirect } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 firebase.initializeApp({
   apiKey: 'AIzaSyChZW1ES9FwFR9yCzpO77lbyOGbUE-L_AY',
@@ -24,13 +27,13 @@ class LoginSocial extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ isSignedIn: !!user });
-      console.log('user', user);
+      cookies.set('FirebaseUser', user, { path: '/' });
     });
   };
 
   render() {
     return (
-      <div className="App">
+      <div className="LoginSocial">
         {this.state.isSignedIn ? (
           <Redirect to="/Menu"></Redirect>
         ) : (
