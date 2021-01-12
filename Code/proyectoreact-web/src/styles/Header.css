@@ -1,0 +1,22 @@
+.ImageHeader {
+  width: 100%;
+  max-height: 600px;
+  margin-bottom: 5%;
+}
+
+.top-nav-collapse {
+  background-color: #4285f4;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #4285f4;
+  }
+}
+
+html,
+body,
+header,
+.view {
+  height: 100%;
+}

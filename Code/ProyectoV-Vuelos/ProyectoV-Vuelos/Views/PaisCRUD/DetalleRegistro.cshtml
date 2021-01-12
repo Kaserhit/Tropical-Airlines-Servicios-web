@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.PaisModel>
+
+@{
+    ViewBag.Title = "DetalleRegistro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetalleRegistro</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodPais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodPais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imagen)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+
+</center>

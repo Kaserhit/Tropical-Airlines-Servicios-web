@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.ErrorModel>
+
+@{
+    ViewBag.Title = "Tropical Airlines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>Consulta de Errores</h2></center>
+
+<hr>
+
+<br />
+
+@using (Html.BeginForm("Busqueda", "ErrorCRUD", FormMethod.Post))
+{
+
+    <form class="form-group">
+
+
+        <div class="container">
+            <center>
+                <div class="row justify-content-md-center">
+                    <div class="col col-lg-2">
+                        <label class="font-weight-bold">Fecha Inicio</label>
+                        @Html.TextBox("fechainicio", "", new { @class = "form-control" })
+                    </div>
+                    <div class="col col-lg-2">
+                        <label class="font-weight-bold">Fecha Final</label>
+                        @Html.TextBox("fechafinal", "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </center>
+        </div>
+
+        <br />
+
+        <center>
+            <button type="submit" class="btn btn-default border">Buscar</button>
+        </center>
+
+    </form>
+}
+
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+          ID de Error
+        </th>
+        <th>
+          Fecha
+        </th>
+        <th>
+          Mensaje de Error
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ERRID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mensaje_Error)
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-default border" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-default border" @Html.ActionLink("Mostrar Todos", "Consulta", "ErrorCRUD", new { area = "" }, null)</a>
+
+</center>

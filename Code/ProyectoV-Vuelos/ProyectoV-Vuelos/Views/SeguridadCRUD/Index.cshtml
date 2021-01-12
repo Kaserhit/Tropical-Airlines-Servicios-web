@@ -1,0 +1,106 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.SeguridadModel>
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<center><h2>Roles</h2></center>
+<br></br>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Administrador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seguridad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consecutivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mantenimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consulta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @if (item.Administrador == true)
+                {
+                    @Html.CheckBox("Administrador", true) }
+                else
+                {
+                    @Html.CheckBox("Administrador", false)}
+            </td>
+            <td>
+                @if (item.Seguridad == true)
+                {
+                    @Html.CheckBox("Seguridad", true) }
+                else
+                {
+                    @Html.CheckBox("Seguridad", false)}
+            </td>
+            <td>
+                @if (item.Consecutivo == true)
+                {
+                    @Html.CheckBox("Consecutivo", true) }
+                else
+                {
+                    @Html.CheckBox("Consecutivo", false)}
+            </td>
+            <td>
+                @if (item.Mantenimiento == true)
+                {
+                    @Html.CheckBox("Mantenimiento", true) }
+                else
+                {
+                    @Html.CheckBox("Mantenimiento", false)}
+            </td>
+            <td>
+                @if (item.Consulta == true)
+                {
+                    @Html.CheckBox("Consulta", true) }
+                else
+                {
+                    @Html.CheckBox("Consulta", false)}
+            </td>
+            <td>
+                @if (item.Cliente == true)
+                {
+                    @Html.CheckBox("Cliente", true) }
+                else
+                {
+                    @Html.CheckBox("Cliente", false)}
+            </td>
+            <td>
+                @Html.ActionLink("Actualizar Roles", "ActualizarRol", new { id = item.USRID }, null)
+            </td>
+        </tr>
+}
+
+
+</table>
+
+<br />
+
+<center>
+
+    <a class="btn btn-default" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+
+</center>

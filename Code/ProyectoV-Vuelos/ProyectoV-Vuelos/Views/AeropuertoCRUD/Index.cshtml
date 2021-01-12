@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.AeropuertosModel>
+
+@{
+    ViewBag.Title = "Tropical Airlines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>Aeropuertos</h2></center>
+<br></br>
+
+<table class="table">
+    <tr>
+
+        <th>
+            Codigo de Puerta
+        </th>
+        <th>
+            Numero de Puerta
+        </th>
+        <th>
+            Estado
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cod_Puerta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Num_Puerta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Detalle)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Actualizar", new { id = item.APTID }, null) |
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.APTID }, new { @Class = "MEliminar" })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-default border" @Html.ActionLink("Generar ", "Generar")</a>
+
+    <a class="btn btn-default border" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+
+</center>
+
+@section scripts{
+
+    <script>
+        $(".MEliminar").click(function (event) {
+            if (!confirm('¿Esta seguro de eliminar el Aeropuerto?')) {
+                event.preventDefault();
+            }
+        });
+    </script>
+}

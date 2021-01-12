@@ -1,0 +1,144 @@
+﻿@model ProyectoV_Vuelos.Models.VuelosModel
+
+@{
+    ViewBag.Title = "Actualizar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <center>
+        @if (Model.Destino == "")
+        {
+            <h3 class="text-center">Vuelo de Llegada</h3>
+            <hr />
+            <br />
+        }
+        else
+        {
+            <h3 class="text-center">Vuelo de Salida</h3>
+            <hr />
+            <br />
+        }
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.VLOID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+        <div class="form-group">
+            <h5 class="text-center">Consecutivo de Vuelo</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Consec_Vuelo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Consec_Vuelo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <h5 class="text-center">Aerolínea del Vuelo</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vuelo_Aerol, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vuelo_Aerol, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <h5 class="text-center">Puerta del Vuelo</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vuelo_Aerop, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vuelo_Aerop, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <h5 class="text-center">Codigo del Vuelo</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CodVuelo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CodVuelo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        @if (Model.Destino == "")
+        {
+            <div class="form-group">
+                <h5 class="text-center">Procedencia</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Procedencia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Procedencia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+        }
+        else
+        {
+            <div class="form-group">
+                <h5 class="text-center">Destino</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Destino, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Destino, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+        }
+
+        <div class="form-group">
+            <h5 class="text-center">Fecha</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <h5 class="text-center">Estado</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <h5 class="text-center">Monto</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Monto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Monto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Actualizar" class="btn btn-default border" />
+            </div>
+
+            <br />
+
+            <div class="col-md-offset-2 col-md-10">
+                <a class="btn btn-default border"
+                   @if (Model.Destino == "") { @Html.ActionLink("Cancelar", "IndexLlegada")  } else { @Html.ActionLink("Cancelar", "IndexSalida") }
+            </div>
+        </div>
+    </center>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

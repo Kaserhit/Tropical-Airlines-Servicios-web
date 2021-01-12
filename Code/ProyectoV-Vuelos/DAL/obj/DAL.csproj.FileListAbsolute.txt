@@ -1,0 +1,35 @@
+C:\Mis documentos\Programacion5C#.NET\Sesion13ASP.NETProgramacion5\DAL\bin\Debug\DAL.dll
+C:\Mis documentos\Programacion5C#.NET\Sesion13ASP.NETProgramacion5\DAL\bin\Debug\DAL.pdb
+C:\Mis documentos\Programacion5C#.NET\Sesion13ASP.NETProgramacion5\DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Mis documentos\Programacion5C#.NET\Sesion13ASP.NETProgramacion5\DAL\obj\Debug\DAL.dll
+C:\Mis documentos\Programacion5C#.NET\Sesion13ASP.NETProgramacion5\DAL\obj\Debug\DAL.pdb
+C:\PROGRAMAS BIOSOFT\BioSoft Technologies DAL\DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\PROGRAMAS BIOSOFT\BioSoft Technologies DAL\DAL\obj\Debug\DAL.dll
+C:\PROGRAMAS BIOSOFT\BioSoft Technologies DAL\DAL\bin\Debug\DAL.dll
+C:\PROGRAMAS BIOSOFT\BioSoft Technologies DAL\DAL\bin\Debug\DAL.pdb
+C:\PROGRAMAS BIOSOFT\BioSoft Technologies DAL\DAL\obj\Debug\DAL.pdb
+C:\PROGRAMAS BIOSOFT\BioSoft Technologies DAL\DAL\bin\Release\DAL.dll
+C:\PROGRAMAS BIOSOFT\BioSoft Technologies DAL\DAL\bin\Release\DAL.pdb
+C:\PROGRAMAS BIOSOFT\BioSoft Technologies DAL\DAL\obj\Release\ResolveAssemblyReference.cache
+C:\PROGRAMAS BIOSOFT\BioSoft Technologies DAL\DAL\obj\Release\DAL.dll
+C:\PROGRAMAS BIOSOFT\BioSoft Technologies DAL\DAL\obj\Release\DAL.pdb
+C:\PROGRAMAS BIOSOFT\C#.Net\BioSoft Technologies DAL\DAL\bin\Debug\DAL.dll
+C:\PROGRAMAS BIOSOFT\C#.Net\BioSoft Technologies DAL\DAL\bin\Debug\DAL.pdb
+C:\PROGRAMAS BIOSOFT\C#.Net\BioSoft Technologies DAL\DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\PROGRAMAS BIOSOFT\C#.Net\BioSoft Technologies DAL\DAL\obj\Debug\DAL.dll
+C:\PROGRAMAS BIOSOFT\C#.Net\BioSoft Technologies DAL\DAL\obj\Debug\DAL.pdb
+C:\Programacion 3\Sesion8ASP.NetProgramacion5\SesionBaseDatos\DAL\bin\Debug\DAL.dll
+C:\Programacion 3\Sesion8ASP.NetProgramacion5\SesionBaseDatos\DAL\bin\Debug\DAL.pdb
+C:\Programacion 3\Sesion8ASP.NetProgramacion5\SesionBaseDatos\DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Programacion 3\Sesion8ASP.NetProgramacion5\SesionBaseDatos\DAL\obj\Debug\DAL.dll
+C:\Programacion 3\Sesion8ASP.NetProgramacion5\SesionBaseDatos\DAL\obj\Debug\DAL.pdb
+E:\Progra 5\Semana 9\SesionBaseDatos\DAL\bin\Debug\DAL.dll
+E:\Progra 5\Semana 9\SesionBaseDatos\DAL\bin\Debug\DAL.pdb
+E:\Progra 5\Semana 9\SesionBaseDatos\DAL\obj\Debug\ResolveAssemblyReference.cache
+E:\Progra 5\Semana 9\SesionBaseDatos\DAL\obj\Debug\DAL.dll
+E:\Progra 5\Semana 9\SesionBaseDatos\DAL\obj\Debug\DAL.pdb
+D:\Programación Básica\Progra 5\Semana 9\SesionBaseDatos\DAL\bin\Debug\DAL.dll
+D:\Programación Básica\Progra 5\Semana 9\SesionBaseDatos\DAL\bin\Debug\DAL.pdb
+D:\Programación Básica\Progra 5\Semana 9\SesionBaseDatos\DAL\obj\Debug\ResolveAssemblyReference.cache
+D:\Programación Básica\Progra 5\Semana 9\SesionBaseDatos\DAL\obj\Debug\DAL.dll
+D:\Programación Básica\Progra 5\Semana 9\SesionBaseDatos\DAL\obj\Debug\DAL.pdb

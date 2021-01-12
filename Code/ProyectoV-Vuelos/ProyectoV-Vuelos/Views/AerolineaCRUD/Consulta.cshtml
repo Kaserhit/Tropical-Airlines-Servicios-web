@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.AerolineasModel>
+
+@{
+    ViewBag.Title = "Tropical Airlines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>Consulta de Aereolineas</h2></center>
+
+<hr>
+
+<br />
+
+
+@using (Html.BeginForm("Busqueda", "AerolineaCRUD", FormMethod.Post))
+{
+    <form class="form-group">
+        <center>
+            <div>
+                <div>
+                    <div>
+                        <div class="form-group mb-1">
+                            <label class="font-weight-bold">Nombre del País</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBox("nombre", "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default border">Buscar</button>
+
+        </center>
+    </form>
+}
+
+<br />
+
+
+<table class="table">
+    <center>
+        <tr>
+            <th>
+            Codigo
+            </th>
+            <th>
+             Nombre
+            </th>
+            <th>
+            Logo
+            </th>
+            <th></th>
+        </tr>
+
+
+        <br />
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.Imagen)" width="70px" height="50px" alt="Aereolinea" />
+                    </td>
+                </tr>
+            }
+        }
+    </center>
+</table>
+
+
+
+<br></br>
+
+<center>
+
+    <a class="btn btn-default border" @Html.ActionLink("Regresar", "Index", "Home", new { area = "" }, null)</a>
+    <a class="btn btn-default border" @Html.ActionLink("Mostrar Todos", "Consulta", "AerolineaCRUD", new { area = "" }, null)</a>
+
+</center>

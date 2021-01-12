@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Logo/linea aeria blanco-04.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @RenderSection("Css", required: false)
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Header.css" rel="stylesheet" />
+</head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<header id="header">
+
+    <nav class="navbar fixed-top navbar-light" style="background-color: #8C7811" >
+        <img src="~/Content/Logo/linea aeria blanco-04.png" alt="Icono" / width="100px" height="50px">
+        <a class="navbar-brand text-white" href="@Url.Action("Login","SeguridadCRUD")"><strong>Tropical Airlines</strong></a>
+        <button class="btn"> <a class="text-white" href="@Url.Action("Login","SeguridadCRUD")"><strong>Iniciar Sesion</strong></a></button>
+    </nav>
+
+    <div class="view intro-2" style="">
+        <div class="full-bg-img">
+            <div class="mask rgba-purple-light flex-center">
+                <div class="container text-center white-text wow fadeInUp">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<br />
+<br />
+<br />
+
+<body>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <footer class="text-white" style="background-color: #8C7811">
+        <div class="container">
+            <br />
+            <br />
+            <div class="row ">
+                <div class="col-md-5">
+                    <br />
+                    <p></p>
+                    <br />
+                    <center>
+                        <h4><img src="~/Content/Logo/linea aeria blanco-04.png" alt="Icono" / width="150px" height="100px"> <a></a> <b> Tropical Airlines </b></h4>
+                    </center>
+                    <br />
+                    <p></p>
+                    <br />
+                </div>
+
+                <div class="col-md-2">
+                    <h4><b>Compañia</b></h4>
+                    <br />
+                    <p><a href="#" class="text-white">Acerca de nosotros</a></p>
+                    <p><a href="#" class="text-white">Novedades</a></p>
+                    <p><a href="#" class="text-white">Asociaciones</a></p>
+                    <br />
+                </div>
+
+                <div class="col-md-2">
+                    <h4><b>Soporte</b></h4>
+                    <br />
+                    <p><a href="#" class="text-white">Ayuda</a></p>
+                    <p><a href="#" class="text-white">Contactenos</a></p>
+                </div>
+
+                <div class="col-md-3">
+                    <br />
+                    <p></p>
+                    <br />
+                    <center>
+                        <h4><img src="~/Content/icons/circle-cropped.png" alt="Icono" / width="100px" height="100px"></h4>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="~/Scripts/popper.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+@RenderSection("Scripts", required: false)
+
+</html>

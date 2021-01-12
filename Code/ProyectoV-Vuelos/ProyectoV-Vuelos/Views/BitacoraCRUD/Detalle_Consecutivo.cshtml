@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.BitacorasModel>
+
+@{
+    ViewBag.Title = "Tropical Airlines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>Detalle del Consecutivo</h2></center>
+
+<hr>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Codigo
+        </th>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            Consecutivo
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consec_Bitacora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consec_Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consecutivo)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+
+<center>
+
+    <a class="btn btn-dark" @Html.ActionLink("Regresar", "Consulta", "BitacoraCRUD", new { area = "" }, null)</a>
+
+</center>

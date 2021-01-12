@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TransaccionesWebBDModelStoreContainer" CdmEntityContainer="TransaccionesWebBDEntities">
+    <EntitySetMapping Name="Easy_Pay">
+      <EntityTypeMapping TypeName="TransaccionesWebBDModel.Easy_Pay">
+        <MappingFragment StoreEntitySet="Easy_Pay">
+          <ScalarProperty Name="EPID" ColumnName="EPID" />
+          <ScalarProperty Name="USRID" ColumnName="USRID" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Num_Cuenta" ColumnName="Num_Cuenta" />
+          <ScalarProperty Name="Cod_Seguridad" ColumnName="Cod_Seguridad" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Fondos" ColumnName="Fondos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarjeta">
+      <EntityTypeMapping TypeName="TransaccionesWebBDModel.Tarjeta">
+        <MappingFragment StoreEntitySet="Tarjeta">
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="USRID" ColumnName="USRID" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Num_Tarjeta" ColumnName="Num_Tarjeta" />
+          <ScalarProperty Name="Exp_Month" ColumnName="Exp_Month" />
+          <ScalarProperty Name="Exp_Year" ColumnName="Exp_Year" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="Tipo_Tarjeta" ColumnName="Tipo_Tarjeta" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Limite_Tarjeta" ColumnName="Limite_Tarjeta" />
+          <ScalarProperty Name="Fondos" ColumnName="Fondos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

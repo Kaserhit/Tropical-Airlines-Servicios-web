@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProyectoV_Vuelos.Models.BitacorasModel>
+
+@{
+    ViewBag.Title = "Tropical Airlines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>Detalle del Pais</h2></center>
+
+<hr>
+
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Codigo
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Bandera
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.Imagen)" width="70px" height="50px" alt="Bandera">
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+
+<center>
+
+    <a class="btn btn-dark" @Html.ActionLink("Regresar", "Consulta", "BitacoraCRUD", new { area = "" }, null)</a>
+
+</center>

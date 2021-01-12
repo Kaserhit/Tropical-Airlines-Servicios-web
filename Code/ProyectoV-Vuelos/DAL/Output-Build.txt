@@ -1,0 +1,13 @@
+------ Build started: Project: DAL, Configuration: Debug Any CPU ------
+DAL -> C:\Programacion 3\Sesion8ASP.NETProgramacion5\DAL\bin\Debug\DAL.dll
+------ Build started: Project: C:\...\SesionBaseDatos\, Configuration: Debug .NET ------
+Validating Web Site
+Building directory '/SesionBaseDatos/'.
+
+Validation Complete
+------ Build started: Project: LogicaAplicacion, Configuration: Debug Any CPU ------
+C:\WINNT\Microsoft.NET\Framework\v2.0.50727\Csc.exe /noconfig /nowarn:1701,1702 /errorreport:prompt /warn:4 /define:DEBUG;TRACE /reference:"C:\Programacion 3\Sesion8ASP.NETProgramacion5\DAL\bin\Debug\DAL.dll" /reference:C:\WINNT\Microsoft.NET\Framework\v2.0.50727\System.Data.dll /reference:C:\WINNT\Microsoft.NET\Framework\v2.0.50727\System.dll /reference:C:\WINNT\Microsoft.NET\Framework\v2.0.50727\System.Web.dll /reference:C:\WINNT\Microsoft.NET\Framework\v2.0.50727\System.Xml.dll /debug+ /debug:full /optimize- /out:obj\Debug\LogicaAplicacion.dll /target:library Plantas.cs Properties\AssemblyInfo.cs
+
+Compile complete -- 0 errors, 0 warnings
+LogicaAplicacion -> C:\Programacion 3\Sesion8ASP.NETProgramacion5\LogicaAplicacion\bin\Debug\LogicaAplicacion.dll
+========== Build: 3 succeeded or up-to-date, 0 failed, 0 skipped ==========

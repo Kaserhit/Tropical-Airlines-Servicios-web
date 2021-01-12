@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TransaccionesWebBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Easy_Pay">
+          <Key>
+            <PropertyRef Name="EPID" />
+          </Key>
+          <Property Name="EPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USRID" Type="int" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Num_Cuenta" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Cod_Seguridad" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Fondos" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tarjeta">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USRID" Type="int" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Num_Tarjeta" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Exp_Month" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Exp_Year" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CVV" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Tipo_Tarjeta" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Limite_Tarjeta" Type="float" />
+          <Property Name="Fondos" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TransaccionesWebBDModelStoreContainer">
+          <EntitySet Name="Easy_Pay" EntityType="Self.Easy_Pay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TransaccionesWebBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Easy_Pay">
+          <Key>
+            <PropertyRef Name="EPID" />
+          </Key>
+          <Property Name="EPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USRID" Type="Int32" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Num_Cuenta" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cod_Seguridad" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fondos" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tarjeta">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USRID" Type="Int32" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Num_Tarjeta" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Exp_Month" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Exp_Year" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CVV" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tipo_Tarjeta" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Limite_Tarjeta" Type="Double" />
+          <Property Name="Fondos" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TransaccionesWebBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Easy_Pay" EntityType="Self.Easy_Pay" />
+          <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TransaccionesWebBDModelStoreContainer" CdmEntityContainer="TransaccionesWebBDEntities">
+          <EntitySetMapping Name="Easy_Pay">
+            <EntityTypeMapping TypeName="TransaccionesWebBDModel.Easy_Pay">
+              <MappingFragment StoreEntitySet="Easy_Pay">
+                <ScalarProperty Name="EPID" ColumnName="EPID" />
+                <ScalarProperty Name="USRID" ColumnName="USRID" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Num_Cuenta" ColumnName="Num_Cuenta" />
+                <ScalarProperty Name="Cod_Seguridad" ColumnName="Cod_Seguridad" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Fondos" ColumnName="Fondos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarjeta">
+            <EntityTypeMapping TypeName="TransaccionesWebBDModel.Tarjeta">
+              <MappingFragment StoreEntitySet="Tarjeta">
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="USRID" ColumnName="USRID" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Num_Tarjeta" ColumnName="Num_Tarjeta" />
+                <ScalarProperty Name="Exp_Month" ColumnName="Exp_Month" />
+                <ScalarProperty Name="Exp_Year" ColumnName="Exp_Year" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="Tipo_Tarjeta" ColumnName="Tipo_Tarjeta" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Limite_Tarjeta" ColumnName="Limite_Tarjeta" />
+                <ScalarProperty Name="Fondos" ColumnName="Fondos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

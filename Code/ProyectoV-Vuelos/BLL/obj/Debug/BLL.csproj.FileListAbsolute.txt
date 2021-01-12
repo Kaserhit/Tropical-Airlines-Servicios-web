@@ -1,0 +1,62 @@
+C:\Clase Web Service\Lec04\BLL\bin\Debug\BLL.dll
+C:\Clase Web Service\Lec04\BLL\bin\Debug\BLL.pdb
+C:\Clase Web Service\Lec04\BLL\bin\Debug\DAL.dll
+C:\Clase Web Service\Lec04\BLL\bin\Debug\DAL.pdb
+C:\Clase Web Service\Lec04\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Clase Web Service\Lec04\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Clase Web Service\Lec04\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Clase Web Service\Lec04\BLL\obj\Debug\BLL.dll
+C:\Clase Web Service\Lec04\BLL\obj\Debug\BLL.pdb
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\BLL\obj\Debug\BLL.dll
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\BLL\obj\Debug\BLL.pdb
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\BLL\bin\Debug\BLL.dll
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\BLL\bin\Debug\BLL.pdb
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\BLL\bin\Debug\DAL.dll
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\BLL\bin\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\BLL\bin\Debug\BLL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\BLL\bin\Debug\BLL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\BLL\bin\Debug\DAL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\BLL\bin\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\BLL\obj\Debug\BLL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\BLL\obj\Debug\BLL.pdb
+C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\bin\Debug\BLL.dll
+C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\bin\Debug\BLL.pdb
+C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\bin\Debug\DAL.dll
+C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\bin\Debug\DAL.pdb
+C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\obj\Debug\BLL.dll
+C:\Users\juego\source\repos\ProyectoV-Vuelos\BLL\obj\Debug\BLL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\BLL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\BLL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\DAL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.pdb
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\BLL.dll
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\BLL.pdb
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\DAL.dll
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\bin\Debug\DAL.pdb
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.dll
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.pdb
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\bin\Debug\BLL.dll
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\bin\Debug\BLL.pdb
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\bin\Debug\DAL.dll
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\bin\Debug\DAL.pdb
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.dll
+D:\Users\Old PC Stuff\OneDrive\Escritorio\Ulacit\GitHub\Servicios-web V2\Code\ProyectoV-Vuelos\BLL\obj\Debug\BLL.pdb

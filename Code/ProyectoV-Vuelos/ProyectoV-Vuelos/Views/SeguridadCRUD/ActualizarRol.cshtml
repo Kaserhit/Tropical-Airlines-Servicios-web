@@ -1,0 +1,87 @@
+﻿@model ProyectoV_Vuelos.Models.SeguridadModel
+
+@{ ViewBag.Title = "ActualizarRol";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<center><h2>Actualizar Rol</h2></center>
+<br />
+
+@using (Html.BeginForm())
+{
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Administrador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seguridad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Consecutivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mantenimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Consulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Usuario)
+            </td>
+            <td>
+                @Html.CheckBox("Administrador", Model.Administrador.Value)
+            </td>
+            <td>
+                @Html.CheckBox("Seguridad", Model.Seguridad.Value)
+            </td>
+            <td>
+                @Html.CheckBox("Consecutivo", Model.Consecutivo.Value)
+            </td>
+            <td>
+                @Html.CheckBox("Mantenimiento", Model.Mantenimiento.Value)
+            </td>
+            <td>
+                @Html.CheckBox("Consulta", Model.Consulta.Value)
+            </td>
+            <td>
+                @Html.CheckBox("Cliente", Model.Cliente.Value)
+            </td>
+        </tr>
+    </table>
+
+
+<br />
+
+
+<center>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Actualizar Roles" class="btn btn-default border" />
+        </div>
+
+        <br />
+
+        <div class="col-md-offset-2 col-md-10">
+            <a class="btn btn-default border"
+               @Html.ActionLink("Cancelar", "Index")
+        </div>
+    </div>
+
+</center>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

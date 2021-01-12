@@ -1,0 +1,36 @@
+C:\Clase Web Service\Lec04\DAL\bin\Debug\DAL.dll
+C:\Clase Web Service\Lec04\DAL\bin\Debug\DAL.pdb
+C:\Clase Web Service\Lec04\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Clase Web Service\Lec04\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Clase Web Service\Lec04\DAL\obj\Debug\DAL.dll
+C:\Clase Web Service\Lec04\DAL\obj\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\DAL\bin\Debug\DAL.dll
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\DAL\bin\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\DAL\obj\Debug\DAL.dll
+C:\Users\karl2\OneDrive\Escritorio\LEC DAL\Lec04\DAL\obj\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\DAL\bin\Debug\DAL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\DAL\bin\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\DAL\obj\Debug\DAL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\V_VuelosCode\DAL\obj\Debug\DAL.pdb
+C:\Users\juego\source\repos\ProyectoV-Vuelos\DAL\bin\Debug\DAL.dll
+C:\Users\juego\source\repos\ProyectoV-Vuelos\DAL\bin\Debug\DAL.pdb
+C:\Users\juego\source\repos\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\juego\source\repos\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\juego\source\repos\ProyectoV-Vuelos\DAL\obj\Debug\DAL.dll
+C:\Users\juego\source\repos\ProyectoV-Vuelos\DAL\obj\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\bin\Debug\DAL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\bin\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.dll
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.pdb
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\bin\Debug\DAL.dll
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\bin\Debug\DAL.pdb
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.dll
+C:\Users\juego\Documents\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.pdb
+C:\Users\karl2\OneDrive\Documentos\GitHub\Servicios-web\Code\ProyectoV-Vuelos\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

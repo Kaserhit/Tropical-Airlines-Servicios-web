@@ -1,0 +1,88 @@
+﻿@model ProyectoV_Vuelos.Models.PaisModel
+
+@{
+    ViewBag.Title = "Tropical Airlines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <center>
+        <h3 class="text-center">Paises</h3>
+        <hr />
+
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.PAISID)
+
+
+        <div class="form-group">
+            <h5 class=" col-md-3">Consecutivo del Pais</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CodPais, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CodPais, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <h5 class=" col-md-2">Codigo del Pais</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Consec_Pais, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Consec_Pais, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <h5 class=" col-md-2">Nombre</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <h5 class=" col-md-2">Bandera</h5>
+            <div class="col-md-10">
+                <select class="form-control" id="Imagen" name="Imagen" placeholder="Imagen">
+                    <option value="https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Costa_Rica_%28state%29.svg">Costa Rica</option>
+                    <option value="https://upload.wikimedia.org/wikipedia/commons/8/82/Flag_of_Honduras.svg">Honduras</option>
+                    <option value="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Flag_of_Panama.svg/1200px-Flag_of_Panama.svg.png">Panama</option>
+                    <option value="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Nicaragua.svg/1000px-Flag_of_Nicaragua.svg.png">Nicaragua</option>
+                    <option value="https://cdn.countryflags.com/thumbs/colombia/flag-400.png">Colombia</option>
+                    <option value="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/220px-Flag_of_Chile.svg.png">Chile</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Actualizar" class="btn btn-default border" />
+            </div>
+
+            <br />
+
+            <div class="col-md-offset-2 col-md-10">
+                <a class="btn btn-default border"
+                   @Html.ActionLink("Cancelar", "Index")
+            </div>
+        </div>
+    </center>
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
