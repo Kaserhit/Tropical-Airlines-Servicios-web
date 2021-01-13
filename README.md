@@ -1,6 +1,6 @@
 # Proyecto Tropical Airlines(V-Vuelos)
 
-# Repositorio del curso: Servicios Web | Entorno de Desarrollo y Pre-Producción
+# Repositorio del curso: Servicios Web | Entorno de Desarrollo y Estudio
 
 # Estado del Proyecto:
 Proyecto Completo e implementado
