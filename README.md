@@ -6,7 +6,7 @@
 Proyecto Completo e implementado
 
 # Tecnologías Empleadas
-Para construir la aplicacion de escritorio se utilizo React, Html, JS, Boostrap, CSS
+Para construir la aplicacion web se utilizo React, Html, JS, Boostrap, CSS y todo el Framework de .NET en el apartado de ASP.net (C#, Html, Javascript, CSS)
 
 
 
